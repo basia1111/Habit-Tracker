@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <main>
+    <div class="menu"> </div>
+    <div class="box">
+        <div class="inner-box">
+            <div class="hero"></div>
+            <div class="wrapper">
+                <div class="form-wrapper sign-in"  >
+                    <div>
+                    <h1 class="h3 ">Please sign in</h1>
+                    <div class="signUp-link">
+                        <p class="small-text"> Don't have account yet?<a href="#" class="signUpBtn-link">Sign Up</a></p>
+                    </div>
+                    </div>
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <div class="input-wrap">
+                            <input type="email" value="{{ last_username }}" name="email"  autocomplete="email" required autofocus>
+                            <label>Email
+                            </label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="password" name="password"   autocomplete="current-password" required>
+                            <label>Passowrd
+                            </label>
+                        </div>
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+                        <div>
+                            <a class="small-text" href="{{ path('app_forgot_password_request')}}">Forgot password?</a>
+                        </div>
+                        <div>
+                        <button  type="submit">
+                            Sign in
+                        </button>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+                <div class="form-wrapper sign-up">
+                    <div>
+                    <h1 class="h3">Register</h1>
+                    <div class="signUp-link">
+                        <p class="small-text">Already have an account? <a href="#" class="signInBtn-link">Sign In</a></p>
+                    </div>
+                    </div>
+                   <form>
+                    {{ form_start(registrationForm) }}
+                    <div class="input-wrap">
+                        {{ form_widget(registrationForm.email) }}
+                        <label>Email</label>
+                    </div>
+                   <div class="input-wrap">
+                       {{ form_widget(registrationForm.plainPassword) }}
+                       <label>Password</label>
+
+                   </div>
+                       <div class="input-wrap agree-terms">
+                           <p>Agree to terms</p>  <div>{{ form_widget(registrationForm.agreeTerms) }}</div>
+
+                       </div>
+                    <button type="submit" class="btn">Register</button>
+
+                    {{ form_end(registrationForm) }}
+                   </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+
+
+    {% block javascripts %}
+
+
+        <script src="{{ asset('js/script.js') }}"></script>
+        {% endblock %}
+{% endblock %}
+
