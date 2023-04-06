@@ -1,0 +1,169 @@
+{% extends 'base.html.twig' %}
+
+ {% block stylesheets %}
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+
+
+
+
+    <!-- Button trigger modal -->
+    <button onclick="document.querySelector('.js-modal-input').value = this.id " id="1" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <input type="text" class="js-modal-input form-control" name="">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <h1>Habit list</h1>
+        {% if habits is defined and habits|length %}
+            <table id="table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+
+                    <th>name</th>
+                    <th>m</th>
+                    <th>t</th>
+                    <th>w</th>
+                    <th>t</th>
+                    <th>f</th>
+                    <th>s</th>
+                    <th>s</th>
+                    <th>streak</th>
+                    <th>best streak</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for habit in habits %}
+                    <tr id="object-{{ habit.id }}">
+                        <th>{{ habit.id }}</th>
+
+                        <th class="name">{{ habit.name }}</th>
+                        <th id="habit-monday">{{ habit.monday  }}</th>
+                        <th id="habit-tusday">{{ habit.tusday  }}</th>
+                        <th id="habit-wednesday">{{ habit.wednesday }}</th>
+                        <th id="habit-thursday">{{ habit.thursday }}</th>
+                        <th id="habit-friday">{{ habit.friday }}</th>
+                        <th id="habit-sathurday">{{ habit.sathurday }}</th>
+                        <th id="habit-sunday">{{ habit.sunday}}</th>
+                        <th id="habit-streak">{{ habit.streak }}</th>
+                        <th id="habit-bestStreak">{{ habit.bestStreak }}</th>
+
+                        <td>
+                            <a href="{{ url('habit_show', {id: habit.id}) }}" title="{{ 'action.view'|trans }}">
+                                {{ 'action.view'|trans }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ url('habit_edit', {id: habit.id}) }}" title="{{ 'action.view'|trans }}">
+                                {{ 'action.view'|trans }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ url('habit_delete', {id: habit.id}) }}" title="{{ 'action.view'|trans }}">
+                                {{ 'action.view'|trans }}
+                            </a>
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ habit.id }}">Edit</button>
+
+                            <div class="modal fade" id="editModal{{ habit.id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ habit.id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalLabel{{ habit.id }}">Edit Entity</h5>
+                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="editForm{{ habit.id }}" action="{{ path('habit_edit', {id: habit.id}) }}" method="post">
+                                                {{ form_widget(editForms[habit.id]) }}
+                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>
+                List is empty.
+            </p>
+        {% endif %}
+
+
+
+    <a href="{{ url('habit_create')}}">
+        {{ 'action.create'|trans }}
+    </a>
+    <br>
+
+    <button type="button"  class="btn btn-primary" id="load-button">load data</button>
+
+
+
+{% endblock  %}
+
+    {% block javascripts %}
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script  type="module" src="{{ asset('js/jquery.js') }}"></script>
+
+        {{ parent() }}
+        <script>
+            $('form').submit(function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                var formAction = $(this).attr('action');
+
+                $.ajax({
+                    url: formAction,
+                    method: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        var row = $('#object-' + response.id);
+                        row.find('.name').text(response.name);
+                        console.log(response.name);
+
+                    },
+                });
+
+            });
+
+        </script>
+
+    {% endblock %}
+
+

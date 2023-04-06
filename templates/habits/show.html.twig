@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{%  block body %}
+    {%  if habit is defined and habit|length %}
+        <th>{{ habit.id }}</th>
+        <dl>
+            <td>name</td>
+        <dd>{{ habit.name }}</dd>
+            <td>name</td>
+        <dd>{{ habit.monday }}</dd>
+            <td>name</td>
+        <dd{{ habit.tusday }}</th>
+            <td>name</td>
+        <dd>{{ habit.wednesday }}</dd>
+            <td>name</td>
+        <dd>{{ habit.thursday }}</dd>
+            <td>name</td>
+        <dd>{{ habit.friday }}</dd>
+            <td>name</td>
+        <dd>{{ habit.sathurday }}</dd>
+            <td>name</td>
+        <dd>{{ habit.sunday}}</dd>
+            <td>name</td>
+
+        <dd>{{ habit.streak }}</dd>
+            <td>name</td>
+        <td>{{ habit.bestStreak }}</td>
+        </dl>
+    {% else %}
+        <p>
+            Record not found.
+        </p>
+    {% endif %}
+
+executions:{{ executions }}
+    percentage:{{ percentage }}
+
+    <div class="wrapper">
+        <div class="current-date">
+            April 2023
+        </div>
+        <div class="icons">
+
+        </div>
+        <span class="material-symbols-rounded">chevron_left</span>
+        <span class="material-symbols-rounded">chevron_right</span>
+        <div class="calendar">
+            <ul class="weeks">
+                <li>Monday</li>
+                <li>Tuesday</li>
+                <li>wednesday</li>
+                <li>Thursday</li>l
+                <li>Friday</li>
+                <li>Sathurday</li>
+                <li>Sunday</li>
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}

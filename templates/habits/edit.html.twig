@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.habit_edit'|trans({'%id%': habit.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.category_edit'|trans({'%id%': habit.id|default('')}) }}</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.time) }}
+    {{ form_row(form.place) }}
+    {{ form_row(form.monday) }}
+    {{ form_row(form.tusday) }}
+    {{ form_row(form.wednesday) }}
+    {{ form_row(form.thursday) }}
+    {{ form_row(form.friday) }}
+    {{ form_row(form.sathurday) }}
+    {{ form_row(form.sunday) }}
+    {{ form_row(form.requisites) }}
+    {{ form_row(form.notes) }}
+
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary"/>
+    </div>
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('app_main') }}" class="btn btn-link">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -5,16 +5,18 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Habit;
-use DateTimeImmutable;
-use DateTime;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
  * Class UserFixtures.
  */
-class HabitFixtures extends AbstractBaseFixtures
+class HabitFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    public function getDependencies(): array
+    {
+        return [UserFixtures::class];
+    }
 
     /**
      * Load data.
@@ -30,14 +32,20 @@ class HabitFixtures extends AbstractBaseFixtures
             $habit->setName($this->faker->word);
             $habit->setTime('08:00:00');
             $habit->setPlace($this->faker->city);
-            $habit->setLastExecuted(
-                DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days'))
-            );
-            $habit->setStreak('0');
+            $user = $this->getRandomReference('users');
+            $habit->setUser($user);
+            $habit->setMonday(false);
+            $habit->setTuesday(true);
+            $habit->setWednesday(true);
+            $habit->setThursday(true);
+            $habit->setFriday(true);
+            $habit->setSathurday(true);
+            $habit->setSunday(false);
+            $habit->setStreak('3');
+            $habit->setBestStreak('15');
 
             return $habit;
         });
-
 
         $this->manager->flush();
     }

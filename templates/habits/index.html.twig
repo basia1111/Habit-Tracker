@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ url('habit_list') }}" title="{{ 'action.view'|trans }}">
+        link
+    </a>
+
+    <h1>Habit list</h1>
+    {% if todayHabits is defined and todayHabits|length %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+
+                <th>name</th>
+                <th>m</th>
+                <th>t</th>
+                <th>w</th>
+                <th>t</th>
+                <th>f</th>
+                <th>s</th>
+                <th>s</th>
+                <th>streak</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for habit in todayHabits %}
+                <tr>
+                    <th>{{ habit.id }}</th>
+
+                    <th>{{ habit.name }}</th>
+                    <th>{{ habit.monday  }}</th>
+                    <th>{{ habit.tusday  }}</th>
+                    <th>{{ habit.wednesday }}</th>
+                    <th>{{ habit.thursday }}</th>
+                    <th>{{ habit.friday }}</th>
+                    <th>{{ habit.sathurday }}</th>
+                    <th>{{ habit.sunday}}</th>
+                    <th>{{ habit.streak}}</th>
+                    <td>
+
+                        <a href="{{ url('habit_change', {id: habit.id}) }}" title="{{ 'action.view'|trans }}">
+                            json
+                        </a>
+                    </td>
+
+                   {% endfor %}
+                    {% endif %}
+                </tr>
+            </tbody>
+    </table>
+
+
+
+{% endblock  %}
+
+    {% block javascripts %}
+
+
+        <script src="{{ asset('js/jquery.js') }}"></script>
+    {% endblock %}
+
+

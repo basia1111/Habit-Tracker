@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Habit;
+use App\Entity\User;
+use App\Interface\ExecutionServiceInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,51 +19,89 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class HabitRepository extends ServiceEntityRepository
 {
+    /**
+     * Execution service.
+     */
+    private ExecutionServiceInterface $executionService;
+
+    /**
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Habit::class);
     }
 
-    public function save(Habit $entity, bool $flush = false): void
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        return $queryBuilder ?? $this->createQueryBuilder('habit');
     }
 
-    public function remove(Habit $entity, bool $flush = false): void
+    /**
+     * Save entity.
+     *
+     * @param Habit $habit Habit entity
+     */
+    public function save(Habit $habit): void
     {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->_em->persist($habit);
+        $this->_em->flush();
     }
 
-//    /**
-//     * @return Habit[] Returns an array of Habit objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('h.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @param Habit $habit
+     * @return void
+     */
+    public function delete(Habit $habit): void
+    {
+        $this->_em->remove($habit);
+        $this->_em->flush();
+    }
 
-//    public function findOneBySomeField($value): ?Habit
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * Query all user habits.
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function queryAll(User $user): array
+    {
+        $query = $this->createQueryBuilder('habit')
+            ->orderBy('habit.id', 'DESC')
+            ->andWhere('habit.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+
+        $results = $query->getResult();
+
+        return $results;
+    }
+
+
+    /**
+     * Find habit by id.
+     *
+     * @param int $id
+     * @return array
+     */
+    public function findAllId(int $id): array
+    {
+        $query = $this->createQueryBuilder('habit')
+            ->orderBy('habit.id', 'DESC')
+            ->andWhere('habit.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        $results = $query->getResult();
+
+        return $results;
+    }
+
+
 }

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230322135954 extends AbstractMigration
+final class Version20230328210339 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20230322135954 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE habit (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(225) NOT NULL, time VARCHAR(225) DEFAULT NULL, place VARCHAR(255) DEFAULT NULL, requisites VARCHAR(255) DEFAULT NULL, notes VARCHAR(255) DEFAULT NULL, last_executed DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', streak INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE habit DROP monday, DROP tuesday, DROP wednesday, DROP thursday, DROP friday, DROP sathurday, DROP sunday');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE habit');
+        $this->addSql('ALTER TABLE habit ADD monday VARCHAR(255) NOT NULL, ADD tuesday VARCHAR(255) NOT NULL, ADD wednesday VARCHAR(255) NOT NULL, ADD thursday VARCHAR(255) NOT NULL, ADD friday VARCHAR(255) NOT NULL, ADD sathurday VARCHAR(255) NOT NULL, ADD sunday VARCHAR(255) NOT NULL');
     }
 }
