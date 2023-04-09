@@ -8,6 +8,7 @@ use App\Interface\HabitServiceInterface;
 use App\Interface\ExecutionServiceInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,7 +66,7 @@ class MainController extends AbstractController
             }
         }
 
-        return $this->render('habits/index.html.twig', ['todayHabits' => $todayHabits]);
+        return $this->render('habits/index.html.twig', ['todayHabits' => $todayHabits, 'date'=>$date]);
     }
 
     /**
@@ -129,8 +130,7 @@ class MainController extends AbstractController
 
         }
 
+        return $this->json(array('id'=> $habit->getId(), 'streak' => $habit->getStreak()));
 
-
-        return $this->redirectToRoute('app_main');
     }
 }

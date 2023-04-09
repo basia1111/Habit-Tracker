@@ -1,0 +1,158 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@800&display=swap');
+
+/**********  layout  ********/
+.box{
+    background: rgb(237,214,252);
+    background: linear-gradient(31deg, rgba(237,214,252,1) 0%, rgba(217,244,250,1) 75%, rgba(221,246,221,1) 100%);
+    border-radius: 3.3rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.hero{
+    position:absolute;
+    height:100%;
+    width: 60%;
+    top:0;
+    left:0;
+}
+.wrapper{
+    position: absolute;
+    height:100%;
+    width: 40%;
+    top:0;
+    right:0;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 3rem;
+}
+
+.form-wrapper {
+    align-self: center;
+    position:absolute;
+    height:100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+    transition: 1s ease-in-out;
+    font-family: 'Montserrat', light, sans-serif;
+}
+
+.h3{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+
+}
+
+/**********  form animation  ********/
+
+.wrapper.active .form-wrapper.sign-in {
+    transform: scale(0) translate(-300px, 400px);
+}
+
+.wrapper .form-wrapper.sign-up {
+    position: absolute;
+    transform: scale(0) translate(200px, -400px);
+}
+
+.wrapper.active .form-wrapper.sign-up {
+    transform: scale(1) translate(0, 0);
+}
+/**********  form styling  ********/
+.signUp-link a{
+    text-align: center;
+    margin: 15px 0;
+    color: black;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.signUp-link p a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signUp-link p a:hover {
+    text-decoration: underline;
+}
+.small-text{
+    color: #bababa;
+    font-weight: 400;
+    font-size: .75rem;
+}
+.agree-terms{
+   display: flex;
+    justify-content: space-between;
+
+}
+.agree-terms p{
+    left:0;
+}
+#agree{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#agree p{
+    margin-left: 20px;
+    align-self: end;
+}
+
+#password-r, #password-s{
+    margin-bottom: 0.5rem;
+}
+
+.input-wrap{
+    width: 100%;
+    position: relative;
+    height:37px;
+    margin-bottom:2rem;
+    padding:0;
+    font-size:.95rem;
+}
+
+.forgot{
+    display: inline-block;
+    margin-bottom:2rem;
+}
+
+.link{
+    transition: 0.15s ease-in-out;
+}
+.link:hover{
+    color:mediumslateblue;
+}
+
+label{
+    position: absolute;
+    font-size:.95rem;
+    color: #bbbbbb;
+    pointer-events: none;
+    transition: 0.15s ease-in-out;
+
+}
+input{
+    position:absolute;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom:1px solid #bbb;
+    transition: 0.4s ease-in-out;
+}
+
+input.active{
+    border-bottom: solid 1px black;
+}
+input.active + label{
+   font-size: 0.75rem;
+    top:-10px;
+}
