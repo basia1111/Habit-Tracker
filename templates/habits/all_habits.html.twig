@@ -1,0 +1,79 @@
+
+{% if habits is defined and habits|length %}
+    {% for habit in habits %}
+        <div class="habit habit-all " id="habit-all">
+
+            <div id="icon-{{ habit.id }}" class="icon-{{ habit.image }} icon"></div>
+            <div id="habit-name-{{ habit.id }}" class="name">
+                <a href="{{ url('habit_show', {id: habit.id}) }}" title="{{ 'action.view'|trans }}">
+                    {{ habit.name }}
+                </a>
+                <div class="days">
+
+                    <div >
+                        <i  id="monday" {% if (habit.monday == 1) %}
+                            class="fa-solid fa-circle"
+                        {% else %}
+                            class="fa-regular fa-circle"
+                        {%endif%}
+                        ></i>
+                    </div>
+                    <div>
+                        <i id="tusday" {% if (habit.tusday == 1) %}
+                            class="fa-solid fa-circle"
+                        {% else %}
+                            id="monday" class="fa-regular fa-circle"
+                        {%endif%}
+                        ></i>
+                    </div>
+                    <div>
+                        <i  id="wednesday" {% if (habit.wednesday == 1) %}
+                            class="fa-solid fa-circle"
+                        {% else %}
+                            class="fa-regular fa-circle"
+                        {%endif%}
+                        ></i>
+
+                    </div>
+                    <div>
+
+                        <i  id="thursday"   {% if(habit.thursday == 1) %}
+                            class="fa-solid fa-circle"
+                        {% else %}
+                            class="fa-regular fa-circle"
+                        {%endif%}
+                        ></i>
+                    </div>
+
+                    <div >
+
+                        <i id="friday"  {% if (habit.friday == 1 )%}
+                            class="fa-solid fa-circle"
+                        {% else %}
+                            class="fa-regular fa-circle"
+                        {%endif%}
+                        ></i>
+                    </div>
+                    <div >
+
+                        <i id="sathurday"  {% if (habit.sathurday == 1) %}
+                            class="fa-solid fa-circle"
+                        {% else %}
+                            class="fa-regular fa-circle"
+                        {%endif%}
+                        ></i>
+                    </div>
+                    <div>
+                        <i id="sunday"  {% if (habit.sunday == 1) %}
+                            class="fa-solid fa-circle"
+                        {% else %}
+                            class="fa-regular fa-circle"
+                        {%endif%}
+                        ></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

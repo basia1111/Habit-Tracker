@@ -8,6 +8,7 @@ namespace App\Form;
 use App\Entity\Habit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,7 +36,8 @@ class HabitFormType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'label.title',
+                'label' => ' ',
+                'label_attr' => ['class' => 'image-label'],
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]
@@ -132,6 +134,21 @@ class HabitFormType extends AbstractType
                 'attr' => ['max_length' => 255],
             ]
         );
+
+        $builder->add(
+            'image',
+            ChoiceType::class, [
+            'choices' => [
+                'Option 1' => '1',
+                'Option 2' => '2',
+                'Option 3' => '3',
+
+            ],
+            'expanded' => true,
+            'multiple' => false,
+
+
+        ]);
     }
 
     /**
@@ -150,10 +167,14 @@ class HabitFormType extends AbstractType
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
      *
-     * @return string The prefix of the template block name
+     * @return string The prefix of the templat e block name
      */
     public function getBlockPrefix(): string
     {
         return 'habit';
     }
+
+
+
+
 }

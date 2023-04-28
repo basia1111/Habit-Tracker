@@ -41,27 +41,6 @@ class HabitListController extends AbstractController
         $this->translator = $translator;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    #[Route(path: '/habit_list', name: 'habit_list')]
-    public function main(Request $request): Response
-    {
-        $user = $this->getUser();
-        $habits = $this->habitService->findAll($user);
-
-        $date = new \DateTime();
-        $date->format('Y-m-d');
-
-        foreach ($habits as $habit) {
-            $editForm = $this->createForm(HabitFormType::class, $habit);
-            $editForms[$habit->getId()] = $editForm->createView();
-        }
-
-        return $this->render('habits/habits.html.twig', ['habits' => $habits, 'date' => $date,  'editForms' => $editForms,]);
-    }
 
     /**
      * Create action.
@@ -99,10 +78,57 @@ class HabitListController extends AbstractController
             $this->executionService->save($execution);
 
 
-            return $this->redirectToRoute('app_main');
+            $today = new \DateTimeImmutable();
+            $timestamp = strtotime($today->format('d-m-Y'));
+            $weekDay = date('l', $timestamp);
+            $day=0;
+
+            if ('Monday' == $weekDay && $habit->isMonday()) {
+                $day='1';
+            }
+            if ('Tuesday' == $weekDay && $habit->isTusday()) {
+
+                $day='1';
+            }
+            if ('Wednesday' == $weekDay && $habit->isWednesday()) {
+
+                $day='1';
+            }
+            if ('Thursday' == $weekDay && $habit->isThursday()) {
+
+                $day='1';
+            }
+            if ('Friday' == $weekDay && $habit->isFriday()) {
+
+                $day='1';
+            }
+            if ('Saturday' == $weekDay && $habit->isSathurday()) {
+
+                $day='1';
+            }
+            if ('Sunday' == $weekDay && $habit->isSunday()) {
+                $day='1';
+            }
+
+            $user = $this->getUser();
+            $todayHabits = $this->habitService->todayHabits($user);
+            $habits = $this->habitService->findAll($user);
+            $html = $this->renderView('habits/today_habits.html.twig',  ['todayHabits' => $todayHabits, 'date'=> $today]);
+            $habits=$this->renderView('habits/all_habits.html.twig',  ['habits' => $habits,]);
+            $data =array(
+                'id'=>$habit->getId(),
+                'name'=>$habit->getName(),
+                'image'=> $habit->getImage(),
+                'day'=>$day,
+                'html'=>$html,
+                'habits'=>$habits
+
+            );
+
+            return new JsonResponse($data);
         }
 
-        return $this->render('habits/create.html.twig', ['form' => $form->createView()]);
+        return $this->redirectToRoute('app_main');
     }
 
     /**
@@ -129,10 +155,16 @@ class HabitListController extends AbstractController
             return $this->redirectToRoute('task_index');
         }
 
+        $edit_form = $this->createForm(
+            HabitFormType::class,
+            $habit,
+
+        );
+        $form=$edit_form->createView();
         $executions = $this->habitService->countAllExecutions($habit);
         $percentage = $this->habitService->countPercentage($habit);
 
-        return $this->render('habits/show.html.twig', ['habit' => $habit, 'executions' => $executions, 'percentage' => $percentage]);
+        return $this->render('habits/show.html.twig', ['habit' => $habit, 'executions' => $executions, 'percentage' => $percentage,'form'=>$form]);
     }
 
     /**
@@ -157,10 +189,7 @@ class HabitListController extends AbstractController
         $form = $this->createForm(
             HabitFormType::class,
             $habit,
-            [
-                'method' => 'POST',
-                'action' => $this->generateUrl('habit_edit', ['id' => $habit->getId()]),
-            ]
+
         );
         $form->handleRequest($request);
 
@@ -172,9 +201,21 @@ class HabitListController extends AbstractController
                 $this->translator->trans('message.created_successfully')
 
             );
+            $user = $this->getUser();
+            $todayHabits = $this->habitService->todayHabits($user);
+
             $data =array(
                 'id'=>$habit->getId(),
-                'name'=>$habit->getName()
+                'name'=>$habit->getName(),
+                'icon'=>$habit->getImage(),
+                'monday'=>$habit->isMonday(),
+                'tusday'=>$habit->isTusday(),
+                'wednesday'=>$habit->isWednesday(),
+                'thursday'=>$habit->isThursday(),
+                'friday'=>$habit->isFriday(),
+                'sunday'=>$habit->isSunday(),
+                'sathurday'=>$habit->isSathurday(),
+                'percentage'=>$this->habitService->countPercentage($habit)
             );
 
             return new JsonResponse($data);
@@ -203,10 +244,10 @@ class HabitListController extends AbstractController
 
             return $this->redirectToRoute('app_main');
         }
-        $form = $this->createForm(FormType::class, $habit, [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('habit_delete', ['id' => $habit->getId()]),
-        ]);
+        $form = $this->createForm(
+            HabitFormType::class,
+            $habit,
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

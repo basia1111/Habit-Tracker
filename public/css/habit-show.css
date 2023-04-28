@@ -1,0 +1,147 @@
+#main{
+
+
+}
+.box{
+    padding: 3rem;
+}
+
+.calendar-wrapper{
+    padding:2rem;
+    border-radius:30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+
+}
+
+.calendar li{
+    width: calc(100%/7);
+}
+.header{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding:1rem;
+
+}
+.current-date{
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+.calendar ul{
+    list-style: none;
+    display:flex;
+    flex-wrap: wrap;
+    margin:0;
+    padding: 0;
+    text-align: center;
+}
+
+.icons span{
+    background-color: whitesmoke;
+    margin: 0 1px;
+    cursor:pointer;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+.icons span i{
+    height:1rem;
+    width: 1rem;
+    color:#878787;
+}
+
+.icons span:last-child {
+    margin-right: -10px;
+}
+
+.icons span:hover{
+    background-color: gainsboro;
+}
+
+.days{
+    display:flex;
+}
+.days div{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.days div p{
+    margin: 0 1rem;
+    font-size: 0.75rem;
+}
+
+.days div i{
+    margin: 0 1rem;
+}
+
+/* icons for habits*/
+.icon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.15s ease-in-out;
+}
+
+.icon-1{
+    background-image: url('icons/clock-dynamic-color.png');
+}
+.icon-2{
+    background-image: url('icons/gym-dynamic-color.png');
+}
+.icon-3{
+    background-image: url('icons/moon-dynamic-color.png');
+}
+
+
+.chart svg{
+    width:50px;
+    height:50px;
+    display: block;
+    margin: 10px auto;
+
+}
+
+.circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.circular-chart .circle {
+    stroke: #ff9f00;
+}
+
+
+.percentage {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
+}
+
+

@@ -54,12 +54,25 @@ class SecurityController extends AbstractController
                 $request
             );
         }
+        else{
+            if ($form->isSubmitted()) {
+                $error = $authenticationUtils->getLastAuthenticationError();
+                // last username entered by the user
+                $lastUsername = $authenticationUtils->getLastUsername();
+                $registrationErrror = 1;
+                return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationErrror]);
+            }
+            }
+
+
+
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView()]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => 0]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

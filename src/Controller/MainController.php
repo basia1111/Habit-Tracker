@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Execution;
 use App\Entity\Habit;
+use App\Form\HabitFormType;
 use App\Interface\HabitServiceInterface;
 use App\Interface\ExecutionServiceInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -65,8 +66,15 @@ class MainController extends AbstractController
                 }
             }
         }
+        $date = new \DateTime();
+        $date->format('Y-m-d');
+        $habits = $this->habitService->findAll($user);
 
-        return $this->render('habits/index.html.twig', ['todayHabits' => $todayHabits, 'date'=>$date]);
+        $habit = new Habit();
+        $create_form = $this->createForm(HabitFormType::class, $habit);
+        $create = $create_form->createView();
+
+        return $this->render('habits/index.html.twig', ['todayHabits' => $todayHabits, 'date'=>$date, 'habits' => $habits, 'create'=>$create]);
     }
 
     /**
@@ -101,7 +109,14 @@ class MainController extends AbstractController
             $habit->setLastExecution($time);
             $streak=$habit->getStreak();
             $habit->setStreak($streak+1);
+            $best_streak=$habit->getBestStreak();
+
+            if($streak+1>=$best_streak){
+                $habit->setBestStreak($streak+1);
+            }
             $this->habitService->save($habit);
+
+
 
             $execution = new Execution();
             $execution->setHabit($habit);
@@ -132,5 +147,25 @@ class MainController extends AbstractController
 
         return $this->json(array('id'=> $habit->getId(), 'streak' => $habit->getStreak()));
 
+    }
+
+    #[Route('/render_html', name: 'render_html', methods: 'GET|PUT|DELETE')]
+    public function render_html(Request $request): Response
+
+    {
+        $user = $this->getUser();
+        $habits = $this->habitService->findAll($user);
+        foreach ($habits as $habit) {
+            $deleteForm = $this->createForm(HabitFormType::class, $habit);
+            $deleteForms[$habit->getId()] = $deleteForm->createView();
+        }
+        $html=$this->renderView('habits/delete_habits.html.twig',  ['habits' => $habits,'deleteForms'=>$deleteForms ]);
+        $data =array(
+
+            'html'=>$html,
+
+
+        );
+        return new JsonResponse($data);
     }
 }

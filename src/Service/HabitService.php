@@ -132,11 +132,11 @@ class HabitService implements HabitServiceInterface
             $totalExecutions += $resultDays['Sunday'];
         }
 
-        if ($executions > 0) {
-            $percentage = ($executions / $totalExecutions) * 100;
+        if ($executions > 0 && $totalExecutions>0 ) {
+           $percentage = (($executions-1) / $totalExecutions) * 100;
         } else {
-            $percentage = 0;
-        }
+           $percentage = 0;
+       }
 
         return $percentage;
     }
