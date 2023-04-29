@@ -21,7 +21,6 @@
         <span class="menu">
                 <li><a href="">About us</a></li>
                 <li><a href="">Tips</a></li>
-                <li><a  id="button-register" class="button button-register" href="#">Register</a></li>
             </span>
     </ul>
 
@@ -31,6 +30,8 @@
     <div class="habit-wrapper" id="wrapper-today" >
       <h1 class="today-habits-h">Today</h1>
          <div id="today-habits" class="today-habits">
+             {% set allHabits = 0 %}
+             {% set doneHabits = 0 %}
 
             {% if todayHabits is defined and todayHabits|length %}
             {% for habit in todayHabits %}
@@ -39,6 +40,7 @@
                     {% set variable = 'check' %}
                 {% else %}
                     {% set variable = 'uncheck' %}
+
                 {% endif %}
 
                 <!-- habit -->
@@ -100,11 +102,14 @@
     <div class="middle-section">
          <div class="middle-section-first-row">
             <div class="todays-rate">
-
+                <h1>TODAY YOU COMPLETED <b id="percentage">{{percentage}}</b> % OF YOUR GOAL</h1>
+                <div class="progress">
+                    <div class="progress-bar " style="--width:{{ percentage }}" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
             </div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
+            <button type="button" class="btn btn-primary" id="create-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <h3>CREATE <br> NEW <br> HABITS</h3>
             </button>
 
         </div>
@@ -117,7 +122,7 @@
     </div>
 
     <div class="habit-wrapper-all">
-        <h3 class="title-habits">Habit list</h3><button id="delete"><i class="fa-solid fa-pen"></i></button>
+       <div class="all-habits-h"> <h3 class="title-habits">Habit list</h3><button id="delete"><i class="fa-solid fa-pen"></i></button></div>
         <div id="all-habits" class="today-habits">
 
 
@@ -198,6 +203,7 @@
                                 </div>
                             </div>
                         </div>
+
                     {% endfor %}
                 {% endif %}
             </div>
@@ -269,8 +275,10 @@
                     dataType: 'json',
 
                     success: function(response) {
-
+                        $('#percentage').text(response.percentage);
+                        $('.progress-bar').attr('style','--width:'+response.percentage);
                         $('.streak-' + response.id).text(response.streak);
+                        console.log(response.percentage)
 
                     }
                 });
@@ -324,6 +332,7 @@
                 data: formData,
                 dataType: 'json',
                 success: function(response) {
+
                     $('#habit-name-' + response.id).text(response.name);
                     $('#name-' + response.id).text(response.name);
                     $('#icon-' + response.id).removeClass();
@@ -370,7 +379,8 @@ var habitDiv = $('<div>', {
     console.log(response);
     $('#today-habits').empty();
     $('#today-habits').html(response.html);
-
+    $('.progress-bar').attr('style','--width:'+response.percentage);
+    $('#percentage').text(response.percentage);
 
 
     },
@@ -389,6 +399,8 @@ var habitDiv = $('<div>', {
                 success: function(response) {
                     $('#all-habits').empty();
                     $('#all-habits').html(response.html);
+
+
                 }
             });
 
@@ -401,6 +413,35 @@ var habitDiv = $('<div>', {
        }
 
 
+
+
+    </script>
+
+    <script>
+
+
+
+        function delete_habit($id) {
+            console.log('dzislsm');
+
+            $.ajax({
+                url: '/'+ $id+'/delete' ,
+                method: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    $('#all-habits').empty();
+                    $('#all-habits').html(response.habits);
+
+                    console.log(response);
+                    $('#today-habits').empty();
+                    $('#today-habits').html(response.html);
+                    $('.progress-bar').attr('style','--width:'+response.percentage);
+                    $('#percentage').text(response.percentage)
+
+
+                },
+            });
+        }
 
 
     </script>

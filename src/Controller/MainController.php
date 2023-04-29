@@ -74,7 +74,22 @@ class MainController extends AbstractController
         $create_form = $this->createForm(HabitFormType::class, $habit);
         $create = $create_form->createView();
 
-        return $this->render('habits/index.html.twig', ['todayHabits' => $todayHabits, 'date'=>$date, 'habits' => $habits, 'create'=>$create]);
+        $date = new \DateTime();
+        $user = $this->getUser();
+        $todayHabits = $this->habitService->todayHabits($user);
+
+        $doneHabits=0;
+        foreach ($todayHabits as $habit) {
+            $last= $habit-> getLastExecution();
+            if($last->format('Y-m-d') == $date->format('Y-m-d')){
+                $doneHabits = $doneHabits+1;
+            }
+        }
+
+        $percentage= round(($doneHabits/count($todayHabits))*100);
+
+
+        return $this->render('habits/index.html.twig', ['percentage'=> $percentage, 'todayHabits' => $todayHabits, 'date'=>$date, 'habits' => $habits, 'create'=>$create]);
     }
 
     /**
@@ -145,7 +160,22 @@ class MainController extends AbstractController
 
         }
 
-        return $this->json(array('id'=> $habit->getId(), 'streak' => $habit->getStreak()));
+        $date = new \DateTime();
+        $user = $this->getUser();
+        $todayHabits = $this->habitService->todayHabits($user);
+
+        $doneHabits=0;
+        foreach ($todayHabits as $habit) {
+            $last= $habit-> getLastExecution();
+            if($last->format('Y-m-d') == $date->format('Y-m-d')){
+                $doneHabits = $doneHabits+1;
+            }
+        }
+
+        $percentage= round(($doneHabits/count($todayHabits))*100);
+
+
+        return $this->json(array('id'=> $habit->getId(), 'streak' => $habit->getStreak(), 'percentage'=>$percentage));
 
     }
 
@@ -153,16 +183,29 @@ class MainController extends AbstractController
     public function render_html(Request $request): Response
 
     {
+        $date = new \DateTime();
         $user = $this->getUser();
         $habits = $this->habitService->findAll($user);
         foreach ($habits as $habit) {
             $deleteForm = $this->createForm(HabitFormType::class, $habit);
             $deleteForms[$habit->getId()] = $deleteForm->createView();
         }
+        $todayHabits = $this->habitService->todayHabits($user);
+        $doneHabits=0;
+        foreach ($todayHabits as $habit) {
+            $last= $habit-> getLastExecution();
+            if($last->format('Y-m-d') == $date->format('Y-m-d')){
+                $doneHabits = $doneHabits+1;
+            }
+        }
+
+        $percentage= ($doneHabits/count($todayHabits))*100;
+
         $html=$this->renderView('habits/delete_habits.html.twig',  ['habits' => $habits,'deleteForms'=>$deleteForms ]);
         $data =array(
 
             'html'=>$html,
+            'percentage'=>$percentage,
 
 
         );

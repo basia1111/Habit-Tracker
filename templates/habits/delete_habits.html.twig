@@ -75,7 +75,7 @@
                 </div>
             </div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" onclick="modal({{ habit.id }})" data-bs-toggle="modal" data-bs-target="#delete-{{ habit.id }}">
+            <button class="delete-button" onclick="modal({{ habit.id }})" data-bs-toggle="modal" data-bs-target="#delete-{{ habit.id }}">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -92,15 +92,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ path('habit_delete', {id: habit.id}) }}" onsubmit="return confirm('Are you sure you want to delete this habit?')">
-                            <input type="hidden" name="_method" value="DELETE">
-                            {{ form_row(deleteForms[habit.id]._token) }}
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+
+                            <button onclick="delete_habit({{ habit.id }})" type="submit" class="btn" data-bs-dismiss="modal">Add</button>
+
                     </div>
                 </div>
             </div>

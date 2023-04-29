@@ -115,13 +115,29 @@ class HabitListController extends AbstractController
             $habits = $this->habitService->findAll($user);
             $html = $this->renderView('habits/today_habits.html.twig',  ['todayHabits' => $todayHabits, 'date'=> $today]);
             $habits=$this->renderView('habits/all_habits.html.twig',  ['habits' => $habits,]);
+
+            $date = new \DateTime();
+            $user = $this->getUser();
+            $todayHabits = $this->habitService->todayHabits($user);
+
+            $doneHabits=0;
+            foreach ($todayHabits as $habit) {
+                $last= $habit-> getLastExecution();
+                if($last->format('Y-m-d') == $date->format('Y-m-d')){
+                    $doneHabits = $doneHabits+1;
+                }
+            }
+
+            $percentage= round(($doneHabits/count($todayHabits))*100);
+
             $data =array(
                 'id'=>$habit->getId(),
                 'name'=>$habit->getName(),
                 'image'=> $habit->getImage(),
                 'day'=>$day,
                 'html'=>$html,
-                'habits'=>$habits
+                'habits'=>$habits,
+                'percentage'=>$percentage
 
             );
 
@@ -222,7 +238,7 @@ class HabitListController extends AbstractController
         }
 
 
-        return new JsonResponse(['success' => false]);
+        return $this->redirectToRoute('app_main');
     }
 
     /**
@@ -244,14 +260,10 @@ class HabitListController extends AbstractController
 
             return $this->redirectToRoute('app_main');
         }
-        $form = $this->createForm(
-            HabitFormType::class,
-            $habit,
-        );
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
             $executions=$this->executionService->queryAll($habit);
+            if (count($executions) < 1){
+                return $this->redirectToRoute('app_main');
+            }
             foreach($executions as $execution){
                 $this->executionService->delete($execution);
             }
@@ -263,16 +275,34 @@ class HabitListController extends AbstractController
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('app_main');
+            $today = new \DateTimeImmutable();
+            $user = $this->getUser();
+            $todayHabits = $this->habitService->todayHabits($user);
+            $habits = $this->habitService->findAll($user);
+            $html = $this->renderView('habits/today_habits.html.twig',  ['todayHabits' => $todayHabits, 'date'=> $today]);
+            $habits=$this->renderView('habits/all_habits.html.twig',  ['habits' => $habits,]);
+
+        $date = new \DateTime();
+        $user = $this->getUser();
+        $todayHabits = $this->habitService->todayHabits($user);
+
+        $doneHabits=0;
+        foreach ($todayHabits as $habit) {
+            $last= $habit-> getLastExecution();
+            if($last->format('Y-m-d') == $date->format('Y-m-d')){
+                $doneHabits = $doneHabits+1;
+            }
         }
 
-        return $this->render(
-            'habits/delete.html.twig',
-            [
-                'form' => $form->createView(),
-                'habit' => $habit,
-            ]
-        );
+        $percentage= round(($doneHabits/count($todayHabits))*100);
+            $data =array(
+                'html'=>$html,
+                'habits'=>$habits,
+                'percentage'=>$percentage
+            );
+
+            return new JsonResponse($data);
+
     }
 
 }
