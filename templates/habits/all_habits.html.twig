@@ -4,7 +4,7 @@
         <div class="habit habit-all " id="habit-all">
 
             <div id="icon-{{ habit.id }}" class="icon-{{ habit.image }} icon"></div>
-            <div id="habit-name-{{ habit.id }}" class="name">
+            <div id="habit-name-{{ habit.id }}" class="habit-name">
                 <a href="{{ url('habit_show', {id: habit.id}) }}" title="{{ 'action.view'|trans }}">
                     {{ habit.name }}
                 </a>

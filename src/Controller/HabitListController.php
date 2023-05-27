@@ -127,8 +127,14 @@ class HabitListController extends AbstractController
                     $doneHabits = $doneHabits+1;
                 }
             }
-
-            $percentage= round(($doneHabits/count($todayHabits))*100);
+            if(count($todayHabits)>0) {
+                $percentage= round(($doneHabits/count($todayHabits))*100);
+            }
+            else{
+                $percentage=0;
+            }
+            $all_habits = $this->habitService->findAll($user);
+            $number_of_habits= count($all_habits);
 
             $data =array(
                 'id'=>$habit->getId(),
@@ -137,7 +143,8 @@ class HabitListController extends AbstractController
                 'day'=>$day,
                 'html'=>$html,
                 'habits'=>$habits,
-                'percentage'=>$percentage
+                'percentage'=>$percentage,
+                'number'=>$number_of_habits,
 
             );
 
@@ -293,12 +300,20 @@ class HabitListController extends AbstractController
                 $doneHabits = $doneHabits+1;
             }
         }
+        $all_habits = $this->habitService->findAll($user);
+        $number_of_habits= count($all_habits);
 
-        $percentage= round(($doneHabits/count($todayHabits))*100);
+        if(count($todayHabits)>0) {
+            $percentage= round(($doneHabits/count($todayHabits))*100);
+        }
+        else{
+            $percentage=0;
+        }
             $data =array(
                 'html'=>$html,
                 'habits'=>$habits,
-                'percentage'=>$percentage
+                'percentage'=>$percentage,
+                'number'=>$number_of_habits,
             );
 
             return new JsonResponse($data);

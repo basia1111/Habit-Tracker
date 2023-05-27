@@ -46,6 +46,8 @@ security:
         - { path: ^/reset-password, roles: PUBLIC_ACCESS}
         - { path: ^/mail, roles: PUBLIC_ACCESS}
         - { path: ^/hero, roles: PUBLIC_ACCESS}
+        - { path: ^/about, roles: PUBLIC_ACCESS}
+        - { path: ^/how, roles: PUBLIC_ACCESS}
         - { path: ^/, roles: ROLE_USER}
 
 when@test:

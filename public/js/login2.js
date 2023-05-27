@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var myElement = document.getElementById('my-element');
     var myVariable = myElement.getAttribute('data-my-variable');
 
-   if (myVariable == 1){
+    if (myVariable == 1){
 
-       inputs.forEach(inp => {
-           if (inp.value != "")
-               inp.classList.add('active');
-       });
-   }
+        inputs.forEach(inp => {
+            if (inp.value != "")
+                inp.classList.add('active');
+        });
+    }
 
 });
 

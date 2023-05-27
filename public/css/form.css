@@ -1,0 +1,120 @@
+#icon{
+    display: inline-block;
+    width: 40px;
+    min-width:40px ;
+    height: 25px;
+    min-height:25px ;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.15s ease-in-out;
+    align-self: center;
+}
+
+@media screen and (min-width: 320px) {
+    #icon {
+        width:  calc(42px + 8 * ((100vw - 320px) / 960));
+        height: calc(42px + 8 * ((100vw - 320px) / 960));
+
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    #icon{
+        width: 50px;
+        height:50px;
+    }
+}
+
+
+/* icons for edit form*/
+.habit_image_0{
+    background-image: url('icons/1.svg');
+}
+.habit_image_1{
+    background-image: url('icons/2.svg');
+}
+.habit_image_2{
+    background-image: url('icons/3.svg');
+}
+.habit_image_3{
+    background-image: url('icons/4.svg');
+}
+.habit_image_4{
+    background-image: url('icons/5.svg');
+}
+.habit_image_5{
+    background-image: url('icons/6.svg');
+}
+.habit_image_6{
+    background-image: url('icons/7.svg');
+}
+.habit_image_7{
+    background-image: url('icons/8.svg');
+}
+.habit_image_8 {
+    background-image: url('icons/9.svg');
+
+}
+.habit_image_9{
+    background-image: url('icons/10.svg');
+}
+.habit_image_10{
+    background-image: url('icons/11.svg');
+}
+.habit_image_11{
+    background-image: url('icons/12.svg');
+}
+.habit_image_12{
+    background-image: url('icons/13.svg');
+}
+.habit_image_13{
+    background-image: url('icons/14.svg');
+}
+.habit_image_14{
+    background-image: url('icons/15.svg');
+}
+.habit_image_15{
+    background-image: url('icons/17.svg');
+}
+.habit_image_16{
+    background-image: url('icons/18.svg');
+}
+.habit_image_17 {
+    background-image: url('icons/19.svg');
+
+}
+.habit_image_18 {
+    background-image: url('icons/20.svg');
+
+}
+.habit_image_19 {
+    background-image: url('icons/21.svg');
+
+}
+.habit_image_20 {
+    background-image: url('icons/22.svg');
+
+}
+.habit_image_21 {
+    background-image: url('icons/23.svg');
+
+}
+.habit_image_22 {
+    background-image: url('icons/24.svg');
+}
+
+
+
+.radio{
+    cursor: grab;
+}
+
+.icons-container{
+    padding:1rem;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow: scroll;
+    margin:1rem;
+}

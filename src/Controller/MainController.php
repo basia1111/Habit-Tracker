@@ -85,11 +85,15 @@ class MainController extends AbstractController
                 $doneHabits = $doneHabits+1;
             }
         }
-
+       if(count($todayHabits)>0) {
         $percentage= round(($doneHabits/count($todayHabits))*100);
+       }
+       else {
+           $percentage = 0;
+       }
+       $number_of_habits= count($habits);
 
-
-        return $this->render('habits/index.html.twig', ['percentage'=> $percentage, 'todayHabits' => $todayHabits, 'date'=>$date, 'habits' => $habits, 'create'=>$create]);
+        return $this->render('habits/index2.html.twig', ['percentage'=> $percentage, 'todayHabits' => $todayHabits, 'date'=>$date, 'habits' => $habits, 'create'=>$create, 'number'=>$number_of_habits]);
     }
 
     /**
@@ -116,7 +120,7 @@ class MainController extends AbstractController
         $date->format('Y-m-d');
         $timestamp = strtotime($date->format('d-m-Y'));
         $weekDay = date('l', $timestamp);
-
+        $sreak = 0;
         if ($lastExecution->format('Y-m-d') != $date->format('Y-m-d')){
 
             $time = new \DateTime();
@@ -130,7 +134,7 @@ class MainController extends AbstractController
                 $habit->setBestStreak($streak+1);
             }
             $this->habitService->save($habit);
-
+            $streak = $habit->getStreak();
 
 
             $execution = new Execution();
@@ -156,9 +160,12 @@ class MainController extends AbstractController
             if($streak>0){
                 $habit->setStreak($streak-1);
                 $this->habitService->save($habit);
+                $streak = $habit->getStreak();
             }
 
         }
+        $id = $habit->getId();
+
 
         $date = new \DateTime();
         $user = $this->getUser();
@@ -172,10 +179,21 @@ class MainController extends AbstractController
             }
         }
 
-        $percentage= round(($doneHabits/count($todayHabits))*100);
+        if(count($todayHabits)>0) {
+            $percentage= round(($doneHabits/count($todayHabits))*100);
+        }
+        else{
+            $percentage=0;
+        }
+        $data =array(
+
+            'id'=>$id,
+            'percentage'=>$percentage,
+            'streak' => $streak,
 
 
-        return $this->json(array('id'=> $habit->getId(), 'streak' => $habit->getStreak(), 'percentage'=>$percentage));
+        );
+        return new JsonResponse($data);
 
     }
 
@@ -199,7 +217,12 @@ class MainController extends AbstractController
             }
         }
 
-        $percentage= ($doneHabits/count($todayHabits))*100;
+        if(count($todayHabits)>0) {
+            $percentage= round(($doneHabits/count($todayHabits))*100);
+        }
+        else{
+            $percentage=0;
+        }
 
         $html=$this->renderView('habits/delete_habits.html.twig',  ['habits' => $habits,'deleteForms'=>$deleteForms ]);
         $data =array(

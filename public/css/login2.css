@@ -1,0 +1,314 @@
+.main{
+    height:100vh;
+    width: 100vw;
+    background-color: #F5F3F0;
+}
+
+/* || NAVBAR */
+#navbar{
+    height:10vh;
+    min-height: 50px;
+    background-color: #F5F3F0 !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+
+/* left side */
+.logo {
+    height: 100%;
+    text-align: center;
+    min-height: 40px;
+}
+svg{
+
+    height: 100%;
+    width: auto;
+}
+
+/* right side */
+ #about, #how{
+    color: black !important;
+    text-align: center;
+    transition: 0.15s ease-in-out;
+    position: relative; /* makes :after appear under nav-link instead of whole nav */
+     margin-right: 1rem;
+}
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: black;
+    transition: 0.15s ease-in-out;
+}
+.nav-link:hover:after {
+    width: 100%;
+}
+
+/* register button */
+#button-register{
+    width: 100%;
+    background-color: black;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.15s ease-in-out;
+    text-align: center;
+}
+#button-register:hover{
+    transform: scale(110%);
+}
+#button-register:active{
+    transform: scale(110%);
+    background-color: whitesmoke;
+    color: black;
+    border: solid 1px black;
+
+}
+#button-register:active{
+    color:black;
+}
+#button-register:hover:after{
+    width:0%;
+}
+#button-register:active:after{
+    width:0%;
+}
+
+
+.navbar-light .navbar-toggler {
+    color: black;
+    border-color: black;
+}
+
+/* || MEDIA FOR NAV */
+
+@media only screen and (max-width : 625px) {
+    .main{
+        height: auto;
+    }
+    .navbar-nav {
+        margin-top: 1rem !important;
+        height: 100%;
+        background-color: coral;
+        border-radius: 30px;
+        padding: 1rem;
+    }
+
+    #about:hover, #how:hover {
+        transform: scale(1.1) !important;
+    }
+
+    #about:hover:after {
+        width: 0%;
+    }
+
+    #about:active:after {
+        width: 0%;
+    }
+
+    #how:hover:after {
+        width: 0%;
+    }
+
+    #how:active:after {
+        width: 0%;
+    }
+
+    #button-register {
+        width: 90%;
+    }
+
+    #button-register:hover {
+        transform: none !important;
+        color: black;
+        background-color: white;
+    }
+
+}
+
+/*body part*/
+.row{
+    width: 100vw;
+    height: 90vh;
+    margin: 0;
+
+}
+.box{
+    height: 100%;
+    padding: 2rem;
+}
+
+
+.wrapper{
+    height:100%;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 3rem;
+}
+
+.form-wrapper {
+    align-self: center;
+    height:100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+    transition: 1s ease-in-out;
+    font-family: 'Montserrat', light, sans-serif;
+}
+
+.h3{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+
+}
+
+/**********  form animation  ********/
+
+.wrapper.active .form-wrapper.sign-in {
+    transform: scale(0) translate(-300px, 400px);
+}
+
+.wrapper .form-wrapper.sign-up {
+    position: absolute;
+    transform: scale(0) translate(200px, -400px);
+}
+
+.wrapper.active .form-wrapper.sign-up {
+    transform: scale(1) translate(0, 0);
+}
+/**********  form styling  ********/
+.signUp-link a{
+    text-align: center;
+    margin: 15px 0;
+    color: black;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.signUp-link p a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signUp-link p a:hover {
+    text-decoration: underline;
+    color:black;
+}
+.small-text{
+    color: #bababa;
+    font-weight: 400;
+    font-size: .75rem;
+}
+.agree-terms{
+    display: flex;
+    justify-content: space-between;
+
+}
+.agree-terms p{
+    left:0;
+}
+#agree{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#agree p{
+    margin-left: 20px;
+    align-self: end;
+}
+
+#password-r, #password-s{
+    margin-bottom: 0.5rem;
+}
+
+.input-wrap{
+    width: 100%;
+    position: relative;
+    height:37px;
+    margin-bottom:2rem;
+    padding:0;
+    font-size:.95rem;
+}
+
+.forgot{
+    display: inline-block;
+    margin-bottom:2rem;
+}
+
+.link{
+    transition: 0.15s ease-in-out;
+}
+link:hover{
+    color: black;
+}
+
+label{
+    position: absolute;
+    font-size:.95rem;
+    color: #bbbbbb;
+    pointer-events: none;
+    transition: 0.15s ease-in-out;
+
+}
+input{
+    position:absolute;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom:1px solid #bbb;
+    transition: 0.4s ease-in-out;
+}
+
+input.active{
+    border-bottom: solid 1px black;
+}
+input.active + label{
+    font-size: 0.75rem;
+    top:-10px;
+}
+.errors{
+    list-style: none;
+    padding-bittom:0.75rem;
+    color: orangered;
+    font-weight: 800;
+    font-size: 0.7rem;
+}
+
+.errors ul li{
+    list-style: none;
+}
+@media screen and (min-width:600px) and (orientation:portrait) {
+    .main{
+        height: auto;
+    }
+    .wrapper {
+        height:50%;
+    }
+}
+@media screen and (max-width:600px) and (orientation:portrait) {
+    .main{
+        height: auto;
+    }
+  form{
+      width: 100%;
+  }
+    input{
+        width: 100%;
+    }
+}

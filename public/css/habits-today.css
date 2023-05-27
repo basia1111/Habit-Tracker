@@ -6,30 +6,6 @@
 /* name changes changes */
 
 
-.name{
-    font-size: 1.2vw;
-}
-
-.name a{
-    margin-left: 10px;
-    color: black;
-    text-decoration: none;
-
-}
-.name a:hover{
-
-    cursor: grab;
-    text-decoration: none;
-}
-.name:hover{
-    cursor: grab;
-    text-decoration: none;
-}
-
-.name a:active{
-  cursor: grab;
-    text-decoration: none;
-}
 
 
 

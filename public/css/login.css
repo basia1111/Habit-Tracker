@@ -2,25 +2,117 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap');
 
 /**********  layout  ********/
+.main{
+    background-image: url("login_bg.svg");
+    background-size: cover;
+}
 .box{
-    background: rgb(237,214,252);
-    background: linear-gradient(31deg, rgba(237,214,252,1) 0%, rgba(217,244,250,1) 75%, rgba(221,246,221,1) 100%);
-    border-radius: 3.3rem;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+@media screen and (max-width: 768px){
+    .box {
+        min-height: 900px;
+    }
+    .hero{
+
+        padding-top: 0 !important;
+    }
+    .header-svg{
+      display: none;
+    }
+
+    #about:hover:after {
+        width: 0%;
+    }
+    #about:hover{
+        color:coral !important;
+    }
+    #about:active:after {
+        width: 0%;
+    }
+
+    #how:hover:after {
+        width: 0%;
+    }
+
+    #how:active:after {
+        width: 0%;
+    }
+    #how:hover{
+        color:coral !important;
+    }
+    .inner-box{
+        width:100% !important
+    }
+}
+
+@media only screen and (max-width: 991.98px) and (orientation : landscape)  {
+    .header-svg {
+        left:60% !important;
+        width:25vw !important;
+    }
 }
 .hero{
     position:absolute;
     height:100%;
-    width: 60%;
+    width: 80%;
     top:0;
     left:0;
+    padding-top: 3rem;
+    min-height: 200px;
 }
+.hero h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+.hero h2{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+.first-col{
+    position: relative;
+}
+
+.second-col{
+    position: relative;
+}
+.inner-box {
+    position: absolute;
+    width: calc(100% - 4.1rem);
+    height: calc(100% - 4.1rem);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.header{
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    display: flex;
+    flex-direction:column ;
+    align-self: center;
+    position:absolute;
+    width: 100%;
+}
+.header-svg{
+    width: 30vw;
+    height:auto;
+    position:absolute;
+    bottom: 0;
+    left:50%;
+}
+.header-svg svg{
+    width: inherit;
+    height:inherit;
+}
+
 .wrapper{
     position: absolute;
     height:100%;
-    width: 40%;
+    width: 100%;
     top:0;
     right:0;
     display: flex;
@@ -29,6 +121,30 @@
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     border-radius: 3rem;
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+    .wrapper {
+        height: 60%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .header-svg{
+        left:40% !important;
+        width: 40vw !important;
+    }
+    .hero{
+        display:flex;
+        align-items: center;
+        padding-top: 0 !important;
+    }
+    .main{
+        background-position: center;
+    }
 }
 
 .form-wrapper {
@@ -45,9 +161,8 @@
 }
 
 .h3{
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.1rem;
-    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600 !important;
 
 }
 
@@ -89,7 +204,7 @@
     font-size: .75rem;
 }
 .agree-terms{
-   display: flex;
+    display: flex;
     justify-content: space-between;
 
 }
@@ -124,6 +239,9 @@
     display: inline-block;
     margin-bottom:2rem;
 }
+.forgot:hover{
+ color:coral;
+}
 
 .link{
     transition: 0.15s ease-in-out;
@@ -154,7 +272,7 @@ input.active{
     border-bottom: solid 1px black;
 }
 input.active + label{
-   font-size: 0.75rem;
+    font-size: 0.75rem;
     top:-10px;
 }
 .errors{
@@ -170,56 +288,40 @@ input.active + label{
 }
 
 /**********  nav bar  ********/
-.nav-bar {
-    height: 10%;
+.navbar {
+    height: auto;
     width: 100%;
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    list-style: none;
-    margin:0;
-    padding:0;
-
-
 }
 
 /**********  logo  ********/
 .logo {
-    height: 70%;
+    height: 7vh;
     text-align: center;
 }
 svg{
 
-    height: 90%;
+    height: inherit;
     width: auto;
 
 }
+@media screen and (orientation: portrait){
+    .logo {
+        height: 5vh;
+    }
+}
 
 /**********  menu  ********/
-.menu {
-    display: flex;
-    align-items: center;
-    margin-right:1rem;
-}
+#about, #how{
+    color: black !important;
 
-.menu li {
-    padding-left: 35px;
-}
-
-
-.menu li a {
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    text-align: center;
     transition: 0.15s ease-in-out;
-    position: relative;
+    position: relative; /* makes :after appear under nav-link instead of whole nav */
+    margin-right: 1rem;
 }
-
-.menu li a::after {
+.nav-link::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -229,4 +331,49 @@ svg{
     background-color: black;
     transition: 0.15s ease-in-out;
 }
-.menu li a:hover:after {width: 100%;}
+.nav-link:hover:after {
+    width: 100%;
+}
+
+#user:hover:after {
+    width:0;
+}
+#user:hover {
+ color:coral;
+}
+#button-register:hover{
+    transform: scale(100%);
+    background-color: coral;
+    color:black;
+}
+
+#button-register:active{
+    background-color: coral;
+    color: black;
+
+}
+#button-register:active{
+    color:black;
+}
+#button-register:hover:after{
+    width:0%;
+}
+#button-register:active:after{
+    width:0%;
+}
+
+
+.navbar-light .navbar-toggler {
+    color: black;
+    border-color: black;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none !important;
+    color: coral;
+}
+
+.navbar-toggler-icon i{
+    font-size: 1.5em;
+    transition: ease-in-out 0.3s;
+}
