@@ -76,4 +76,6 @@ interface HabitServiceInterface
      * @return mixed
      */
     public function checkStreak($habit);
+
+    public function create_week($user):array;
 }

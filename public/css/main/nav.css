@@ -1,0 +1,124 @@
+.navbar {
+    height: auto;
+    width: 100%;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+/*************** NAV-BAR LEFT ***************/
+
+.logo {
+    height: 40px;
+    text-align: center;
+}
+.logo img{
+    height: inherit;
+    width: auto;
+
+}
+
+#about, #how, #user{
+    color: black !important;
+
+    transition: 0.15s ease-in-out;
+    position: relative; /* makes :after appear under nav-link instead of whole nav */
+    margin-right: 1rem;
+}
+
+
+#user {
+    color:coral;
+    cursor: grab;
+}
+#email:hover{
+    color: coral;
+    cursor: grab;
+}
+#about:hover{
+    color: coral !important;
+    cursor: grab;
+}
+#how:hover{
+    color: coral !important;
+    cursor: grab;
+}
+
+#button-register:hover{
+    transform: scale(100%);
+    background-color: coral;
+    color:black;
+}
+
+#button-register:active{
+    background-color: coral;
+    color: black;
+
+}
+#button-register:active{
+    color:black;
+}
+#button-register:hover:after{
+    width:0%;
+}
+#button-register:active:after{
+    width:0%;
+}
+
+
+
+.navbar-light .navbar-toggler {
+    color: black;
+    border-color: black;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none !important;
+    color: coral;
+}
+
+.navbar-toggler-icon i{
+    font-size: 1.5em;
+    transition: ease-in-out 0.3s;
+}
+.navbar-light .navbar-toggler {
+    color: black;
+    border-color: black;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none !important;
+    color: coral;
+}
+
+.navbar-toggler-icon i{
+    font-size: 1.5em;
+    transition: ease-in-out 0.3s;
+}
+
+.column{
+    height:10vh;
+}
+
+/*************************  NAV-BAR RIGHT  ****************************/
+.nav-bar-right{
+    height:100%;
+    width:100%;
+    justify-content: space-around;
+}
+
+#email{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-weight: 600;
+    cursor: grab;
+
+}
+
+
+
+@media screen and (orientation: portrait){
+    .logo {
+        height: 5vh;
+    }
+}

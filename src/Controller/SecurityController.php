@@ -27,15 +27,14 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(Request $request, AuthenticationUtils $authenticationUtils, UserAuthenticatorInterface $userAuthenticator, UserPasswordHasherInterface $userPasswordHasher, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        // register form
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        //if register form is send and valid
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // creating new user
             $user->setRoles(['ROLE_USER']);
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -46,24 +45,24 @@ class SecurityController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
+            // calls authenticateUser from instance of UserAuthenticatorInterface -> authenticateUser returns response whitch is passed to login
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
             );
         }
-        else{
+        //if register form is send and invalid
+        else {
             if ($form->isSubmitted()) {
                 $error = $authenticationUtils->getLastAuthenticationError();
                 // last username entered by the user
                 $lastUsername = $authenticationUtils->getLastUsername();
-                $registrationErrror = 1;
-                return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationErrror]);
+                $registrationError = 1;
+                return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationError]);
             }
-            }
-
+        }
 
 
 
@@ -72,7 +71,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => 0]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationError' => 0]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

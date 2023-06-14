@@ -149,8 +149,10 @@ class HabitFormType extends AbstractType
                 'Option 8' => '8',
                 'Option 9' => '9',
                 'Option 10' => '10',
-                'Option 11' => '12',
-                'Option 13' => '14',
+                'Option 11' => '11',
+                'Option 12' => '12',
+                'Option 13' => '13',
+                'Option 14' => '14',
                 'Option 15' => '15',
                 'Option 16' => '16',
                 'Option 17' => '17',
@@ -160,6 +162,10 @@ class HabitFormType extends AbstractType
                 'Option 21' => '21',
                 'Option 22' => '22',
                 'Option 23' => '23',
+                'Option 24' => '24',
+                'Option 25' => '25',
+                'Option 26' => '26',
+                'Option 27' => '27',
 
 
 

@@ -44,7 +44,7 @@ class MainController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    #[Route(path: '/habits', name: 'app_main')]
+    #[Route(path: '/main', name: 'app_main')]
     public function main(Request $request): Response
     {
         date_default_timezone_set('Europe/Warsaw');
@@ -70,6 +70,8 @@ class MainController extends AbstractController
         $date->format('Y-m-d');
         $habits = $this->habitService->findAll($user);
 
+
+
         $habit = new Habit();
         $create_form = $this->createForm(HabitFormType::class, $habit);
         $create = $create_form->createView();
@@ -93,7 +95,16 @@ class MainController extends AbstractController
        }
        $number_of_habits= count($habits);
 
-        return $this->render('habits/index2.html.twig', ['percentage'=> $percentage, 'todayHabits' => $todayHabits, 'date'=>$date, 'habits' => $habits, 'create'=>$create, 'number'=>$number_of_habits]);
+       $week = $this->habitService->create_week($user);
+
+       $monday=$week[0];
+        $tuesday=$week[1];
+        $wednesday=$week[2];
+        $thursday=$week[3];
+        $friday=$week[1];
+        $sathurday=$week[2];
+        $sunday=$week[3];
+        return $this->render('main/index.html.twig', ['percentage'=> $percentage, 'todayHabits' => $todayHabits, 'date'=>$date, 'habits' => $habits, 'create'=>$create, 'number'=>$number_of_habits, 'monday'=>$monday, 'tuesday'=>$tuesday, 'wednesday'=>$wednesday, 'thursday'=>$thursday, 'friday'=>$friday, 'sathurday'=>$sathurday, 'sunday'=>$sunday]);
     }
 
     /**
@@ -224,7 +235,7 @@ class MainController extends AbstractController
             $percentage=0;
         }
 
-        $html=$this->renderView('habits/delete_habits.html.twig',  ['habits' => $habits,'deleteForms'=>$deleteForms ]);
+        $html=$this->renderView('main/rerendered/delete_habits.html.twig',  ['habits' => $habits,'deleteForms'=>$deleteForms ]);
         $data =array(
 
             'html'=>$html,
@@ -234,4 +245,19 @@ class MainController extends AbstractController
         );
         return new JsonResponse($data);
     }
+    #[Route('/cancel', name: 'cancel', methods: 'GET|PUT|DELETE')]
+    public function cancel(Request $request): Response
+
+    {
+        $user = $this->getUser();
+        $habits = $this->habitService->findAll($user);
+        $html=$this->renderView('main/rerendered/all_habits.html.twig',  ['habits' => $habits]);
+        $data =array(
+            'html'=>$html,
+        );
+        return new JsonResponse($data);
+    }
+
+
 }
+

@@ -1,0 +1,726 @@
+@import url('https://fonts.cdnfonts.com/css/lilita-one');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap');
+*{
+    outline: none !important;
+}
+.main {
+
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    background-color: #F5F3F0;
+    min-font-size: 16px!important;
+}
+.row > *{
+    padding:0 !important;
+    margin:0 !important;
+}
+.row{
+    margin:0 !important;
+}
+
+/*********************** FIRST COLUMN *********************/
+.col-first{
+    height:90vh;
+}
+.col-1-first-row{
+    height:12%;
+}
+.col-1-second-row{
+    height:88%;
+    padding: 0 1rem 2rem 1rem;
+    background-color:#F5F3F0;
+    display:flex;
+    width: 100%;
+    position: relative;
+}
+.title-wrapper{
+    height: 15%;
+    display:flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:800;
+}
+
+.title-wrapper h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight:800;
+}
+
+.today-habits-wrapper{
+    height: 100%;
+    width: 100%;
+    border:none;
+    display:flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 15px;
+    padding-bottom: 1rem ;
+}
+.today-habits-h{
+    color: black;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    font-weight: 600;
+
+}
+.today-habits{
+    height:100%;
+    width: 100%;
+    top:0;
+    left:0;
+    padding:1rem 1rem 1rem 1rem;
+    border:none;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    overflow: scroll;
+    position: relative;
+    align-items: center;
+
+}
+.habit{
+    width:94%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:15px ;
+    padding:1rem;
+}
+.habit-name{
+    transition: 0.7s ease-in-out;
+    align-self: center;
+    font-size: calc(12px + (23 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+.streak-container{
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+#streak{
+    font-weight: 600;
+    font-size: calc(15px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    width: auto;
+}
+.streak{
+    height:  2rem;
+    width:auto;
+}
+.streak img{
+    height: 100%;
+    width:auto;
+}
+.button-container{
+    width:20%;
+}
+.empty-today-habits img{
+    width: 100%;
+    height:90%;
+}
+
+/**** button changes *****/
+.button-check {
+    padding: 0;
+    border-radius: 25%;
+    background-color: white;
+    border: solid 2px black;
+    width:  calc(16px + 8 * ((100vw - 320px) / 960));
+    height: calc(16px + 8 * ((100vw - 320px) / 960));
+    margin-left: 10px;
+}
+.button-uncheck {
+    padding: 0;
+    border-radius: 25%;
+    background-image: url("checkbox.svg");
+    background-size: 2rem 2rem;
+    background-position: center;
+    background-color: white;
+    border: solid 2px black;
+    width:  calc(16px + 8 * ((100vw - 320px) / 960));
+    height: calc(16px + 8 * ((100vw - 320px) / 960));
+    margin-left: 10px;
+}
+
+/**** habit changes ****/
+.habit-check{
+
+    background:linear-gradient(to right, coral 51%, white 49% );
+    background-size: 200% 100%;
+    transition: all 0.7s ease-out;
+    background-position: right bottom;
+}
+.habit-uncheck{
+    background:linear-gradient(to right, coral 50%, white 50% );
+    background-size: 200% 100%;
+    transition: all 0.7s ease-out;
+    background-position: left bottom;
+    border-radius: 15px;
+}
+.name-uncheck{
+    text-decoration: line-through;
+}
+.name-check{
+    text-decoration: none;
+}
+
+/*********************** SECOND COLUMN *********************/
+.col-second{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background:#F5F3F0 ;
+    justify-content: flex-end;
+}
+.col-second-row-1{
+    display: flex;
+    flex-direction: row;
+    height: 18%;
+    width: 100%;
+    gap:1rem;
+}
+
+
+.col-second-row-2 {
+    height: 70%;
+    width: 100%;
+    padding: 1rem 0 2rem 0 ;
+}
+.icon-top-wrapper{
+    height: 50%;
+    display:flex;
+    gap:0.5rem;
+    font-weight: 600;
+    justify-content: space-between;
+}
+.icon-top-wrapper-l{
+    height: 100%;
+    display:flex;
+    gap:0.5rem;
+    font-weight: 600;
+}
+.icon-top-wrapper-add{
+    height: 100%;
+    display:flex;
+    gap:0.5rem;
+    font-weight: 600;
+}
+.icon-top-wrapper img{
+    border-radius: 10px;
+    height:100%;
+    padding:0.25rem;
+}
+.icon-top-wrapper-add img{
+    border-radius: 10px;
+    height:50%;
+    padding:0.25rem;
+}
+h3{
+    font-weight: 800;
+}
+
+.icon-add{
+    background-color: #ADDFD0;
+
+ }
+.icon-number{
+    background-color:#FF9872;
+
+}
+.icon-rate{
+    background-color:#153FA6;
+
+}
+.txt-add{
+    height:100%;
+    text-align: left;
+    font-weight: 800;
+}
+/**** create ****/
+#create-button{
+    height: 100%;
+    width: 25%;
+    background-color: #8FD6C1;
+    border:none;
+    padding: 0.5rem;
+    border-radius: 15px;
+    display:flex;
+    gap:0.5rem;
+    font-weight: 600;
+}
+
+/******** number of habits *********/
+.number-of-habits{
+    border-radius: 15px;
+    height: 100%;
+    width:20%;
+    background-color: #FF7F50;
+    display:flex;
+    flex-direction: column;
+    color:white;
+    padding: 0.5rem;
+}
+.number-of-habits h3{
+    font-weight: 800;
+}
+
+.icon-wrapper{
+    height:100%;
+    display:flex;
+}
+
+
+.todays-rate{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius:15px;
+    background-color: #03257B;
+    width: 55% ;
+    color:white;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+}
+.todays-rate h3{
+    font-weight:800;
+}
+
+
+/*********** progress bar*************/
+.progress-bar {
+    border-radius: 5rem;
+    background-color:white !important;
+    width: calc(var(--width, 0) * 1%) !important;
+    min-width: 2rem;
+    height:100% !important;
+    padding: 5px;
+}
+.progress {
+    height: 50% !important;
+    width:100% !important;
+    background-color:#586A96 !important;
+    border: solid 1px black;
+    border-radius: 5rem !important;
+    display: flex !important;
+    align-items: center;
+    padding: 1px;
+
+
+}
+.progress-wrapper{
+    height: 50%;
+    width:100%;
+    display: flex;
+    align-items:center;
+}
+
+
+
+/************************** all habits ***************************/
+.habit-wrapper-all{
+    height: 90vh;
+    width:100%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+    border:none;
+    display:flex;
+    flex-direction: column;
+}
+.all-habits{
+    height:100%;
+    width: 100%;
+    top:0;
+    left:0;
+    border:none;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    overflow: scroll;
+    position: relative;
+    padding-top: 5px ;
+    align-items: center;
+
+}
+.all-habits a {
+    text-decoration: none;
+    color:black;
+    width:94%;
+}
+.all-habits a:hover {
+    text-decoration: none;
+    color:black;
+}
+.habit-all:hover{
+    background-color: lightgray !important;
+    border-radius: 15px;
+}
+
+#habit-all{
+    box-shadow: none;
+    justify-content: start;
+}
+
+#habit-all:hover{
+
+    text-decoration: none;
+}
+#habit-all:active{
+    text-decoration: none;
+}
+
+.all-habits-h{
+    display:flex;
+    justify-content: space-between;
+    padding-right: 1rem;
+    font-weight: 800;
+}
+.title-habits{
+    font-weight: 800;
+}
+
+.habit-all-delete{
+    background-color: lightgray;
+}
+.days{
+    display:flex;
+    width: 50%;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.days div{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    font-size: 0.6rem;
+    color: #666666;
+    margin-left:0.3rem;
+    margin-top: 0.5rem;
+}
+
+
+.days div i{
+    font-size: 8px;
+
+}
+.delete{
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    transition: 0.2s ease-in-out;
+}
+#delete:hover{
+    border:none;
+    background: lightgray;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+}
+#delete{
+    aspect-ratio: 1/1;
+    height: 50%;
+}
+
+.delete-button{
+   margin-left:20%;
+}
+button{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+#logout{
+    padding: 1rem 0rem;
+}
+.button{
+    background-color: black;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.15s ease-in-out;
+    font-weight: 800;
+}
+.button:hover{
+    transform: scale(110%);
+}
+.button:active{
+    transform: scale(110%);
+    background-color: whitesmoke;
+    color: black;
+    border: solid 1px black;
+}
+#button-register{
+    color:white;
+    font-weight: 400;
+}
+#button-register:active{
+    color:black;
+}
+#button-register:hover:after{
+    width:0%;
+}
+#button-register:active:after{
+    width:0%;
+}
+.name span{
+    margin-left: 10px;
+    color: black;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/********************************* ICONS **********************/
+.icon{
+    display: inline-block;
+    width:  calc(30px + 8 * ((100vw - 320px) / 960));
+    min-width: 30px;
+    height: calc(30px + 8 * ((100vw - 320px) / 960));
+    min-height:30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.15s ease-in-out;
+    align-self: center;
+}
+
+/* icons for edit form*/
+
+.radio{
+    cursor: grab;
+}
+
+/* icons for habits*/
+.icon-1{
+    background-image: url('icons/1.svg');
+}
+.icon-2{
+    background-image: url('icons/2.svg');
+}
+.icon-3{
+    background-image: url('icons/3.svg');
+}
+.icon-4{
+    background-image: url('icons/4.svg');
+}
+.icon-5{
+    background-image: url('icons/5.svg');
+}
+.icon-6{
+    background-image: url('icons/6.svg');
+}
+.icon-7{
+    background-image: url('icons/7.svg');
+}
+.icon-8{
+    background-image: url('icons/8.svg');
+}
+.icon-9{
+    background-image: url('icons/9.svg');
+}
+.icon-10{
+    background-image: url('icons/10.svg');
+}
+.icon-11{
+    background-image: url('icons/11.svg');
+}
+.icon-12{
+    background-image: url('icons/12.svg');
+}
+.icon-13{
+    background-image: url('icons/13.svg');
+}
+.icon-14{
+    background-image: url('icons/14.svg');
+}
+
+.icon-15{
+    background-image: url('icons/15.svg');
+}
+.icon-16{
+    background-image: url('icons/16.svg');
+}
+.icon-17{
+    background-image: url('icons/17.svg');
+}
+.icon-18{
+    background-image: url('icons/18.svg');
+}
+.icon-19{
+    background-image: url('icons/19.svg');
+}
+.icon-20{
+    background-image: url('icons/20.svg');
+}
+.icon-21{
+    background-image: url('icons/21.svg');
+}
+.icon-22{
+    background-image: url('icons/22.svg');
+}
+.icon-23{
+    background-image: url('icons/23.svg');
+}
+.icon-24{
+    background-image: url('icons/24.svg');
+}
+.icon-25{
+    background-image: url('icons/25.svg');
+}
+.icon-26{
+    background-image: url('icons/26.svg');
+}
+
+.icon-27{
+    background-image: url('icons/27.svg');
+}
+
+
+/**************** MEDIA ********************/
+
+@media screen and (min-width: 1280px) {
+    .button-uncheck,.button-check {
+        width: 25px;
+        height:25px;
+    }
+    .days div i{
+        font-size: 12px;
+
+    }
+}
+
+/*for all devices bigger than ipad*/
+@media screen and (min-width: 991px){
+    .main{
+        overflow: hidden;
+    }
+    .habit-wrapper-all{
+        background-color: white;
+    }
+    .nav-bar-right{
+        background-color: white;
+    }
+    .col-second{
+        padding-right:1rem;
+    }
+
+}
+
+/*for all devices like ipad or smaller*/
+@media screen and (max-width: 900px){
+    .progress {
+        max-height: 55px;
+    }
+}
+@media screen and (max-width: 991px) {
+    #create-button h3 {
+        font-size: calc(14px + (26 - 14) * ((300vh - 300px) / (1600 - 300))) !important;
+
+    }
+}
+@media screen and (min-width: 320px) {
+    .days div i {
+        font-size: calc(7px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+
+
+    }
+}
+
+@media screen and (orientation: portrait){
+    .todays-rate h1{
+        font-size: calc(14px + (26 - 14) * ((300vh - 300px) / (1600 - 300))) !important;
+    }
+    .delete-button{
+        margin-left:50%;
+    }
+}
+
+div.gentle-tilt-move-shake:hover {
+    animation: tilt-n-move-shaking 0.25s;
+    background-color: coral;
+}
+
+@keyframes tilt-n-move-shaking {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(3px, 3px) rotate(3deg); }
+    50% { transform: translate(0, 0) rotate(0deg); }
+    75% { transform: translate(-3px, 3px) rotate(-3deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.week{
+    width:100%;
+    height:90%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+
+    padding:1rem;
+}
+.day{
+    width:calc(100%/4 - 0.25rem);
+    height: 100%;
+    padding-left: 1rem;
+    overflow:scroll;
+    margin-left: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+.day div{
+
+}
+.day-name{
+    font-weight: 800;
+    border-bottom: 1px solid black;
+}
+
+.class{
+    font-size:8px;
+}
+
+.week-wrapper{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    padding:1rem;
+}
+.week-wrapper h3{
+    font-weight: 800;
+    height:10%;
+}
+.list-of-habits{
+    border-bottom: solid 1px white;
+    line-height: 2;
+}
+
+
+.first-row{
+    display:flex;
+}
+.first-row {
+height:50%;
+}
+.second-row{
+    display:flex;
+    height:50%;
+}
+

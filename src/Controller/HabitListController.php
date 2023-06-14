@@ -113,8 +113,8 @@ class HabitListController extends AbstractController
             $user = $this->getUser();
             $todayHabits = $this->habitService->todayHabits($user);
             $habits = $this->habitService->findAll($user);
-            $html = $this->renderView('habits/today_habits.html.twig',  ['todayHabits' => $todayHabits, 'date'=> $today]);
-            $habits=$this->renderView('habits/all_habits.html.twig',  ['habits' => $habits,]);
+            $html = $this->renderView('main/rerendered/today_habits.html.twig',  ['todayHabits' => $todayHabits, 'date'=> $today]);
+            $habits=$this->renderView('main/rerendered/all_habits.html.twig',  ['habits' => $habits,]);
 
             $date = new \DateTime();
             $user = $this->getUser();
@@ -187,7 +187,7 @@ class HabitListController extends AbstractController
         $executions = $this->habitService->countAllExecutions($habit);
         $percentage = $this->habitService->countPercentage($habit);
 
-        return $this->render('habits/show.html.twig', ['habit' => $habit, 'executions' => $executions, 'percentage' => $percentage,'form'=>$form]);
+        return $this->render('show/show.html.twig', ['habit' => $habit, 'executions' => $executions, 'percentage' => $percentage,'form'=>$form]);
     }
 
     /**
@@ -286,8 +286,8 @@ class HabitListController extends AbstractController
             $user = $this->getUser();
             $todayHabits = $this->habitService->todayHabits($user);
             $habits = $this->habitService->findAll($user);
-            $html = $this->renderView('habits/today_habits.html.twig',  ['todayHabits' => $todayHabits, 'date'=> $today]);
-            $habits=$this->renderView('habits/all_habits.html.twig',  ['habits' => $habits,]);
+            $html = $this->renderView('main/rerendered/today_habits.html.twig',  ['todayHabits' => $todayHabits, 'date'=> $today]);
+            $habits=$this->renderView('main/rerendered/all_habits.html.twig',  ['habits' => $habits,]);
 
         $date = new \DateTime();
         $user = $this->getUser();
@@ -318,6 +318,30 @@ class HabitListController extends AbstractController
 
             return new JsonResponse($data);
 
+    }
+    #[Route(
+        '/dates/{id}/{month}',
+        name: 'habit_dates',
+        requirements: ['id' => '[1-9]\d*'],
+        methods: 'GET'
+    )]
+    public function dates(Habit $habit, $month): Response{
+
+        $allExecutions= $this->executionService->queryAll($habit);
+        $dates = array();
+
+        for($i=0; $i<count($allExecutions); $i++){
+             $date=$allExecutions[$i]->getDate();
+             $monthE = $date->format('m');
+             if( $month  == $monthE){
+                 array_push($dates,$date->format('j') );
+             }
+        }
+        $response=array(
+            'dates' => $dates
+        );
+
+        return new JsonResponse($response);
     }
 
 }

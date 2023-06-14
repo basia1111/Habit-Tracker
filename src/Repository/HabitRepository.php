@@ -102,6 +102,19 @@ class HabitRepository extends ServiceEntityRepository
 
         return $results;
     }
+    public function findAllOrderedByTime(User $user):array
+    {
+        $query = $this->createQueryBuilder('habit')
+            ->orderBy('habit.time', 'ASC')
+            ->andWhere('habit.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+
+        $results = $query->getResult();
+
+        return $results;
+
+    }
 
 
 }

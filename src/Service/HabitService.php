@@ -252,4 +252,43 @@ class HabitService implements HabitServiceInterface
         }
         return $recent;
     }
+
+    public function create_week($user):array
+    {
+        $week = array(
+            array(),
+            array(),
+            array(),
+            array(),
+            array(),
+            array(),
+            array(),
+        );
+        $habits = $this->habitRepository->findAllOrderedByTime($user);
+        foreach($habits as $habit){
+            if($habit->isMonday()){
+                array_push($week[0], $habit);
+
+            }
+            if($habit->isTusday()){
+                array_push($week[1], $habit);
+            }
+            if($habit->isWednesday()){
+                array_push($week[2], $habit);
+            }
+            if($habit->isThursday()){
+                array_push($week[3], $habit);
+            }
+            if($habit->isFriday()){
+                array_push($week[4], $habit);
+            }
+            if($habit->isSathurday()){
+                array_push($week[5], $habit);
+            }
+            if($habit->isSunday()){
+                array_push($week[6], $habit);
+            }
+        }
+        return $week;
+    }
 }
