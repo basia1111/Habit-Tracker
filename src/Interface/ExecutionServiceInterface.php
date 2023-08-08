@@ -14,42 +14,27 @@ use App\Entity\Habit;
 interface ExecutionServiceInterface
 {
     /**
-     * save
-     *
-     * @param Execution $execution
-     * @return void
+     * save.
      */
     public function save(Execution $execution): void;
 
     /**
-     * delete
-     *
-     * @param Execution $execution
-     * @return void
+     * delete.
      */
     public function delete(Execution $execution): void;
 
     /**
-     * queryAll
-     *
-     * @param Habit $habit
-     * @return array
+     * queryAll.
      */
     public function queryAll(Habit $habit): array;
 
     /**
-     * countByHabit
-     *
-     * @param Habit $habit
-     * @return int
+     * countByHabit.
      */
     public function countByHabit(Habit $habit): int;
 
     /**
-     * queryExecution
-     *
-     * @param Habit $habit
-     * @return array
+     * queryExecution.
      */
-    public function queryExecution(Habit $habit): array;
+    public function queryLastExecution(Habit $habit): array;
 }

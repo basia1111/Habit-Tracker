@@ -1,0 +1,119 @@
+<div class="week-wrapper">
+         <h3 class="header">Weekly schedule</h3>
+         <div class="week d-flex">
+
+            <div class="day" id="monday">
+                <div class="day-name">
+                    Mon
+                </div>
+                <hr class="hr-name">
+                <div class="habit-time">
+                    {% for item in monday %}
+                        <div class="time">{{item.time |date('H:i')}} </div>
+                        <div class="list-of-habits odd">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+                <div class="habit-no-time">
+                    {% for item in week[7] %}
+                        <div class="list-of-habits unscheduled">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="day" id="tuesday">
+                <div class="day-name">Tue</div>
+                <hr class="hr-name">
+                <div  class="habit-time">
+                {% for item in tuesday %}
+                    <div class="time">{{item.time |date('H:i')}} </div>
+                    <div  class="list-of-habits even">{{ item.name }}</div>
+                {% endfor %}
+                </div>
+                <div  class="habit-no-time">
+                    {% for item in week[8] %}
+                        <div class="list-of-habits unscheduled">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="day" id="wednesday">
+                <div class="day-name">Wed</div>
+                <hr class="hr-name">
+                <div  class="habit-time">
+                {% for item in wednesday %}
+                    <div class="time">{{item.time |date('H:i')}} </div>
+                    <div  class="list-of-habits odd">{{ item.name }}</div>
+                {% endfor %}
+                </div>
+                <div class="habit-no-time">
+                    {% for item in week[9] %}
+                        <div class="list-of-habits unscheduled">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="day" id="thursday">
+                <div class="day-name">Thu</div>
+                <hr class="hr-name">
+                <div class="habit-time">
+                {% for item in thursday %}
+                    <div class="time">{{item.time |date('H:i')}} </div>
+                    <div  class="list-of-habits even">{{ item.name }}</div>
+                {% endfor %}
+                </div>
+                <div class="habit-no-time">
+                    {% for item in week[10] %}
+                        <div class="list-of-habits unscheduled">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="day" id="friday">
+                <div class="day-name">Fri</div>
+                <hr class="hr-name">
+                <div class="habit-time">
+                {% for item in friday %}
+                    <div class="time">{{item.time |date('H:i')}} </div>
+                    <div  class="list-of-habits odd">{{ item.name }}</div>
+                {% endfor %}
+                </div>
+                <div class="habit-no-time">
+                    {% for item in week[11] %}
+                        <div class="list-of-habits unscheduled">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="day" id="sathurday">
+                <div class="day-name">Sat</div>
+                <hr class="hr-name">
+                <div class="habit-time">
+                {% for item in saturday %}
+                    <div class="time">{{item.time |date('H:i')}} </div>
+                    <div  class="list-of-habits even">{{ item.name }}</div>
+                {% endfor %}
+                </div>
+                <div class="habit-no-time">
+                    {% for item in week[12] %}
+                        <div class="list-of-habits unscheduled">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="day" id="sunday">
+                <div class="day-name">Sun</div>
+                <hr class="hr-name">
+                <div class="habit-time">
+                {% for item in sunday %}
+                    <div class="time">{{item.time |date('H:i')}} </div>
+                    <div  class="list-of-habits odd"> {{ item.name }}</div>
+                {% endfor %}
+                </div>
+                <div class="habit-no-time">
+                    {% for item in week[13] %}
+                        <div class="list-of-habits unscheduled">{{ item.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>

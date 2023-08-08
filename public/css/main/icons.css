@@ -1,0 +1,99 @@
+.icon{
+    display: inline-block;
+    width:  calc(30px + 8 * ((100vw - 320px) / 960));
+    min-width: 30px;
+    height: calc(30px + 8 * ((100vw - 320px) / 960));
+    min-height:30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.15s ease-in-out;
+    align-self: center;
+}
+/* icons for edit form*/
+.radio{
+    cursor: grab;
+}
+/* icons for habits*/
+.icon-1{
+    background-image: url('icons/1.svg');
+}
+.icon-2{
+    background-image: url('icons/2.svg');
+}
+.icon-3{
+    background-image: url('icons/3.svg');
+}
+.icon-4{
+    background-image: url('icons/4.svg');
+}
+.icon-5{
+    background-image: url('icons/5.svg');
+}
+.icon-6{
+    background-image: url('icons/6.svg');
+}
+.icon-7{
+    background-image: url('icons/7.svg');
+}
+.icon-8{
+    background-image: url('icons/8.svg');
+}
+.icon-9{
+    background-image: url('icons/9.svg');
+}
+.icon-10{
+    background-image: url('icons/10.svg');
+}
+.icon-11{
+    background-image: url('icons/11.svg');
+}
+.icon-12{
+    background-image: url('icons/12.svg');
+}
+.icon-13{
+    background-image: url('icons/13.svg');
+}
+.icon-14{
+    background-image: url('icons/14.svg');
+}
+
+.icon-15{
+    background-image: url('icons/15.svg');
+}
+.icon-16{
+    background-image: url('icons/16.svg');
+}
+.icon-17{
+    background-image: url('icons/17.svg');
+}
+.icon-18{
+    background-image: url('icons/18.svg');
+}
+.icon-19{
+    background-image: url('icons/19.svg');
+}
+.icon-20{
+    background-image: url('icons/20.svg');
+}
+.icon-21{
+    background-image: url('icons/21.svg');
+}
+.icon-22{
+    background-image: url('icons/22.svg');
+}
+.icon-23{
+    background-image: url('icons/23.svg');
+}
+.icon-24{
+    background-image: url('icons/24.svg');
+}
+.icon-25{
+    background-image: url('icons/25.svg');
+}
+.icon-26{
+    background-image: url('icons/26.svg');
+}
+
+.icon-27{
+    background-image: url('icons/27.svg');
+}

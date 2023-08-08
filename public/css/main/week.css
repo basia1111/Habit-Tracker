@@ -1,0 +1,88 @@
+.week-wrapper{
+    border-radius: 15px;
+    width:calc(100% - 2rem);
+    height: calc(100% - 1rem);
+    margin: 0 1rem 1rem 1rem;
+    padding:1rem;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 4px 12px;
+}
+.header{
+    height:10%;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+.week{
+    height:calc(90% - 1rem);
+}
+.day{
+    width: calc(100% / 7);
+    height:100%;
+}
+.list-of-habits{
+    padding: .5rem;
+    margin: .3rem .7rem .5rem 0;
+    border-radius: 5px;
+    font-size: calc(7px + 0.390625vw);
+    box-shadow: rgba(0, 0, 0, 0.21) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.even{
+   background-color: #778be5;
+}
+.odd{
+    background-color: #f4bda9;
+}
+.unscheduled{
+    background-color: #CFD6FF;
+}
+.day-name{
+    font-weight: 800;
+    height:1.5rem
+}
+.habit-time{
+    width:100%;
+    height: calc(70% - 3rem);
+    overflow: scroll;
+}
+.habit-no-time{
+    width:100%;
+    height: calc(30% );
+    overflow: scroll;
+}
+
+hr{
+    width: 70%;
+    margin-left:0;
+}
+.hr-name{
+    margin: 0.2rem 0 1rem 0;
+}
+.time{
+    font-weight: 600;
+    color: gray;
+    font-size: calc(5px + 0.390625vw);
+}
+@media screen and (max-width: 576px) and (orientation: portrait){
+    .week{
+        flex-wrap: wrap;
+
+    }
+    .day{
+        width: calc(100% / 4);
+        font-size: calc(11px + 0.390625vw);
+        height: 50%;
+    }
+    .time {
+        font-size: calc(9px + 0.390625vw);
+    }
+    .list-of-habits{
+        font-size: calc(10px + 0.390625vw);
+    }
+    .header {
+        height: 5%;
+    }
+}
+@media screen and (max-width: 576px){
+
+
+}

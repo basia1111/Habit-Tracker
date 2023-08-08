@@ -52,9 +52,6 @@ class ExecutionService implements ExecutionServiceInterface
 
     /**
      * Find all executions connected to habit.
-     *
-     * @param Habit $habit
-     * @return array
      */
     public function queryAll(Habit $habit): array
     {
@@ -64,8 +61,6 @@ class ExecutionService implements ExecutionServiceInterface
     /**
      * Count all executions of habit.
      *
-     * @param Habit $habit
-     * @return int
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
@@ -75,15 +70,10 @@ class ExecutionService implements ExecutionServiceInterface
     }
 
     /**
-     * Find last habit execution;
-     *
-     * @param Habit $habit
-     * @return array
+     * Find last habit execution;.
      */
-    public function queryExecution(Habit $habit): array
+    public function queryLastExecution(Habit $habit): array
     {
-        return $this->executionRepository->queryExecution($habit);
+        return $this->executionRepository->queryLastExecution($habit);
     }
-
-
 }

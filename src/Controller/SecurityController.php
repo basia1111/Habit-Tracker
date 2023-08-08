@@ -32,7 +32,7 @@ class SecurityController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-        //if register form is send and valid
+        // if register form is send and valid
         if ($form->isSubmitted() && $form->isValid()) {
             // creating new user
             $user->setRoles(['ROLE_USER']);
@@ -53,25 +53,24 @@ class SecurityController extends AbstractController
                 $request
             );
         }
-        //if register form is send and invalid
+        // if register form is send and invalid
         else {
             if ($form->isSubmitted()) {
                 $error = $authenticationUtils->getLastAuthenticationError();
                 // last username entered by the user
                 $lastUsername = $authenticationUtils->getLastUsername();
                 $registrationError = 1;
-                return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationError]);
+
+                return $this->render('security/login2.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationError]);
             }
         }
-
-
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername,'error' => $error, 'registrationForm' => $form->createView(), 'registrationError' => 0]);
+        return $this->render('security/login2.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationError' => 0]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

@@ -1,0 +1,27 @@
+#skeleton-week{
+    width:100%;
+    height:100%;
+    display:none;
+}
+
+.skeleton-h5-week{
+    height: 2rem;
+    width: 15rem;
+    margin-bottom: 3rem;
+}
+
+.day-sk-name{
+    height:1.5rem;
+    width:3rem;
+}
+.time-sk{
+    width:2rem;
+    height:.7rem;
+}
+.habit-week{
+    padding: .5rem;
+    margin: .3rem 1rem .5rem 0;
+    border-radius: 5px;
+    width:90%;
+    height:3.5rem;
+}

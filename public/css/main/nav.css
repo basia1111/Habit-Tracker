@@ -1,118 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css");
+
 .navbar {
     height: auto;
     width: 100%;
     position: relative;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Poppins;
     font-weight: 600;
 }
 /*************** NAV-BAR LEFT ***************/
 
-.logo {
-    height: 40px;
-    text-align: center;
-}
-.logo img{
-    height: inherit;
-    width: auto;
-
-}
-
 #about, #how, #user{
     color: black !important;
-
     transition: 0.15s ease-in-out;
     position: relative; /* makes :after appear under nav-link instead of whole nav */
     margin-right: 1rem;
 }
 
-
-#user {
-    color:coral;
-    cursor: grab;
-}
-#email:hover{
-    color: coral;
-    cursor: grab;
-}
 #about:hover{
-    color: coral !important;
+    color: #4E5AC8 !important;
     cursor: grab;
 }
 #how:hover{
-    color: coral !important;
+    color: #4E5AC8 !important;
     cursor: grab;
 }
-
-#button-register:hover{
-    transform: scale(100%);
-    background-color: coral;
-    color:black;
+.logo-nav{
+    height: 3.7rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
 }
-
-#button-register:active{
-    background-color: coral;
-    color: black;
-
-}
-#button-register:active{
-    color:black;
-}
-#button-register:hover:after{
-    width:0%;
-}
-#button-register:active:after{
-    width:0%;
-}
-
-
-
-.navbar-light .navbar-toggler {
-    color: black;
-    border-color: black;
-}
-
-.navbar-toggler:focus{
-    box-shadow: none !important;
-    color: coral;
-}
-
-.navbar-toggler-icon i{
-    font-size: 1.5em;
-    transition: ease-in-out 0.3s;
-}
-.navbar-light .navbar-toggler {
-    color: black;
-    border-color: black;
-}
-
-.navbar-toggler:focus{
-    box-shadow: none !important;
-    color: coral;
-}
-
-.navbar-toggler-icon i{
-    font-size: 1.5em;
-    transition: ease-in-out 0.3s;
-}
-
-.column{
-    height:10vh;
-}
-
-/*************************  NAV-BAR RIGHT  ****************************/
-.nav-bar-right{
+.logo-nav img{
     height:100%;
     width:100%;
-    justify-content: space-around;
 }
 
-#email{
+.navbar-light .navbar-toggler {
+    color: black;
+    border-color: black;
+    box-shadow: none;
+    padding-right: 1rem !important;
+}
+.navbar-toggler:focus{
+    box-shadow: none !important;
+    color: black;
+}
+.navbar-toggler-icon i{
+    font-size: 1.5em;
+    transition: ease-in-out 0.3s;
+}
+.navbar-toggler-icon i{
+    font-size: 1.5em;
+    transition: ease-in-out 0.3s;
+    padding-right: 2.5rem;
+}
+#icon-close{
+    color: white;
+}
+.nav-item{
+    font-size: calc(12px + 0.390625vw);
+}
+
+.nav-button{
     display: flex;
+    gap: 1rem;
     align-items: center;
     justify-content: start;
+    border: none;
+    background: none;
+    color: black;
     font-weight: 600;
-    cursor: grab;
-
 }
 
 
@@ -121,4 +80,47 @@
     .logo {
         height: 5vh;
     }
+}
+
+@media screen and (max-width: 576px){
+    #my-ul{
+        padding: 2rem 0 2rem 2rem;
+        gap:1rem;
+    }
+    .row-nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030;
+        background: linear-gradient( #F5F3F0, transparent);
+    }
+
+    .p2{
+        display:none;
+        font-size: calc(14px + 0.390625vw);
+        color:black;
+    }
+    .username .p1{
+
+    }
+    .dropdown{
+        margin-left:50%;
+    }
+    .navbar-collapse{
+        height:100vh;
+    }
+
+    #about, #how, #user, #home, #week, #logout{
+        color: white !important;
+    }
+    .nav-col-2{
+        background: none;
+    }
+    p.p1{
+        font-size: calc(14px + 0.390625vw) !important;;
+        color:white;
+    }
+
+
 }

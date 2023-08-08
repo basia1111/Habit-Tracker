@@ -322,26 +322,12 @@ svg{
     background-size: contain;
     transition: 0.15s ease-in-out;
 }
-
-.icon-1{
-    background-image: url('icons/clock-dynamic-color.png');
-}
-.icon-2{
-    background-image: url('icons/gym-dynamic-color.png');
-}
-.icon-3{
-    background-image: url('icons/moon-dynamic-color.png');
-}
-
-
 .chart svg{
     width:50px;
     height:50px;
     display: block;
     margin: 10px auto;
-
 }
-
 .circular-chart {
     display: block;
     margin: 10px auto;

@@ -35,7 +35,6 @@ class ExecutionRepository extends ServiceEntityRepository
         return $queryBuilder ?? $this->createQueryBuilder('execution');
     }
 
-
     public function save(Execution $execution): void
     {
         $this->_em->persist($execution);
@@ -68,11 +67,8 @@ class ExecutionRepository extends ServiceEntityRepository
 
     /**
      *  Query latest execution connected to habit.
-     *
-     * @param Habit $habit
-     * @return array
      */
-    public function queryExecution(Habit $habit): array
+    public function queryLastExecution(Habit $habit): array
     {
         $query = $this->createQueryBuilder('execution')
             ->orderBy('execution.id', 'DESC')
@@ -89,8 +85,6 @@ class ExecutionRepository extends ServiceEntityRepository
     /**
      * Count all executions connected to habit.
      *
-     * @param Habit $habit
-     * @return int
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */

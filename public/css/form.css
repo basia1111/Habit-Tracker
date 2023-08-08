@@ -1,136 +1,179 @@
+.modal-content{
+    border-radius: 15px !important;
+}
+label{
+    font-size: calc(9px + 0.390625vw);
+    font-weight: 600;
+}
+input{
+    border: none;
+    background-color: #BEC1E1;
+    border-radius: 15px;
+    padding: .5rem;
+    margin-bottom: 1rem !important;
+}
+select{
+    border: none;
+    background-color: #BEC1E1;
+    border-radius: 15px;
+    padding: .5rem;
+    margin-bottom: 1rem !important;
+}
+select > option{
+    background-color: #4E5AC8;
+}
+.labels-days{
+    display:flex;
+    flex-wrap: wrap;
+    gap:.5rem;
+    margin-bottom: 1rem;
+}
+.day-active{
+    padding: .5rem;
+    border-radius: 15rem;
+    background-color: #FF926A;
+    border: solid 2px #F87000;
+    cursor:grab;
+    font-weight: 400;
+    font-size: calc(11px + 0.390625vw);
+    color: white;
+}
+.day-label {
+    padding: .5rem;
+    border-radius: 15rem;
+    background-color:#e9ecf5;
+    border: solid 2px #b2bad4;
+    cursor:grab;
+    font-weight: 400;
+    font-size: calc(11px + 0.390625vw);
+}
+
+.icons-container{
+    width: 100%;
+    padding:1rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    overflow: scroll;
+    margin-bottom: 1rem;
+}
+.icon-wrapper{
+    height:100%;
+    width:calc(100%/7);
+    padding:.25rem;
+}
+.radio{
+    height:100%;
+    width:100%;
+    cursor: grab;
+}
 #icon{
-    display: inline-block;
-    width: 40px;
+    width: 100%;
+    aspect-ratio: 1/1;
     min-width:40px ;
-    height: 25px;
-    min-height:25px ;
+    min-height:40px ;
     background-repeat: no-repeat;
     background-size: contain;
     transition: 0.15s ease-in-out;
     align-self: center;
 }
 
-@media screen and (min-width: 320px) {
-    #icon {
-        width:  calc(42px + 8 * ((100vw - 320px) / 960));
-        height: calc(42px + 8 * ((100vw - 320px) / 960));
-
-    }
+.icon-active{
+ border: solid 4px #F87000;
+    border-radius: 10px;
 }
-
-@media screen and (min-width: 1280px) {
-    #icon{
-        width: 50px;
-        height:50px;
-    }
-}
-
 
 /* icons for edit form*/
 .habit_image_0{
-    background-image: url('icons/1.svg');
+    background-image: url('icons/1.png');
 }
 .habit_image_1{
-    background-image: url('icons/2.svg');
+    background-image: url('icons/2.png');
 }
 .habit_image_2{
-    background-image: url('icons/3.svg');
+    background-image: url('icons/3.png');
 }
 .habit_image_3{
-    background-image: url('icons/4.svg');
+    background-image: url('icons/4.png');
 }
 .habit_image_4{
-    background-image: url('icons/5.svg');
+    background-image: url('icons/5.png');
 }
 .habit_image_5{
-    background-image: url('icons/6.svg');
+    background-image: url('icons/6.png');
 }
 .habit_image_6{
-    background-image: url('icons/7.svg');
+    background-image: url('icons/7.png');
 }
 .habit_image_7{
-    background-image: url('icons/8.svg');
+    background-image: url('icons/8.png');
 }
 .habit_image_8 {
-    background-image: url('icons/9.svg');
+    background-image: url('icons/9.png');
 
 }
 .habit_image_9{
-    background-image: url('icons/10.svg');
+    background-image: url('icons/10.png');
 }
 .habit_image_10{
-    background-image: url('icons/11.svg');
+    background-image: url('icons/11.png');
 }
 .habit_image_11{
-    background-image: url('icons/12.svg');
+    background-image: url('icons/12.png');
 }
 .habit_image_12{
-    background-image: url('icons/13.svg');
+    background-image: url('icons/13.png');
 }
 .habit_image_13{
-    background-image: url('icons/14.svg');
+    background-image: url('icons/14.png');
 }
 .habit_image_14{
-    background-image: url('icons/15.svg');
+    background-image: url('icons/15.png');
 }
 .habit_image_15{
-    background-image: url('icons/16.svg');
+    background-image: url('icons/16.png');
 }
 .habit_image_16{
-    background-image: url('icons/17.svg');
+    background-image: url('icons/17.png');
 }
 .habit_image_17 {
-    background-image: url('icons/18.svg');
+    background-image: url('icons/18.png');
 
 }
 .habit_image_18 {
-    background-image: url('icons/19.svg');
+    background-image: url('icons/19.png');
 
 }
 .habit_image_19 {
-    background-image: url('icons/20.svg');
+    background-image: url('icons/20.png');
 
 }
 .habit_image_20 {
-    background-image: url('icons/21.svg');
+    background-image: url('icons/21.png');
 
 }
 .habit_image_21 {
-    background-image: url('icons/22.svg');
+    background-image: url('icons/22.png');
 
 }
 .habit_image_22 {
-    background-image: url('icons/23.svg');
+    background-image: url('icons/23.png');
 }
 .habit_image_23 {
-    background-image: url('icons/24.svg');
+    background-image: url('icons/24.png');
 }
 
 .habit_image_24 {
-    background-image: url('icons/25.svg');
+    background-image: url('icons/25.png');
 }
 .habit_image_25 {
-    background-image: url('icons/26.svg');
+    background-image: url('icons/26.png');
 }
 .habit_image_26 {
-    background-image: url('icons/27.svg');
+    background-image: url('icons/27.png');
 }
 
 
 
 
 
-
-.radio{
-    cursor: grab;
-}
-
-.icons-container{
-    padding:1rem;
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid black;
-    border-radius: 15px;
-    overflow: scroll;
-    margin:1rem;
-}

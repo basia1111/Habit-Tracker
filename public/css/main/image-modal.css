@@ -1,0 +1,112 @@
+.modal-image-body{
+    padding: 2rem !important;
+}
+.form-header h2{
+    font-weight: 800;
+    color: #2d315d;
+}
+.button-close{
+    border: none;
+    color: #2d315d;
+    transition: 0.15s ease-in-out;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+}
+.button-close:hover{
+    transform: scale(110%);
+}
+.button-close:active{
+    transform: scale(110%);
+}
+.preview-wrapper{
+    width:100%;
+    height:auto;
+    padding:2rem 2rem 1rem 2rem;;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(#ffffff 50% , #99ABF8FF );
+}
+.preview{
+    width: 12rem;
+    height: 12rem;
+    border: 5px solid white;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.user-details{
+    background-color: #99ABF8;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.user-details h5{
+    font-weight: 600;
+}
+.user-details p{
+    font-weight: 200;
+    color: #2a2a2a;
+    font-size: calc(8px + 0.390625vw);
+}
+#dropArea {
+    width:100%;
+    margin:2rem 0;
+    height:10rem;
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    font-family: sans-serif;
+    padding: 20px;
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    font-weight: 400;
+}
+
+.highlight{
+    border-color: #ea906a !important;
+}
+.upload-wrapper{
+display: flex;
+  align-items: center;
+    justify-content: center;
+}
+.upload-button{
+    background-color: #2d315d;
+    color: white;
+    padding:.5rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    gap:.5rem;
+    width:30%;
+    cursor:grab;
+    margin-left: calc(50% - 15%);
+    align-items: center;
+}
+.upload-button:hover{
+    transform: scale(1.1);
+}
+
+.button-save{
+    background-color: coral;
+    width: 30%;
+    min-width: 100px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: .5rem 0rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.15s ease-in-out;
+    font-weight: 600;
+    margin-left: 70%;
+}

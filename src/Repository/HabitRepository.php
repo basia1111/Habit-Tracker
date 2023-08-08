@@ -1,47 +1,40 @@
 <?php
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace App\Repository;
 
 use App\Entity\Habit;
 use App\Entity\User;
-use App\Interface\ExecutionServiceInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Habit>
+ * HabitRepository.
  *
  * @method Habit|null find($id, $lockMode = null, $lockVersion = null)
  * @method Habit|null findOneBy(array $criteria, array $orderBy = null)
  * @method Habit[]    findAll()
  * @method Habit[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+
+/**
+ * Habit Repository.
+ */
 class HabitRepository extends ServiceEntityRepository
 {
     /**
-     * Execution service.
-     */
-    private ExecutionServiceInterface $executionService;
-
-    /**
-     * @param ManagerRegistry $registry
+     * Constructor.
      */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Habit::class);
-    }
-
-    /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('habit');
     }
 
     /**
@@ -56,8 +49,9 @@ class HabitRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Habit $habit
-     * @return void
+     * Delete entity.
+     *
+     * @param Habit $habit Habit entity
      */
     public function delete(Habit $habit): void
     {
@@ -68,7 +62,7 @@ class HabitRepository extends ServiceEntityRepository
     /**
      * Query all user habits.
      *
-     * @return QueryBuilder Query builder
+     * @param User $user Habit entity
      */
     public function queryAll(User $user): array
     {
@@ -78,19 +72,50 @@ class HabitRepository extends ServiceEntityRepository
             ->setParameter('user', $user)
             ->getQuery();
 
-        $results = $query->getResult();
-
-        return $results;
+        return $query->getResult();
     }
 
+    /**
+     * Query all user habits with set time.
+     *
+     * @param User $user Habit entity
+     */
+    public function queryAllOrderedByTime(User $user): array
+    {
+        $query = $this->createQueryBuilder('habit')
+            ->orderBy('habit.time', 'ASC')
+            ->andWhere('habit.user = :user')
+            ->andWhere('habit.time != :time')
+            ->setParameter('user', $user)
+            ->setParameter('time', '00:00:00')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+    /**
+     * Query all user habits without set time.
+     *
+     * @param User $user Habit entity
+     */
+    public function queryAllWithoutTime(User $user): array
+    {
+        $query = $this->createQueryBuilder('habit')
+            ->orderBy('habit.time', 'ASC')
+            ->andWhere('habit.user = :user')
+            ->andWhere('habit.time = :time')
+            ->setParameter('user', $user)
+            ->setParameter('time', '00:00:00')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 
     /**
      * Find habit by id.
      *
-     * @param int $id
-     * @return array
+     * @param int $id user Id
      */
-    public function findAllId(int $id): array
+    public function findOneById(int $id): Habit
     {
         $query = $this->createQueryBuilder('habit')
             ->orderBy('habit.id', 'DESC')
@@ -98,23 +123,6 @@ class HabitRepository extends ServiceEntityRepository
             ->setParameter('id', $id)
             ->getQuery();
 
-        $results = $query->getResult();
-
-        return $results;
+        return $query->getResult();
     }
-    public function findAllOrderedByTime(User $user):array
-    {
-        $query = $this->createQueryBuilder('habit')
-            ->orderBy('habit.time', 'ASC')
-            ->andWhere('habit.user = :user')
-            ->setParameter('user', $user)
-            ->getQuery();
-
-        $results = $query->getResult();
-
-        return $results;
-
-    }
-
-
 }

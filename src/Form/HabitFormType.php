@@ -55,7 +55,7 @@ class HabitFormType extends AbstractType
             'place',
             TextType::class,
             [
-                'label' => 'label.title',
+                'label' => ' ',
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]
@@ -72,7 +72,7 @@ class HabitFormType extends AbstractType
             'tusday',
             CheckboxType::class,
             [
-                'label' => 'tusday',
+                'label' => 'tuesday',
                 'required' => false,
             ]
         );
@@ -104,7 +104,7 @@ class HabitFormType extends AbstractType
             'sathurday',
             CheckboxType::class,
             [
-                'label' => 'sathurday',
+                'label' => 'saturday',
                 'required' => false,
             ]
         );
@@ -120,7 +120,7 @@ class HabitFormType extends AbstractType
             'requisites',
             TextType::class,
             [
-                'label' => 'label.title',
+                'label' => ' ',
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]
@@ -129,7 +129,7 @@ class HabitFormType extends AbstractType
             'notes',
             TextType::class,
             [
-                'label' => 'label.title',
+                'label' => ' ',
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]
@@ -137,44 +137,41 @@ class HabitFormType extends AbstractType
 
         $builder->add(
             'image',
-            ChoiceType::class, [
+            ChoiceType::class,
+            [
             'choices' => [
-                'Option 1' => '1',
-                'Option 2' => '2',
-                'Option 3' => '3',
-                'Option 4' => '4',
-                'Option 5' => '5',
-                'Option 6' => '6',
-                'Option 7' => '7',
-                'Option 8' => '8',
-                'Option 9' => '9',
-                'Option 10' => '10',
-                'Option 11' => '11',
-                'Option 12' => '12',
-                'Option 13' => '13',
-                'Option 14' => '14',
-                'Option 15' => '15',
-                'Option 16' => '16',
-                'Option 17' => '17',
-                'Option 18' => '18',
-                'Option 19' => '19',
-                'Option 20' => '20',
-                'Option 21' => '21',
-                'Option 22' => '22',
-                'Option 23' => '23',
-                'Option 24' => '24',
-                'Option 25' => '25',
-                'Option 26' => '26',
-                'Option 27' => '27',
-
-
-
+                'Option 1' => '0',
+                'Option 2' => '1',
+                'Option 3' => '2',
+                'Option 4' => '3',
+                'Option 5' => '4',
+                'Option 6' => '5',
+                'Option 7' => '6',
+                'Option 8' => '7',
+                'Option 9' => '8',
+                'Option 10' => '9',
+                'Option 11' => '10',
+                'Option 12' => '11',
+                'Option 13' => '12',
+                'Option 14' => '13',
+                'Option 15' => '14',
+                'Option 16' => '15',
+                'Option 17' => '16',
+                'Option 18' => '17',
+                'Option 19' => '18',
+                'Option 20' => '19',
+                'Option 21' => '20',
+                'Option 22' => '21',
+                'Option 23' => '22',
+                'Option 24' => '23',
+                'Option 25' => '24',
+                'Option 26' => '25',
+                'Option 27' => '26',
             ],
             'expanded' => true,
             'multiple' => false,
-
-
-        ]);
+        ]
+        );
     }
 
     /**
@@ -199,8 +196,4 @@ class HabitFormType extends AbstractType
     {
         return 'habit';
     }
-
-
-
-
 }

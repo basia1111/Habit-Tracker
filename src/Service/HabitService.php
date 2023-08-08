@@ -1,7 +1,15 @@
 <?php
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 /**
- * habit service.
+ * Habit service.
  */
 
 namespace App\Service;
@@ -19,7 +27,7 @@ set_time_limit(0);
 class HabitService implements HabitServiceInterface
 {
     /**
-     * Task repository.
+     * Habit repository.
      */
     private HabitRepository $habitRepository;
     /**
@@ -30,17 +38,13 @@ class HabitService implements HabitServiceInterface
     /**
      * Constructor.
      *
-     * @param HabitRepository $habitRepository habit repository
+     * @param HabitRepository           $habitRepository  habit repository
+     * @param ExecutionServiceInterface $executionService execution Service
      */
     public function __construct(HabitRepository $habitRepository, ExecutionServiceInterface $executionService)
     {
         $this->habitRepository = $habitRepository;
         $this->executionService = $executionService;
-    }
-
-    public function findAll(User $user): array
-    {
-        return $this->habitRepository->queryAll($user);
     }
 
     /**
@@ -64,32 +68,48 @@ class HabitService implements HabitServiceInterface
     }
 
     /**
-     * Count habit executions.
+     * FindAll.
      *
-     * @param Habit $habit
-     * @return int
+     * @param User $user User entity
      */
-    public function countAllExecutions(Habit $habit): int
+    public function findAll(User $user): array
     {
-        $executions = $this->executionService->countByHabit($habit);
-
-        return $executions;
+        return $this->habitRepository->queryAll($user);
     }
 
     /**
-     * Count percentage of execution.
+     * Find habit by id.
      *
-     * @param Habit $habit
-     * @return int
+     * @param int $id Id
      */
-    public function countPercentage(Habit $habit): int
+    public function findOneById(int $id): Habit
+    {
+        return $this->habitRepository->findOneById($id);
+    }
+
+    /**
+     * Count habit executions.
+     *
+     * @param Habit $habit Habit entity
+     */
+    public function countAllExecutions(Habit $habit): int
+    {
+        return $this->executionService->countByHabit($habit);
+    }
+
+    /**
+     * Count habit success rate.
+     *
+     * @param Habit $habit Habit entity
+     */
+    public function habitSuccessRate(Habit $habit): int
     {
         $executions = $this->executionService->countByHabit($habit);
 
         $startDate = $habit->getCreatedAt();
         $endDate = new \DateTimeImmutable();
 
-        $resultDays = ['Monday' => 0,
+        $days = ['Monday' => 0,
             'Tuesday' => 0,
             'Wednesday' => 0,
             'Thursday' => 0,
@@ -98,45 +118,43 @@ class HabitService implements HabitServiceInterface
             'Sunday' => 0,
         ];
 
-
+        /* count all days between the date of creating habit and today */
         while ($startDate <= $endDate) {
-
             $timestamp = strtotime($startDate->format('d-m-Y'));
-
             $weekDay = date('l', $timestamp);
-            $resultDays[$weekDay] = $resultDays[$weekDay] + 1;
-
+            $days[$weekDay] = $days[$weekDay] + 1;
             $startDate->modify('+1 day');
         }
 
+        /* count all days on which habit should've been performed */
         $totalExecutions = 0;
         if ($habit->isMonday()) {
-            $totalExecutions += $resultDays['Monday'];
+            $totalExecutions += $days['Monday'];
         }
         if ($habit->isTusday()) {
-            $totalExecutions += $resultDays['Tuesday'];
+            $totalExecutions += $days['Tuesday'];
         }
         if ($habit->isWednesday()) {
-            $totalExecutions += $resultDays['Wednesday'];
+            $totalExecutions += $days['Wednesday'];
         }
         if ($habit->isThursday()) {
-            $totalExecutions += $resultDays['Thursday'];
+            $totalExecutions += $days['Thursday'];
         }
         if ($habit->isFriday()) {
-            $totalExecutions += $resultDays['Friday'];
+            $totalExecutions += $days['Friday'];
         }
         if ($habit->isSathurday()) {
-            $totalExecutions += $resultDays['Saturday'];
+            $totalExecutions += $days['Saturday'];
         }
         if ($habit->isSunday()) {
-            $totalExecutions += $resultDays['Sunday'];
+            $totalExecutions += $days['Sunday'];
         }
 
-        if ($executions > 0 && $totalExecutions>0 ) {
-           $percentage = (($executions-1) / $totalExecutions) * 100;
+        if ($executions > 0 && $totalExecutions > 0) {
+            $percentage = (($executions - 1) / $totalExecutions) * 100;
         } else {
-           $percentage = 0;
-       }
+            $percentage = 0;
+        }
 
         return $percentage;
     }
@@ -144,8 +162,7 @@ class HabitService implements HabitServiceInterface
     /**
      * Find habits that should be executed today.
      *
-     * @param User $user
-     * @return array
+     * @param User $user User entity
      */
     public function todayHabits(User $user): array
     {
@@ -158,26 +175,26 @@ class HabitService implements HabitServiceInterface
         $habits = $this->habitRepository->queryAll($user);
 
         foreach ($habits as $habit) {
-            if ('Monday' == $weekDay && $habit->isMonday()) {
-                array_push($todayHabits, $habit);
+            if ('Monday' === $weekDay && $habit->isMonday()) {
+                $todayHabits[] = $habit;
             }
-            if ('Tuesday' == $weekDay && $habit->isTusday()) {
-                array_push($todayHabits, $habit);
+            if ('Tuesday' === $weekDay && $habit->isTusday()) {
+                $todayHabits[] = $habit;
             }
-            if ('Wednesday' == $weekDay && $habit->isWednesday()) {
-                array_push($todayHabits, $habit);
+            if ('Wednesday' === $weekDay && $habit->isWednesday()) {
+                $todayHabits[] = $habit;
             }
-            if ('Thursday' == $weekDay && $habit->isThursday()) {
-                array_push($todayHabits, $habit);
+            if ('Thursday' === $weekDay && $habit->isThursday()) {
+                $todayHabits[] = $habit;
             }
-            if ('Friday' == $weekDay && $habit->isFriday()) {
-                array_push($todayHabits, $habit);
+            if ('Friday' === $weekDay && $habit->isFriday()) {
+                $todayHabits[] = $habit;
             }
-            if ('Saturday' == $weekDay && $habit->isSathurday()) {
-                array_push($todayHabits, $habit);
+            if ('Saturday' === $weekDay && $habit->isSathurday()) {
+                $todayHabits[] = $habit;
             }
-            if ('Sunday' == $weekDay && $habit->isSunday()) {
-                array_push($todayHabits, $habit);
+            if ('Sunday' === $weekDay && $habit->isSunday()) {
+                $todayHabits[] = $habit;
             }
         }
 
@@ -185,23 +202,9 @@ class HabitService implements HabitServiceInterface
     }
 
     /**
-     * Find habit by id.
-     *
-     * @param int $id
-     * @return array
+     * Find last date when habit should've been performed.
      */
-    public function findAllId(int $id): array
-    {
-        return $this->habitRepository->findAllId($id);
-    }
-
-
-    /**
-     * Find date when habit should've been recently executed.
-     * @param $habit
-     * @return \DateTimeImmutable|false|int
-     */
-    public function checkStreak($habit)
+    public function findLastDate($habit): \DateTimeImmutable|int
     {
         $weekdays = ['Monday' => 0,
             'Tuesday' => 0,
@@ -212,83 +215,168 @@ class HabitService implements HabitServiceInterface
             'Sunday' => 0,
         ];
 
+        if ($habit->isMonday()) {
+            $weekdays['Monday'] = 1;
+        }
+        if ($habit->isTusday()) {
+            $weekdays['Tuesday'] = 1;
+        }
+        if ($habit->isWednesday()) {
+            $weekdays['Wednesday'] = 1;
+        }
+        if ($habit->isThursday()) {
+            $weekdays['Thursday'] = 1;
+        }
+        if ($habit->isFriday()) {
+            $weekdays['Friday'] = 1;
+        }
+        if ($habit->isSathurday()) {
+            $weekdays['Saturday'] = 1;
+        }
+        if ($habit->isSunday()) {
+            $weekdays['Sunday'] = 1;
+        }
 
-        if ( $habit->isMonday()) {
-            $weekdays['Monday']=1;
-        }
-        if ( $habit->isTusday()) {
-            $weekdays['Tuesday']=1;
-        }
-        if ( $habit->isWednesday()) {
-            $weekdays['Wednesday']=1;
-        }
-        if ( $habit->isThursday()) {
-            $weekdays['Thursday']=1;
-        }
-        if ( $habit->isFriday()) {
-            $weekdays['Friday']=1;
-        }
-        if ( $habit->isSathurday()) {
-            $weekdays['Saturday']=1;
-        }
-        if ( $habit->isSunday()) {
-            $weekdays['Sunday']=1;
-        }
+        $startDate = new \DateTimeImmutable();
+        $recent = 0;
+        $i = 0;
 
-        $startDate=new \DateTimeImmutable();
-        $recent=0;
-        $i=0;
-
-        while ($i<7){
-            $startDate=$startDate->modify('-1 day');
-            $timestamp = strtotime($startDate->format('d-m-Y'));
+        while ($i < 7) {
+            $startDate = $startDate->modify('-1 day');
+            $timestamp = strtotime($startDate->format('Y-m-d'));
             $weekDay = date('l', $timestamp);
 
-            if($weekdays[$weekDay] == 1){
-                $recent=$startDate;
+            if (1 === $weekdays[$weekDay]) {
+                $recent = $startDate;
                 break;
             }
-             $i=$i+1;
+            $i = $i + 1;
         }
+
         return $recent;
     }
 
-    public function create_week($user):array
+    /**
+     * Make an array of all habits for each day of the week.
+     *
+     * @param User $user User entity
+     */
+    public function createWeek(User $user): array
     {
-        $week = array(
-            array(),
-            array(),
-            array(),
-            array(),
-            array(),
-            array(),
-            array(),
-        );
-        $habits = $this->habitRepository->findAllOrderedByTime($user);
-        foreach($habits as $habit){
-            if($habit->isMonday()){
-                array_push($week[0], $habit);
+        $week = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
 
+
+        ];
+        $habits = $this->habitRepository->queryAllOrderedByTime($user);
+        foreach ($habits as $habit) {
+            if ($habit->isMonday()) {
+                $week[0][] = $habit;
             }
-            if($habit->isTusday()){
-                array_push($week[1], $habit);
+            if ($habit->isTusday()) {
+                $week[1][] = $habit;
             }
-            if($habit->isWednesday()){
-                array_push($week[2], $habit);
+            if ($habit->isWednesday()) {
+                $week[2][] = $habit;
             }
-            if($habit->isThursday()){
-                array_push($week[3], $habit);
+            if ($habit->isThursday()) {
+                $week[3][] = $habit;
             }
-            if($habit->isFriday()){
-                array_push($week[4], $habit);
+            if ($habit->isFriday()) {
+                $week[4][] = $habit;
             }
-            if($habit->isSathurday()){
-                array_push($week[5], $habit);
+            if ($habit->isSathurday()) {
+                $week[5][] = $habit;
             }
-            if($habit->isSunday()){
-                array_push($week[6], $habit);
+            if ($habit->isSunday()) {
+                $week[6][] = $habit;
             }
         }
+        $habitsUnscheduled = $this->habitRepository->queryAllWithoutTime($user);
+        foreach ($habitsUnscheduled as $habit) {
+            if ($habit->isMonday()) {
+                $week[7][] = $habit;
+            }
+            if ($habit->isTusday()) {
+                $week[8][] = $habit;
+            }
+            if ($habit->isWednesday()) {
+                $week[9][] = $habit;
+            }
+            if ($habit->isThursday()) {
+                $week[10][] = $habit;
+            }
+            if ($habit->isFriday()) {
+                $week[11][] = $habit;
+            }
+            if ($habit->isSathurday()) {
+                $week[12][] = $habit;
+            }
+            if ($habit->isSunday()) {
+                $week[13][] = $habit;
+            }
+        }
+
         return $week;
+    }
+
+    /**
+     * Today Success Rate.
+     */
+    public function todaySuccessRate($user): int
+    {
+        $date = new \DateTime();
+        $todayHabits = $this->todayHabits($user);
+        $doneHabits = 0;
+        foreach ($todayHabits as $habit) {
+            $last = $habit->getLastExecution();
+            if ($last->format('Y-m-d') === $date->format('Y-m-d')) {
+                $doneHabits = $doneHabits + 1;
+            }
+        }
+
+        if (count($todayHabits) > 0) {
+            $percentage = round(($doneHabits / count($todayHabits)) * 100);
+        } else {
+            $percentage = 0;
+        }
+
+        return $percentage;
+    }
+
+    /**
+     * Check Streak.
+     *
+     * @return void
+     */
+    public function checkStreak($todayHabits)
+    {
+        $date = new \DateTime();
+        foreach ($todayHabits as $habit) {
+            $last = $habit->getLastExecution();
+            $supposed = $this->findLastDate($habit);
+
+            if ($last->format('Y-m-d') === $date->format('Y-m-d')) {
+                continue;
+            } else {
+                if ($last->format('Y-m-d') !== $supposed->format('Y-m-d')) {
+                    $habit->setStreak(0);
+                    $this->save($habit);
+                }
+            }
+        }
     }
 }

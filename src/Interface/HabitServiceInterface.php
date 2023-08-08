@@ -1,7 +1,4 @@
 <?php
-/**
- * Habit service interface.
- */
 
 namespace App\Interface;
 
@@ -14,68 +11,51 @@ use App\Entity\User;
 interface HabitServiceInterface
 {
     /**
-     * findAll
-     *
-     * @param User $user
-     * @return array
-     */
-    public function findAll(User $user): array;
-
-    /**
-     * findAllId
-     *
-     * @param int $user
-     * @return array
-     */
-    public function findAllId(int $user): array;
-
-    /**
-     * save
-     *
-     * @param Habit $habit
-     * @return void
+     * save.
      */
     public function save(Habit $habit): void;
 
     /**
-     * delete
-     *
-     * @param Habit $habit
-     * @return void
+     * delete.
      */
     public function delete(Habit $habit): void;
 
     /**
-     * countAllExecutions
-     *
-     * @param Habit $habit
-     * @return int
+     * findAll.
+     */
+    public function findAll(User $user): array;
+
+    /**
+     * findOneById.
+     */
+    public function findOneById(int $id): Habit;
+
+    /**
+     * countAllExecutions.
      */
     public function countAllExecutions(Habit $habit): int;
 
     /**
-     * countPercentage
-     *
-     * @param Habit $habit
-     * @return int
+     * countPercentage.
      */
-    public function countPercentage(Habit $habit): int;
+    public function habitSuccessRate(Habit $habit): int;
 
     /**
-     * todayHabits
-     *
-     * @param User $user
-     * @return array
+     * todayHabits.
      */
     public function todayHabits(User $user): array;
 
     /**
-     * checkStreak
-     *
-     * @param $habit
-     * @return mixed
+     * checkStreak.
      */
-    public function checkStreak($habit);
+    public function findLastDate(Habit $habit): \DateTimeImmutable|int;
 
-    public function create_week($user):array;
+    /**
+     * createWeek.
+     */
+    public function createWeek(User $user): array;
+
+    public function todaySuccessRate($user): int;
+
+    public function checkStreak($todayHabits);
 }
