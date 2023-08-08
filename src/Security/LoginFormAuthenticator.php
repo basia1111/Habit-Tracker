@@ -34,6 +34,13 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public const LOGIN_ROUTE = 'app_login';
 
     /**
+     * Admin route.
+     *
+     * @const string
+     */
+    public const ADMIN_ROUTE = 'app_admin';
+
+    /**
      * Default route.
      *
      * @const string
@@ -121,6 +128,12 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        $user = $token->getUser();
+
+        if ($user->getRoles() === ['ROLE_USER', 'ROLE_ADMIN']) {
+            return new RedirectResponse($this->urlGenerator->generate(self::ADMIN_ROUTE));
+        }
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
