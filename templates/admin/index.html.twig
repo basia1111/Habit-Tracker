@@ -13,17 +13,19 @@
     <div class="row main-row">
         <div class=" col-first  col-sm-1 order-2 order-sm-1 d-sm-block d-none">
             <div class="side-menu-wrapper d-flex flex-column">
-                <div class="logo ">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                <div class="logo">
+                    <a href="{{ url('app_login') }}">
+                         <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </a>
                 </div>
                 <div class="menu">
-                    <button id="home" class="menu-option-wrapper" onclick="changePage('users')">
+                    <button id="users" class="menu-option-wrapper" onclick="changePage('users')">
                         <i class="fa-solid fa-users"></i>
                     </button>
-                    <button id="week" class="menu-option-wrapper" onclick="changePage('create')">
+                    <button id="create" class="menu-option-wrapper" onclick="changePage('create')">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button id="user-details" class="menu-option-wrapper" onclick="changePage('posts')">
+                    <button id="posts" class="menu-option-wrapper" onclick="changePage('posts')">
                         <i class="fa-solid fa-book-open"></i>
                     </button>
                 </div>
@@ -36,7 +38,7 @@
         <div class=" col-second  col-sm-11 order-1 order-sm-2 ">
             <div id="row-nav" class="row row-nav d-flex justify-content-end">
                 <nav id="nav-bar" class=" navbar navbar-expand-sm">
-                    <a href="{{ url('app_login') }}" class="logo-nav navbar-brand">
+                    <a href="{{ url('app_login') }}" class="logo-nav navbar-brand  d-sm-none d-block ">
                         <img src="{{ asset('images/logo.png') }}" alt="Image">
                     </a>
 
@@ -65,7 +67,7 @@
                 </nav>
             </div>
             <div class="row row-content">
-                <div class="page-container">
+                <div id="page-container" class="page-container">
 
                 </div>
             </div>
@@ -78,7 +80,7 @@
     <script src="https://kit.fontawesome.com/093c7f6b78.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/main/nav.js') }}"></script>
-
+    <script src="{{ asset('js/admin/changePage.js') }}"></script>
 
 {% endblock %}
 

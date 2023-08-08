@@ -17,6 +17,7 @@ namespace App\Service;
 use App\Entity\User;
 use App\Interface\UserServiceInterface;
 use App\Repository\UserRepository;
+use Doctrine\ORM\QueryBuilder;
 
 set_time_limit(0);
 /**
@@ -39,6 +40,7 @@ class UserService implements UserServiceInterface
         $this->userRepository = $userRepository;
     }
 
+
     /**
      * Save entity.
      *
@@ -57,5 +59,14 @@ class UserService implements UserServiceInterface
     public function delete($user): void
     {
         $this->userRepository->delete($user);
+    }
+
+    /**
+     * Find All.
+     */
+    public function findAll(): array
+    {
+        return $this->userRepository-> queryAll();
+
     }
 }

@@ -1,0 +1,25 @@
+<h2>Users </h2>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col">Username</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if users is defined and users|length %}
+        {% for user in users %}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{ user.email }}</td>
+                <td>{{ user.username }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>

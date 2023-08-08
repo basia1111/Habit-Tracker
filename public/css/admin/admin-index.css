@@ -9,7 +9,7 @@ html {
 .main {
     width: 100vw;
     height: 100vh;
-    background-color: whitesmoke;
+    background-color: white;
     min-font-size: 16px!important;
     font-family: Poppins;
 }
@@ -88,11 +88,16 @@ html {
 
 /*content*/
 
-. row-content{
-    height:100%;
+.row-content{
+    padding: 0 2rem;
+    height:90vh;
     width:100%;
+    overflow: scroll;
 }
 .page-container{
     height:100%;
     width:100%;
+}
+.page-container h2{
+    font-weight: 600;
 }

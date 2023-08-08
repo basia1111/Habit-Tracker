@@ -16,4 +16,9 @@ interface UserServiceInterface
      * delete.
      */
     public function delete($user): void;
+
+    /**
+     * findAll.
+     */
+    public function findAll(): array;
 }
