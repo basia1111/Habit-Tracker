@@ -23,10 +23,7 @@
     overflow: scroll;
 }
 /**********  nav bar  ********/
-#row-nav{
-    padding: 0 2rem 0 1rem;
 
-}
 .row-content{
     height: calc(90vh - 3.5rem);
     overflow: scroll;
@@ -58,21 +55,6 @@
     height: 3rem;
     width: auto;
 }
-
-svg{
-    height: inherit;
-    width: auto;
-}
-
-/**********  menu  ********/
-#about, #how{
-    color: black !important;
-    transition: 0.15s ease-in-out;
-    position: relative; /* makes :after appear under nav-link instead of whole nav */
-    margin-right: 1rem;
-}
-
-
 
 .navbar-light .navbar-toggler {
     color: black;
@@ -418,12 +400,6 @@ input.active + label{
    .main{
        padding-top:10vh;
    }
-    #row-nav{
-       padding:0;
-   }
-    .nav-item{
-        color:white;
-    }
     .first-col{
         height: 40vh;
     }
@@ -459,7 +435,6 @@ input.active + label{
         margin: 0.5rem 2.5rem 3rem 2.5rem !important;
     }
     .navbar-expand-sm{
-        padding: 3rem !important;
         color:white;
     }
     #about, #how{

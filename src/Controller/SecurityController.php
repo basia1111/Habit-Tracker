@@ -61,7 +61,7 @@ class SecurityController extends AbstractController
                 $lastUsername = $authenticationUtils->getLastUsername();
                 $registrationError = 1;
 
-                return $this->render('security/login2.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationError]);
+                return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationError]);
             }
         }
 
@@ -70,7 +70,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login2.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationError' => 0]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationError' => 0]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

@@ -6,8 +6,66 @@
     width: 100%;
     position: relative;
     font-family: Poppins;
-    font-weight: 600;
+    font-weight: 400;
 }
+#row-nav{
+    padding: 0 2rem 0 1rem;
+    height:10vh;
+
+}
+#my-ul{
+    gap: 1rem;
+}
+
+.logo {
+    height: 7vh;
+    text-align: center;
+}
+.logo-nav img{
+    height: 3rem;
+    width: auto;
+}
+
+.navbar-light .navbar-toggler {
+    color: black;
+    border-color: black;
+    box-shadow: none;
+    padding-right: 1rem !important;
+}
+.navbar-toggler:focus{
+    box-shadow: none !important;
+    color: black;
+}
+.navbar-toggler-icon i{
+    font-size: 1.5em;
+    transition: ease-in-out 0.3s;
+    padding-right: 2.5rem;
+}
+#icon-close{
+    color: white;
+}
+.button{
+    background-color: #535AFF;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 0.5rem 4rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.15s ease-in-out;
+    font-weight: 400;
+}
+.button:hover{
+    transform: scale(110%);
+}
+.button:active{
+    transform: scale(110%);
+    background-color: whitesmoke;
+    color: black;
+    border: solid 1px black;
+}
+
 /*************** NAV-BAR LEFT ***************/
 
 #about, #how, #user{
@@ -25,44 +83,9 @@
     color: #4E5AC8 !important;
     cursor: grab;
 }
-.logo-nav{
-    height: 3.7rem;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 1rem;
-}
-.logo-nav img{
-    height:100%;
-    width:100%;
-}
-
-.navbar-light .navbar-toggler {
-    color: black;
-    border-color: black;
-    box-shadow: none;
-    padding-right: 1rem !important;
-}
-.navbar-toggler:focus{
-    box-shadow: none !important;
-    color: black;
-}
-.navbar-toggler-icon i{
-    font-size: 1.5em;
-    transition: ease-in-out 0.3s;
-}
-.navbar-toggler-icon i{
-    font-size: 1.5em;
-    transition: ease-in-out 0.3s;
-    padding-right: 2.5rem;
-}
-#icon-close{
-    color: white;
-}
 .nav-item{
     font-size: calc(12px + 0.390625vw);
 }
-
 .nav-button{
     display: flex;
     gap: 1rem;
@@ -73,7 +96,6 @@
     color: black;
     font-weight: 600;
 }
-
 
 
 @media screen and (orientation: portrait){
@@ -87,7 +109,8 @@
         padding: 2rem 0 2rem 2rem;
         gap:1rem;
     }
-    .row-nav{
+    #row-nav{
+        padding:0;
         position: fixed;
         top: 0;
         left: 0;
@@ -95,14 +118,13 @@
         z-index: 1030;
         background: linear-gradient( #F5F3F0, transparent);
     }
-
     .p2{
         display:none;
         font-size: calc(14px + 0.390625vw);
         color:black;
     }
-    .username .p1{
-
+    .navbar-expand-sm{
+        padding: 1rem 2rem 0 1.5rem !important;
     }
     .dropdown{
         margin-left:50%;
@@ -110,7 +132,6 @@
     .navbar-collapse{
         height:100vh;
     }
-
     #about, #how, #user, #home, #week, #logout{
         color: white !important;
     }
