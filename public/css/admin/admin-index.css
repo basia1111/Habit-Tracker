@@ -101,3 +101,31 @@ html {
 .page-container h2{
     font-weight: 600;
 }
+
+/*pagination*/
+/*pagination*/
+.pagination-wrapper{
+    display:flex;
+}
+
+.button-pagination{
+    border: none;
+    margin: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: none;
+    font-weight: 800;
+}
+
+.active-page{
+    color: white;
+    background-color: #535AFF;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.ellipsis{
+    display: flex;
+    align-items: end;
+    padding: 0.3rem;
+}

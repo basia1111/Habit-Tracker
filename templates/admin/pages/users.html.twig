@@ -2,7 +2,7 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th scope="col">#</th>
+        <th scope="col">id</th>
         <th scope="col">Email</th>
         <th scope="col">Username</th>
         <th scope="col"></th>
@@ -13,7 +13,7 @@
     {% if users is defined and users|length %}
         {% for user in users %}
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{ user.id }}</th>
                 <td>{{ user.email }}</td>
                 <td>{{ user.username }}</td>
                 <td></td>
@@ -23,3 +23,34 @@
     {% endif %}
     </tbody>
 </table>
+<div class="pagination-wrapper">
+{% if pages>7 %}
+    <button {% if 1 == current  %} disabled  {% endif %} class="button-pagination" onclick="changePage('users', {{ current - 1 }})"> <i class="fa-solid fa-chevron-left"></i> </button>
+    <button class="{% if 1 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ 1 }})">{{ 1 }}</button>
+    {% if current < 4 %}
+        <button class="{% if 2 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ 2 }})">2</button>
+        <button class="{% if 3 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ 3 }})">3</button>
+        <div class="ellipsis">...</div>
+    {% elseif  current > 3 and current < pages-2  %}
+        <div class="ellipsis">...</div>
+        <button class="button-pagination" onclick="changePage('users', {{ current - 1 }})">{{ current - 1 }}</button>
+        <button class="active-page button-pagination" onclick="changePage('users', {{ current }})">{{ current }}</button>
+        <button class="button-pagination" onclick="changePage('users', {{ current + 1 }})">{{ current + 1 }}</button>
+         <div class="ellipsis">...</div>
+    {% elseif  current > pages-3  %}
+        <div class="ellipsis">...</div>
+        <button class="{% if pages-2 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ pages-2 }})"> {{ pages-2 }}</button>
+        <button class="{% if pages-1 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ pages-1 }})">{{ pages-1 }}</button>
+    {% endif %}
+    <button class="{% if pages == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ pages }})">{{ pages }}</button>
+    <button {% if pages == current  %} disabled  {% endif %} class="button-pagination" onclick="changePage('users', {{ current + 1 }})"> <i class="fa-solid fa-chevron-right"></i> </button>
+
+{% else %}
+    <button {% if 1 == current  %} disabled  {% endif %} class="button-pagination" onclick="changePage('users', {{ current - 1 }})"> <i class="fa-solid fa-chevron-left"></i> </button>
+        {% for i in 1..pages %}
+            <button {% if i == current  %} class="active-page" {% endif %}onclick="changePage('users', {{ i }})">{{ i }}</button>
+        {% endfor %}
+    <button {% if pages == current  %} disabled  {% endif %} class="button-pagination" onclick="changePage('users', {{ current + 1 }})"> <i class="fa-solid fa-chevron-right"></i> </button>
+
+{% endif %}
+</div>

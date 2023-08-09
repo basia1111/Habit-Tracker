@@ -15,3 +15,7 @@
             navBar.style.backgroundColor = ""
         }
 }
+
+function logout(){
+    window.localStorage.clear();
+}

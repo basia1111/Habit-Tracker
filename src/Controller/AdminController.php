@@ -64,18 +64,25 @@ class AdminController extends AbstractController
      * @return Response
      */
     #[Route('/admin_page/{page}', name: 'render_admin_page', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT|DELETE')]
-    public function renderPage($page): Response
+    public function renderPage($page, Request $request): Response
     {
         $pages = [
             'users' => 'renderUsersPage',
             'create' => 'renderCreatePage',
             'posts' => 'renderPostsPage',
         ];
+        $number = $request->query->get('number');
         $functionName = $pages[$page];
-        $html = $this->$functionName();
+        if($page === 'users') {
+            $html = $this->$functionName($number);
+        } else {
+            $html = $this->$functionName();
+        }
+
 
         $data = [
             'html' => $html,
+            'number'=>  $number
         ];
 
         return new JsonResponse($data);
@@ -87,11 +94,21 @@ class AdminController extends AbstractController
      *
      * @return Response
      */
-    public function renderUsersPage(): string
+    public function renderUsersPage($number): string
     {
+        $limit = 1;
         $users = $this->userService->findAll();
 
-        return $this->renderView('admin/pages/users.html.twig', ['users'=>$users]);
+        $numberUsers = count($users);
+        $pages = ceil(  $numberUsers/1);
+
+        $firstUser = ($number-1)*$limit;
+
+
+        $pageUsers = array_slice($users,$firstUser,$limit);
+
+
+        return $this->renderView('admin/pages/users.html.twig', ['users'=>$pageUsers, 'pages'=>$pages, 'current'=>$number]);
     }
 
 
