@@ -1,0 +1,11 @@
+<h2>Posts</h2>
+<table>
+{% if posts is defined and posts|length %}
+    {% for post in posts %}
+        <tr>
+            <th scope="row">{{ post.id }}</th>
+            <td>{{ post.title}}</td>
+        </tr>
+    {% endfor %}
+{% endif %}
+</table>

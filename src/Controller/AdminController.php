@@ -10,6 +10,7 @@
 
 namespace App\Controller;
 
+use App\Interface\PostServiceInterface;
 use App\Interface\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,9 +25,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class AdminController extends AbstractController
 {
     /**
-     * Habit service.
+     * User service.
      */
     private UserServiceInterface $userService;
+    /**
+     * Post service.
+     */
+    private PostServiceInterface $postService;
     /**
      * Translator.
      */
@@ -34,12 +39,14 @@ class AdminController extends AbstractController
     /**
      * Constructor.
      *
+     * @param PostServiceInterface $postService post Service
      * @param UserServiceInterface $userService habit Service
      * @param TranslatorInterface  $translator  translator
      *
      */
-    public function __construct(UserServiceInterface $userService, TranslatorInterface $translator)
+    public function __construct(PostServiceInterface $postService, UserServiceInterface $userService, TranslatorInterface $translator)
     {
+        $this->postService = $postService;
         $this->userService = $userService;
         $this->translator = $translator;
     }
@@ -109,6 +116,17 @@ class AdminController extends AbstractController
 
 
         return $this->renderView('admin/pages/users.html.twig', ['users'=>$pageUsers, 'pages'=>$pages, 'current'=>$number]);
+    }
+
+    /**
+     * Render posts list.
+     *
+     * @return Response
+     */
+    public function renderPostsPage(): string
+    {
+        $posts = $this->postService->findAll();
+        return $this->renderView('admin/pages/posts.html.twig', ['posts'=>$posts]);
     }
 
 
