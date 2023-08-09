@@ -71,7 +71,7 @@ html {
 }
 .logout a{
     padding: .7rem;
-    color: #5c5683;
+    color: #535AFF;
     border-radius: 10px;
 }
 
@@ -83,11 +83,18 @@ html {
     padding:1rem;
    border:none;
     background:none;
-    color: #68628a;
+    color: #535AFF;
 }
 .active{
    color: #191e5b;
 }
+.logout a:hover {
+    color:#FD8471
+}
+.menu-option-wrapper:hover{
+    color:#FD8471
+}
+
 /************* second column *************/
 .col-second{
     height:100%;
@@ -142,6 +149,10 @@ html {
     padding:0 !important;
     color: #191e5b !important;
 }
+.btn-secondary:focus{
+    box-shadow: none;
+}
+
 .image-button {
     display: flex !important;
     align-items:center;
@@ -181,7 +192,7 @@ html {
     width: 100%;
     height: 100%;
     border-radius:15px;
-    background-color: #535AA6;
+    background-color: #565BCC;;
     background-size: cover;
     display:flex;
     box-shadow: rgba(0, 0, 0, 0.08) 0 4px 12px;
@@ -406,7 +417,7 @@ html {
 /**** habit changes ****/
 .habit-check {
 
-    background: linear-gradient(to right, #535AA6 50%, #e5e7e8 50%);
+    background: linear-gradient(to right, #565BCC 50%, #e5e7e8 50%);
     background-size: 300% 100%;
     transition: all 0.7s ease-out;
     background-position: right bottom;
@@ -414,7 +425,7 @@ html {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .habit-uncheck{
-    background:linear-gradient(to right, #535AA6 50%, #e5e7e8 50% );
+    background:linear-gradient(to right, #565BCC 50%, #e5e7e8 50% );
     background-size: 300% 100%;
     transition: all 0.7s ease-out;
     background-position: left bottom;
@@ -547,6 +558,7 @@ html {
     }
 
 }
+
 
 @media screen and (max-width:  992px) and (orientation: portrait){
     .content-col-first{

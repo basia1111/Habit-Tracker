@@ -18,7 +18,7 @@
     <div class=" col-first col-lg-1 col-md-1 col-sm-1 order-2 order-sm-1 d-sm-block d-none">
         <div class="side-menu-wrapper d-flex flex-column">
             <div class="logo ">
-                <img src="{{ asset('images/logo.png') }}" alt="Image">
+                <a  href="{{ url('app_main') }}"><img src="{{ asset('images/small-logo.png') }}" alt="Image"></a>
             </div>
             <div class="menu">
                 <button id="home" class="menu-option-wrapper" onclick="changePage('home')">
@@ -32,7 +32,7 @@
                 </button>
             </div>
             <div class="logout">
-                <a class=" " href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a>
+                <a onclick="logout()" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
 
@@ -70,7 +70,7 @@
                             </button>
                             </li>
                             <li class="nav-item d-sm-none d-block ">
-                                <a class="nav-link" id="logout" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                <a onclick="logout()" class="nav-link" id="logout" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                             </li>
                             <li class="nav-item  d-none d-sm-block ">
                                 <div class=" nav-col-2">

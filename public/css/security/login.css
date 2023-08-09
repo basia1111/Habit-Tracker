@@ -31,7 +31,7 @@
     background-size: cover;
     border-radius: 30px;
     margin: 0.5rem 4.5rem 3rem 4.5rem !important;
-    box-shadow: -17px 28px 65px -1px rgba(11, 12, 19, 0.27);
+    box-shadow: rgba(0, 0, 0, 0.29) -10px 30px 30px 1px;
     position:relative;
 }
 
@@ -62,7 +62,7 @@
 }
 .navbar-toggler:focus{
     box-shadow: none !important;
-    color: coral;
+    color:  #535AFF;
 }
 .navbar-toggler-icon i{
     font-size: 1.5em;
@@ -134,16 +134,17 @@
     width: 60%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 0 2rem 0 3rem;
     justify-content: space-evenly;
     transition: 1s ease-in-out;
     font-family: 'Montserrat', light, sans-serif;
     background-color: white;
     border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .form-title{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600 !important;
 
@@ -227,7 +228,7 @@
     margin-bottom:2rem;
 }
 .forgot:hover{
- color:coral;
+ color: #535AFF;
 }
 .link{
     transition: 0.15s ease-in-out;
