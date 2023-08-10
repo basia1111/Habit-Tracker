@@ -10,6 +10,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use App\Form\PostFormType;
 use App\Interface\PostServiceInterface;
 use App\Interface\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -128,6 +130,19 @@ class AdminController extends AbstractController
         $posts = $this->postService->findAll();
         return $this->renderView('admin/pages/posts.html.twig', ['posts'=>$posts]);
     }
+
+    /**
+     * Render create post.
+     *
+     * @return Response
+     */
+    public function renderCreatePage(): string
+    {
+        $post = new Post();
+        $create = $this->createForm(PostFormType::class,  $post)->createView();
+        return $this->renderView('admin/pages/create.html.twig', ['form'=> $create]);
+    }
+
 
 
 }

@@ -20,11 +20,14 @@ class Post
     #[ORM\Column(length: 255)]
     private ?string $cover = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $author = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
+
+    #[ORM\ManyToOne]
+    private ?User $author = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
 
     public function getId(): ?int
     {
@@ -55,17 +58,6 @@ class Post
         return $this;
     }
 
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
 
     public function getContent(): ?string
     {
@@ -75,6 +67,30 @@ class Post
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
