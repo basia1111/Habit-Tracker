@@ -31,18 +31,16 @@ html {
 .side-menu-wrapper{
     height:100%;
     width:100%;
-    background-color: #535AFF;
+    background-color: #090C4A;
 }
 
 .logo{
-    height: 4rem;
-    width:100%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    padding-top:1rem;
-}
 
+}
+.logo-nav img{
+    height: 3rem;
+    width: auto;
+}
 .logo i{
     font-size: 2rem;
     color: #b4b7ef;
@@ -52,7 +50,7 @@ html {
     width:100%;
     display:flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: start;
     color:white;
     padding-top:4rem;
@@ -61,7 +59,7 @@ html {
     height:4rem;
     aspect-ratio: 1/1;
     display:flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 .logout a{
@@ -80,26 +78,28 @@ html {
     border:none;
     background:none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .active{
-    color: #191e5b;
+    color: #a1f1a0;
 }
 
 /*content*/
 
 .row-content{
-    padding: 0 2rem;
-    height:90vh;
+    padding: 0 3rem;
+    height:100vh;
     width:100%;
     overflow: scroll;
+    padding-top: 2rem;
 }
 .page-container{
     height:100%;
     width:100%;
 }
-.page-container h2{
-    font-weight: 600;
+.page-container h1{
+    font-weight: 800;
+    margin-bottom:2rem;
 }
 
 /*pagination*/
@@ -132,4 +132,10 @@ html {
 
 .highlight{
     border: red;
+}
+
+@media screen and (max-width: 768px){
+    .row-content{
+        padding: 2rem 0 0 0;
+    }
 }

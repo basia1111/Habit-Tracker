@@ -1,12 +1,18 @@
 <h2>Ctrate Post</h2>
 
-<form id="form-create-post" class="create-form" action="{{ path('post_create')}}" enctype="multipart/form-data" method="post">
+<form id="form-create-post" class="create-post-form" action="{{ path('post_create')}}" enctype="multipart/form-data" method="post">
     {{ form_row(form.title) }}
-    {{ form_row(form.cover) }}
-
-
     {{ form_row(form.content) }}
     {{ form_row(form._token) }}
 
-    <button type="submit">Create</button>
+        <div class="preview-wrapper">
+            <img id="preview" class="preview" src="">
+        </div>
+        <div class="upload-wrapper">
+            <div id="dropArea" class="">
+                <div id="dropArea-message">Select image from the device<br> or drop it here</div>
+                <label class="upload-button required" for="post_cover"><span>Upload</span><i class="fa-solid fa-cloud-arrow-up"></i></label>
+            </div>
+        </div>
+        <button class="button-save" type="submit">save</button>
 </form>
