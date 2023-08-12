@@ -30,8 +30,8 @@
     background-image: linear-gradient(#ffffff 50% , #99ABF8FF );
 }
 .preview{
-    width: 12rem;
-    height: 12rem;
+    width: 30rem;
+    height: 20rem;
     border: 5px solid white;
     border-radius: 50%;
     object-fit: cover;

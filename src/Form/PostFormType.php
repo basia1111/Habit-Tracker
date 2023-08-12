@@ -53,7 +53,6 @@ class PostFormType extends AbstractType
             'content',
             TextType::class,
             [
-                'label' => 'content',
                 'required' => true,
             ]
         );

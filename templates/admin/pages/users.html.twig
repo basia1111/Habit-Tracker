@@ -26,7 +26,7 @@
 <div class="pagination-wrapper">
 {% if pages>7 %}
     <button {% if 1 == current  %} disabled  {% endif %} class="button-pagination" onclick="changePage('users', {{ current - 1 }})"> <i class="fa-solid fa-chevron-left"></i> </button>
-    <button class="{% if 1 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ 1 }})">{{ 1 }}</button>
+    <button class="{% if 1 == current   %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ 1 }})">{{ 1 }}</button>
     {% if current < 4 %}
         <button class="{% if 2 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ 2 }})">2</button>
         <button class="{% if 3 == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ 3 }})">3</button>
@@ -48,7 +48,7 @@
 {% else %}
     <button {% if 1 == current  %} disabled  {% endif %} class="button-pagination" onclick="changePage('users', {{ current - 1 }})"> <i class="fa-solid fa-chevron-left"></i> </button>
         {% for i in 1..pages %}
-            <button {% if i == current  %} class="active-page" {% endif %}onclick="changePage('users', {{ i }})">{{ i }}</button>
+            <button class="{% if i == current  %} active-page  {% endif %}button-pagination" onclick="changePage('users', {{ i }})">{{ i }}</button>
         {% endfor %}
     <button {% if pages == current  %} disabled  {% endif %} class="button-pagination" onclick="changePage('users', {{ current + 1 }})"> <i class="fa-solid fa-chevron-right"></i> </button>
 

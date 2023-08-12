@@ -33,7 +33,7 @@ $(document).ready(function(){
             setTimeout(changeMessageDrop, 5000);
         } else {
             if (file) {
-                $('#preview').attr('src', URL.createObjectURL(file));
+                $('#preview-create').attr('src', URL.createObjectURL(file));
             }
             formData = new FormData()
             formData.append('post[cover]', file)
@@ -49,7 +49,7 @@ $(document).ready(function(){
         e.preventDefault();
         const [file] = e.target.files;
         if (file) {
-            $('#preview').attr('src', URL.createObjectURL(file));
+            $('#preview-create').attr('src', URL.createObjectURL(file));
         }
         formData = new FormData()
         formData.append('post[cover]', file)

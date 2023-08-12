@@ -31,28 +31,26 @@ html {
 .side-menu-wrapper{
     height:100%;
     width:100%;
-    background-color: #090C4A;
+    background-color: #131942;
 }
 
 .logo{
+    height:4rem;
+    width:100%;
+    padding-top:1rem;
+    color:white;
+    font-weight: 800;
+    background-color: #7984ae;
+}
 
-}
-.logo-nav img{
-    height: 3rem;
-    width: auto;
-}
-.logo i{
-    font-size: 2rem;
-    color: #b4b7ef;
-}
 .menu{
-    height:calc(100% - 8rem);
+    height:calc(100% - 10rem);
     width:100%;
     display:flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
-    color:white;
+    color: #080618;
     padding-top:4rem;
 }
 .logout{
@@ -60,18 +58,42 @@ html {
     aspect-ratio: 1/1;
     display:flex;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
+    padding:1rem;
 }
 .logout a{
-    padding: .7rem;
     color: white;
     border-radius: 10px;
-    font-size: 1.2rem;
+    width:calc(100% - 2rem);
+    display:flex;
+    align-items: center;
+    justify-content: start;
+    padding:1rem;
+    border:none;
+    background:none;
+    font-size: 1rem;
+    margin:.5rem;
+    gap:1rem;
+    text-decoration: none;
+}
+
+.logout a i{
+    display: flex;
+    align-items: center;
+}
+
+.logout a span{
+
+    font-size: 1rem;
+}
+.logout a:hover{
+    text-decoration: none;
+    color: #ffc3bc
 }
 
 .menu-option-wrapper{
+    width:calc(100% - 2rem);
     display:flex;
-    gap:1rem;
     align-items: center;
     justify-content: start;
     padding:1rem;
@@ -79,9 +101,22 @@ html {
     background:none;
     color: white;
     font-size: 1rem;
+    margin:.5rem;
+    gap:1rem;
+}
+.menu-option-wrapper span{
+    text-align: start;
+}
+.menu-option-wrapper:hover{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius:15px;
+    background-color: #222577;
 }
 .active{
-    color: #a1f1a0;
+    background-color: #98acf7;
+    border-radius:15px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    color:white
 }
 
 /*content*/
@@ -97,45 +132,19 @@ html {
     height:100%;
     width:100%;
 }
-.page-container h1{
+.page-container h2{
     font-weight: 800;
     margin-bottom:2rem;
 }
 
 /*pagination*/
 /*pagination*/
-.pagination-wrapper{
-    display:flex;
-}
-
-.button-pagination{
-    border: none;
-    margin: 0.2rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 5px;
-    background: none;
-    font-weight: 800;
-}
-
-.active-page{
-    color: white;
-    background-color: #535AFF;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
-.ellipsis{
-    display: flex;
-    align-items: end;
-    padding: 0.3rem;
-}
-
-.highlight{
-    border: red;
-}
 
 @media screen and (max-width: 768px){
     .row-content{
         padding: 2rem 0 0 0;
+    }
+    .menu-option-wrapper{
+        justify-content: center;
     }
 }

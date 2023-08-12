@@ -105,11 +105,11 @@ class AdminController extends AbstractController
      */
     public function renderUsersPage($number): string
     {
-        $limit = 1;
+        $limit = 10;
         $users = $this->userService->findAll();
 
         $numberUsers = count($users);
-        $pages = ceil(  $numberUsers/1);
+        $pages = ceil(  $numberUsers/$limit);
 
         $firstUser = ($number-1)*$limit;
 

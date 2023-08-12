@@ -1,11 +1,15 @@
-<h2>Posts</h2>
-<table>
+<h2>Posts </h2>
+<div class="posts-wrapper">
 {% if posts is defined and posts|length %}
     {% for post in posts %}
-        <tr>
-            <th scope="row">{{ post.id }}</th>
-            <td>{{ post.title}}</td>
-        </tr>
+        <div class="post">
+            <div class="cover"><img src="{{ asset('uploads/cover_images/'~post.cover) }}"></div>
+            <div class="details-wrapper">
+                <a onclick="changePage('post', {{ post.id }})"><h5 class="post-title">{{post.title}}</h5></a>
+                <div class="post-title">{{post.author.email}}</div>
+            </div>
+            <div class="date">{{ post.createdAt|format_datetime() }}</div>
+        </div>
     {% endfor %}
 {% endif %}
-</table>
+</div>

@@ -1,12 +1,22 @@
-<h2>Ctrate Post</h2>
+<h2>Create Post</h2>
 
-<form id="form-create-post" class="create-post-form" action="{{ path('post_create')}}" enctype="multipart/form-data" method="post">
-    {{ form_row(form.title) }}
-    {{ form_row(form.content) }}
-    {{ form_row(form._token) }}
+<form id="form-create-post" class="create-post-form row" action="{{ path('post_create')}}" enctype="multipart/form-data" method="post">
 
-        <div class="preview-wrapper">
-            <img id="preview" class="preview" src="">
+    <div class="col-lg-8">
+        <div class="input-wrapper">
+            <label for="post[title]">Title</label>
+            {{ form_widget(form.title) }}
+        </div>
+           <textarea rows="5" cols = "50" id="post_content" name="post[content]" requird="required">
+
+           </textarea>
+
+
+        {{ form_row(form._token) }}
+    </div>
+    <div class="col-lg-4">
+        <div class="preview-wrapper-create">
+            <img id="preview-create" class="preview" src="">
         </div>
         <div class="upload-wrapper">
             <div id="dropArea" class="">
@@ -15,4 +25,5 @@
             </div>
         </div>
         <button class="button-save" type="submit">save</button>
+    </div>
 </form>
