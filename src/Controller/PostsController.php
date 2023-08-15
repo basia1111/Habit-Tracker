@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Form\EditPostFormType;
 use App\Form\PostFormType;
 use App\Interface\PostServiceInterface;
 use App\Interface\UserServiceInterface;
@@ -90,12 +91,49 @@ class PostsController extends AbstractController
                         $newFilename
                     );
                     $post->setCover($newFilename);
-                    $this->userService->save($user);
                 } catch (FileException) {
                 }
             }
             $this->postService->save($post);
         }
         return $this->redirectToRoute('app_admin');
+    }
+
+
+    /**
+     * Edit Post.
+     *
+     * @return Response
+     */
+    #[Route(path: '/post_edit/{post}', name: 'post_edit')]
+    public function edit(Request $request, Post $post): Response
+    {
+        $cover = $post->getCover();
+        $form = $this->createForm(EditPostFormType::class, $post);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('cover')->getData();
+            if ($imageFile !== null){
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $this->slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+                try {
+                    $imageFile->move(
+                        $this->getParameter('cover_images_directory'),
+                        $newFilename
+                    );
+                    $post->setCover($newFilename);
+                } catch (FileException) {
+                }
+            }
+
+            $this->postService->save($post);
+        }
+        $post = $this->postService->find($post);
+        $edit = $this->createForm(EditPostFormType::class,  $post)->createView();
+        $html =  $this->renderView('admin/pages/post.html.twig', ['post'=>$post, 'form'=> $edit]);
+        return new JsonResponse(['html'=>$html]);
     }
 }

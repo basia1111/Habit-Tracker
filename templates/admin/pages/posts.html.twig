@@ -8,7 +8,7 @@
                 <a onclick="changePage('post', {{ post.id }})"><h5 class="post-title">{{post.title}}</h5></a>
                 <div class="post-title">{{post.author.email}}</div>
             </div>
-            <div class="date">{{ post.createdAt|format_datetime() }}</div>
+            <div class="date">{{ post.createdAt|date('d.m.Y H:i')}}</div>
         </div>
     {% endfor %}
 {% endif %}

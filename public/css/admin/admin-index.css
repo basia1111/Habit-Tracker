@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap');
 
 *{
     outline: none !important;
@@ -31,7 +32,8 @@ html {
 .side-menu-wrapper{
     height:100%;
     width:100%;
-    background-color: #131942;
+    background-size: cover;
+    background-color: #222577;
 }
 
 .logo{
@@ -40,17 +42,27 @@ html {
     padding-top:1rem;
     color:white;
     font-weight: 800;
-    background-color: #7984ae;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.logo img{
+    height:100%;
+}
+.logo1{
+    display:block;
+}
+.logo2{
+    display:none;
+}
 .menu{
     height:calc(100% - 10rem);
     width:100%;
     display:flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: start;
-    color: #080618;
+    color: white;
     padding-top:4rem;
 }
 .logout{
@@ -71,7 +83,7 @@ html {
     padding:1rem;
     border:none;
     background:none;
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin:.5rem;
     gap:1rem;
     text-decoration: none;
@@ -87,8 +99,10 @@ html {
     font-size: 1rem;
 }
 .logout a:hover{
-    text-decoration: none;
-    color: #ffc3bc
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius:15px;
+    background-color: #222577;
+    color:white;
 }
 
 .menu-option-wrapper{
@@ -104,19 +118,26 @@ html {
     margin:.5rem;
     gap:1rem;
 }
+.menu-option-wrapper i{
+    display:flex;
+    align-items: center;
+    -webkit-text-stroke: 1px;
+}
+
 .menu-option-wrapper span{
     text-align: start;
 }
 .menu-option-wrapper:hover{
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     border-radius:15px;
-    background-color: #222577;
+    background-color: #535AFF;
+    color:white;
 }
 .active{
-    background-color: #98acf7;
+    background-color: #F48E6F;;
     border-radius:15px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    color:white
+    color:white;
 }
 
 /*content*/
@@ -133,7 +154,7 @@ html {
     width:100%;
 }
 .page-container h2{
-    font-weight: 800;
+    font-weight: 600;
     margin-bottom:2rem;
 }
 
@@ -146,5 +167,16 @@ html {
     }
     .menu-option-wrapper{
         justify-content: center;
+        font-size: 1.5rem;
+    }
+    .logout a{
+        font-size: 1.5rem;
+        justify-content: center;
+    }
+    .logo1{
+        display:none;
+    }
+    .logo2{
+        display:block;
     }
 }

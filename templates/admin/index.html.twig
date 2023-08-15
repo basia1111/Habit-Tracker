@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin/users.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/create.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/posts.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/post.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -17,21 +18,22 @@
         <div class=" col-first  col-sm-2 col-2">
             <div class="side-menu-wrapper d-flex flex-column">
                 <div class="logo">
-                    AdminDashboard
+                   <img class="logo1" src="{{ asset('images/logo-white.png') }}" alt="Image">
+                    <img class="logo2" src="{{ asset('images/small-logo.png') }}" alt="Image">
                 </div>
                 <div class="menu">
                     <button id="users" class="menu-option-wrapper" onclick="changePage('users', 1)">
                        <i class="fa-solid fa-users"></i> <span class="d-md-block d-none">Users</span>
                     </button>
                     <button id="create" class="menu-option-wrapper" onclick="changePage('create')">
-                        <i class="fa-solid fa-pen-to-square"></i><span class="d-md-block d-none">Create Post</span>
+                        <i class="bi bi-pencil-square"></i></i><span class="d-md-block d-none">Create Post</span>
                     </button>
                     <button id="posts" class="menu-option-wrapper" onclick="changePage('posts')">
-                        <i class="fa-solid fa-book-open"></i><span class="d-md-block d-none">Posts</span>
+                        <i class="bi bi-journal-richtext"></i><span class="d-md-block d-none">Posts</span>
                     </button>
                 </div>
                 <div class="logout">
-                    <a onclick="logout()" href="{{ url('app_logout') }}"><i class="bi bi-box-arrow-right"></i><span class="d-md-block d-none">Logout</span></a>
+                    <a onclick="logout()" href="{{ url('app_logout') }}"> <i class="bi bi-door-open-fill"></i><span class="d-md-block d-none">Logout</span></a>
                 </div>
             </div>
 
@@ -54,6 +56,8 @@
     <script src="{{ asset('js/main/nav.js') }}"></script>
     <script src="{{ asset('js/admin/changePage.js') }}"></script>
     <script src="{{ asset('js/admin/coverImage.js') }}"></script>
+    <script src="{{ asset('js/admin/editPost.js') }}"></script>
+
 
 {% endblock %}
 

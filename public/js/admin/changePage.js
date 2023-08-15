@@ -2,16 +2,23 @@ $(document).ready(function() {
 
     const storedPage = localStorage.getItem('page');
     const storedNumber = localStorage.getItem('number');
-
+    const storedId = localStorage.getItem('id');
 
     if (storedPage) {
         changeActive();
-        $("#" + storedPage).addClass('active');
+
+
         if (storedNumber && storedPage === 'users') {
-            changePage(storedPage,storedNumber );
-        } else {
+            $("#" + storedPage).addClass('active');
+            changePage(storedPage,storedNumber);
+        }else if(storedId && storedPage === 'post'){
+            $("#posts").addClass('active');
+            changePage(storedPage,storedId );
+        }else{
+            $("#" + storedPage).addClass('active');
             changePage(storedPage);
         }
+
     }
     else{
         $("#users").addClass('active');
@@ -26,6 +33,10 @@ function changePage(page, number){
         numberVal = number;
         localStorage.setItem('number', numberVal);
     }
+    if (page === 'post') {
+        numberVal = number;
+        localStorage.setItem('id', numberVal);
+    }
     $.ajax({
         type: 'GET',
         url: '/admin_page/'+page,
@@ -35,10 +46,13 @@ function changePage(page, number){
         dataType: 'json',
         success: function (response){
             changeActive();
-            console.log(response.number)
             $("#"+page).addClass('active');
             $('#page-container').html(response.html);
             localStorage.setItem('page', page);
+
+            if(page ==='post'){
+                $("#posts").addClass('active');
+            }
 
         }
     });

@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Form\EditPostFormType;
 use App\Form\PostFormType;
 use App\Interface\PostServiceInterface;
 use App\Interface\UserServiceInterface;
@@ -79,10 +80,11 @@ class AdminController extends AbstractController
             'users' => 'renderUsersPage',
             'create' => 'renderCreatePage',
             'posts' => 'renderPostsPage',
+            'post' => 'renderPostPage',
         ];
         $number = $request->query->get('number');
         $functionName = $pages[$page];
-        if($page === 'users') {
+        if($page === 'users' || $page === 'post'){
             $html = $this->$functionName($number);
         } else {
             $html = $this->$functionName();
@@ -143,6 +145,17 @@ class AdminController extends AbstractController
         return $this->renderView('admin/pages/create.html.twig', ['form'=> $create]);
     }
 
+    /**
+     * Render posts details.
+     *
+     * @return Response
+     */
+    public function renderPostPage($id): string
+    {
+        $post = $this->postService->find($id);
+        $edit = $this->createForm(EditPostFormType::class,  $post)->createView();
+        return $this->renderView('admin/pages/post.html.twig', ['post'=>$post, 'form'=> $edit]);
+    }
 
 
 }

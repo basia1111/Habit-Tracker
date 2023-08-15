@@ -70,4 +70,13 @@ class PostService implements PostServiceInterface
         return $this->postRepository-> queryAll();
 
     }
+
+    /**
+     * Find one.
+     */
+    public function find($id): Post
+    {
+        return $this->postRepository->find($id);
+
+    }
 }

@@ -72,9 +72,8 @@ $(document).ready(function(){
         formData.append('post[_token]', csrfToken);
         const title = document.querySelector('input[name="post[title]"]').value;
         formData.append('post[title]', title);
-        const content = document.querySelector('input[name="post[content]"]').value;
+        const content = document.querySelector('textarea[name="post[content]"]').value;
         formData.append('post[content]', content)
-
 
         console.log(formData);
 
@@ -86,7 +85,42 @@ $(document).ready(function(){
             processData: false,
             contentType: false,
             success: function (response) {
+                changePage('posts');
+            },
+        });
 
+    });
+
+    $('#row-content').on('submit', '#form-edit-post', function (e){
+        console.log( formData);
+        e.preventDefault();
+
+        if (formData == null){
+            formData = new FormData()
+        }
+        const csrfToken = document.querySelector('input[name="post[_token]"]').value;
+        formData.append('post[_token]', csrfToken);
+        const title = document.querySelector('input[name="post[title]"]').value;
+        formData.append('post[title]', title);
+        const content = document.querySelector('textarea[name="post[content]"]').value;
+        formData.append('post[content]', content)
+        let id =  document.querySelector('#form-edit-post').getAttribute("var");
+
+        console.log(formData);
+        var timestamp = new Date().getTime();
+        var ajaxUrl = '/post_edit/'+id + '?_=' + timestamp;
+
+        $.ajax({
+            url: ajaxUrl,
+            method: 'POST',
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                $('#post-details').toggleClass('d-block d-none');
+                $('#post-edit').toggleClass('d-block d-none');
+                $('#page-container').html(response.html);
             },
         });
 
