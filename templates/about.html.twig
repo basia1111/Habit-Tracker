@@ -4,28 +4,29 @@
 
 
 {% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/security/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main/nav.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/main/habit-index.css') }}">
 {% endblock %}
 
 {% block body %}
     <!-- nav bar -->
     <!-- navbar wrapping -->
-    <div id="row-nav" class="navbar row row-nav d-flex justify-content-end">
-        <nav id="nav-bar" class=" navbar navbar-expand-sm ">
-
-            <a href="{{ url('app_main') }}" class="logo-nav navbar-brand">
+    <div id="row-nav" class="row row-nav d-flex justify-content-end">
+        <nav id="nav-bar" class=" navbar navbar-expand-sm">
+            <a href="{{ url('app_login') }}" class="logo-nav navbar-brand">
                 <img src="{{ asset('images/logo.png') }}" alt="Image">
             </a>
+
             <!--nav toogler-->
             <button class="navbar-toggler" id="navbar-toggler" onclick="changeToggler()" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"> <i class="fa-solid fa-bars"></i></span>
             </button>
 
             <!-- nav-bar -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class=" collapse navbar-collapse " id="navbarSupportedContent">
                 <ul id="my-ul" class="ms-auto navbar-nav">
 
                     <li class="nav-item">
@@ -34,19 +35,23 @@
                     <li class="nav-item">
                         <a  class="nav-link" id="how" href="">Blog</a>
                     </li>
-                    <li class="nav-item d-sm-none d-block">
-                        <button id="home" class="nav-link nav-button" onclick="changePage('home')">
-                            Home Page
-                        </button>
-                    </li>
-                    <li class="nav-item d-sm-none d-block ">
-                        <button id="week" class="nav-link nav-button" onclick="changePage('week')">
-                            Week
-                        </button>
-                    </li>
-                    <li class="nav-item d-sm-none d-block ">
-                        <a class="nav-link" id="logout" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                    <div class=" nav-col-2">
+                        <div class="user-pic">
+                            <img id="user-pic-image" src="{{ asset('uploads/profile_images/'~app.user.image) }}">
+                        </div>
+                        <div class="username">
+                            <p class="p1">
+                                <a  class="nav-link"  href="{{ url('app_main') }}">{{ app.user.username }}</a>
+                            </p>
+                            <p class="p2">User</p>
+                        </div>
+                    </div>
+                    {% else %}
+                        <li class="nav-item d-none d-sm-block">
+                            <a  class="nav-link button button-register" id="button-register"  href="{{ url('app_login') }}">Log in</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -54,7 +59,11 @@
 
     <div class="box">
         <div class="content">
-
+            <h2>About web app</h2>
+            <p>
+                Autorem niniejszego serwisu jest Barbara Żygilewicz
+                Serwis ten stanowi integralną część pracy licencjackiej (kierunek: Elektroniczne przetwarzanie informacji), przygotowanej pod kierunkiem dr. Piotra Śliwińskiego na Wydziale Zarządzania i Komunikacji Społecznej Uniwersytetu Jagiellońskiego.
+            </p>
         </div>
     </div>
 

@@ -128,7 +128,7 @@ html {
     width:auto;
     margin-right: 1rem;
     font-weight: 600;
-    color: #191e5b;
+    color: black;
 }
 .username .p1 {
     margin:0;
@@ -144,11 +144,11 @@ html {
 #dropdownMenuButton{
     border:none;
     background: none;
-    color:#191e5b;
+    color:black;
 }
 .dropdown-menu{
     padding:0 !important;
-    color: #191e5b !important;
+    color: black !important;
 }
 .btn-secondary:focus{
     box-shadow: none;
