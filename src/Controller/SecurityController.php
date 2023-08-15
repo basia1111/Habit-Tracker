@@ -42,6 +42,7 @@ class SecurityController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setImage('default.png');
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -61,7 +62,7 @@ class SecurityController extends AbstractController
                 $lastUsername = $authenticationUtils->getLastUsername();
                 $registrationError = 1;
 
-                return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationErrror' => $registrationError]);
+                return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'registrationError' => $registrationError]);
             }
         }
 

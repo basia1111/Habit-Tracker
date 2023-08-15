@@ -452,7 +452,7 @@ class MainController extends AbstractController
 
                 $directory = $this->getParameter('kernel.project_dir').'/public/uploads/profile_images';
                 $filesystem = new Filesystem();
-                if ('default_user.png' !== $previousImage) {
+                if ('default.png' !== $previousImage) {
                     if ($filesystem->exists($directory.'/'.$previousImage)) {
                         $filesystem->remove($directory.'/'.$previousImage);
                     }
@@ -481,7 +481,7 @@ class MainController extends AbstractController
     {
         $user = $this->getUser();
         $previousImage = $user->getImage();
-        $user->setImage('default_user.png');
+        $user->setImage('default.png');
         $this->userService->save($user);
         $data = [
             'html' => $user->getImage(),

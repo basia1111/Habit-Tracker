@@ -15,7 +15,6 @@ use App\Form\EditPostFormType;
 use App\Form\PostFormType;
 use App\Interface\PostServiceInterface;
 use App\Interface\UserServiceInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,7 +55,7 @@ class AdminController extends AbstractController
 
     /**
      * Admin index.
-
+     *
      * @return Response
      */
     #[Route(path: '/admin', name: 'app_admin')]

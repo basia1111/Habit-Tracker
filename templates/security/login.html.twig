@@ -40,7 +40,7 @@
             <div id="row-content" class="row row-content">
                 <div class="col-md-5 col-lg-6 first-col">
                     <div class="title">
-
+                        <h2>Start better habits with Habito!</h2>
                     </div>
                     <img src="{{ asset('images/hero.png') }}" alt="Image">
 
@@ -50,6 +50,12 @@
                         <div class="hero ">
                             <div class="inner-box">
 
+                                {% if is_granted('ROLE_USER') %}
+                                    <h6>You are already logged in</h6>
+                                    <div class="logout">
+                                        <a onclick="logout()" href="{{ url('app_logout') }}"> <i class="bi bi-door-open-fill"></i><span class="d-md-block d-none">Logout</span></a>
+                                    </div>
+                                {% else%}
                                 <div id="my-element" data-my-variable="{{registrationError }}"></div>
                                 <!-- left side- login form -->
                                 <div class="wrapper {% if  registrationError  is defined and  registrationError == 1  %} active {% endif %}">
@@ -68,14 +74,19 @@
                                         </div>
 
                                         <!-- form -->
-                                        <div>
+
                                             {{ form_start(registrationForm) }}
                                             <div class="errors">
                                                 <!-- errors -->
                                                 {{ form_errors(registrationForm.email) }}
+                                                {{ form_errors(registrationForm.username) }}
                                                 {{ form_errors(registrationForm.plainPassword) }}
                                             </div>
                                             <!-- inputs -->
+                                            <div class="input-wrap">
+                                                {{ form_widget(registrationForm.username) }}
+                                                <label>Username</label>
+                                            </div>
                                             <div class="input-wrap">
                                                 {{ form_widget(registrationForm.email) }}
                                                 <label>Email</label>
@@ -93,7 +104,7 @@
                                             <button  type="submit" class="button">Register</button>
 
                                             {{ form_end(registrationForm) }}
-                                        </div>
+
                                     </div>
 
                                     <!-- sign-in form -->
@@ -149,6 +160,7 @@
                                     </div>  <!-- form-wrapper -->
 
                                 </div>  <!-- wrapper -->
+                                 {% endif %}
                             </div>  <!-- inner-box -->
                         </div>
                 </div>
@@ -163,6 +175,16 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/main/nav.js') }}"></script>
     <script src="{{ asset('js/login.js') }}"></script>
+    <script>
+        (function () {
+            window.onpageshow = function(event) {
+                if (event.persisted) {
+                    window.location=window.location;
+
+                }
+            };
+        })();
+    </script>
 {% endblock %}
 
 
