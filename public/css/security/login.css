@@ -41,6 +41,8 @@
     position: relative;
     font-family: 'Poppis', sans-serif;
     font-weight: 600;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 #my-ul{

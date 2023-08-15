@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css");
 
+
 .navbar {
     height: auto;
     width: 100%;
@@ -66,6 +67,8 @@
     border: solid 1px black;
 }
 
+
+
 /*************** NAV-BAR LEFT ***************/
 
 #about, #how, #user{
@@ -94,10 +97,9 @@
     border: none;
     background: none;
     color: black;
-    font-weight: 600;
 }
 .nav-link{
-    font-weight: 600;
+    font-weight: 400;
     font-family: poppins,sans-serif;
 }
 
