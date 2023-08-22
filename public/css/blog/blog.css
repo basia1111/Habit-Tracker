@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+main{
+    background-color: whitesmoke;
+    font-family: Poppins, sans-serif;
+}
+.row > *{
+    padding:0 ;
+    margin:0 ;
+}
+.row{
+    margin:0 !important;
+}
+#row-content{
+    width:100vw;
+    height:100%;
+    font-family: Poppins, sans-serif;
+
+}
+.banner{
+    width:100%;
+    height:14rem;
+    background-color: #6474ff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-image: url("BLOG.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.banner h3{
+    font-weight: 600;
+}
+.latest{
+
+    width:100%;
+    text-align: center;
+    font-weight: 800;
+    padding-top:2rem;
+}
+
+.posts-wrapper{
+    display:flex;
+    flex-wrap: wrap;
+    gap:2rem;
+    padding: 3rem;
+}
+.post{
+    width: calc(100% / 3 - 4rem / 3);
+    height:auto;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+    padding:1rem;
+}
+.cover{
+    height: 10rem;
+    width:100%;
+    border-radius: 15px;
+}
+.cover img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+
+}
+.post a{
+    text-decoration: none;
+    color: black;
+    display:flex;
+    flex-direction: column;
+}
+.date{
+    font-size: 0.8rem;
+    color: #666666;
+}
+.post h5{
+    font-weight: 600;
+}
+.post-content {
+    width: 100%;
+}
+.post-content p {
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 992px) {
+    .post {
+        width: calc(100% / 2 - 1rem);
+    }
+}
+@media screen and (max-width: 576px) {
+    #row-content{
+        padding-top: calc(10vh + 2rem) !important;
+    }
+    .post{
+        width: 100%;
+    }
+}

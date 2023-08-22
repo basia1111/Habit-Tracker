@@ -1,0 +1,201 @@
+#row-nav{
+    min-height: 10vh;
+    padding: 0 2rem 0 1rem !important;
+    width:100%
+}
+
+.nav-bar {
+    height: auto;
+    width: 100%;
+    position: relative;
+    font-family: Poppins,  sans-serif;;
+    font-weight: 400;
+}
+
+#my-ul{
+    gap: 1rem;
+}
+
+.logo {
+    height: 7vh;
+    text-align: center;
+}
+.logo-nav img{
+    height: 3rem;
+    width: auto;
+}
+
+.navbar-light .navbar-toggler {
+    color: black;
+    border-color: black;
+    box-shadow: none;
+    padding-right: 1rem !important;
+}
+.navbar-toggler:focus{
+    box-shadow: none !important;
+    color: black;
+}
+.navbar-toggler-icon i{
+    font-size: 1.5em;
+    transition: ease-in-out 0.3s;
+    padding-right: 2.5rem;
+}
+#icon-close{
+    color: white;
+}
+.button{
+    background-color: #343ACE;;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 0.5rem 4rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.15s ease-in-out;
+    font-weight: 400;
+}
+.button:hover{
+    transform: scale(110%);
+}
+.button:active{
+    transform: scale(110%);
+    background-color: whitesmoke;
+    color: black;
+    border: solid 1px black;
+}
+.button a:hover{
+    color:white;
+}
+
+/*************** NAV-BAR LEFT ***************/
+.nav-item{
+    font-size: calc(12px + 0.390625vw);
+}
+.nav-link{
+    font-weight: 400;
+    font-family: poppins,sans-serif;
+}
+#about, #how, #user{
+    color: black !important;
+    transition: 0.15s ease-in-out;
+    position: relative; /* makes :after appear under nav-link instead of whole nav */
+    margin-right: 1rem;
+}
+
+#about:hover{
+    transform: scale(1.1);
+    cursor: grab;
+}
+#how:hover{
+    transform: scale(1.1);
+    cursor: grab;
+}
+
+.nav-button{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: start;
+    border: none;
+    background: none;
+    color: black;
+}
+
+
+.user{
+    display:flex;
+    justify-content: start;
+    align-items: center;
+}
+.user-pic{
+    margin-right: 0.3rem;
+}
+.user-pic img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+.username{
+    display:flex;
+    flex-direction: column;
+    width:auto;
+    margin-right: 1rem;
+    font-weight: 600;
+    color: black;
+}
+.username .p1 {
+    margin:0;
+    font-size: calc(9px + 0.390625vw);
+}
+
+.p1 a{
+    color:black;
+    padding:0;
+}
+
+.username .p2{
+    margin:0;
+    padding-left: .5rem;
+    color: #666666;
+    font-weight: 400;
+    font-size: calc(6px + 0.390625vw);
+}
+
+@media screen and (orientation: portrait){
+    .logo {
+        height: 5vh;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #my-ul {
+        padding: 2rem 0 2rem 2rem;
+        gap: 1rem;
+    }
+
+    #row-nav {
+        padding: 0 !important;
+        margin: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030;
+        background: linear-gradient(#F5F3F0, transparent);
+    }
+
+    .p2 {
+        display: none;
+        font-size: calc(14px + 0.390625vw);
+        color: black;
+    }
+
+    .navbar-expand-sm {
+        padding: 1rem 2rem 0 1.5rem !important;
+    }
+
+    .dropdown {
+        margin-left: 50%;
+    }
+
+    .navbar-collapse {
+        height: 100vh;
+    }
+
+    #about, #how, #user, #home, #week, #logout {
+        color: white !important;
+    }
+
+    .nav-col-2 {
+        background: none;
+    }
+
+    p.p1 {
+        font-size: calc(14px + 0.390625vw) !important;;
+        color: white;
+    }
+}
