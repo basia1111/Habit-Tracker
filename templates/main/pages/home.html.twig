@@ -2,19 +2,21 @@
 <div class="row banner-row">
     <div class="banner">
         <div class="banner-text">
-            <h5>Start New Habit</h5>
-            <p>Craft Your Future With New Habits!</p>
+            <h5>Jaki nawyk chcez zacząć?</h5>
+            <p>Zbuduj swoją przyszłośc z nowymi nawykami!</p>
             <buton type="button" class="button-create" id="create-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Add
+                Dodaj
             </buton>
         </div>
-
+        <div class="banner-img-wrapper">
+            <img  src="{{ asset('images/banner-bg.png') }}">
+        </div>
     </div>
 </div>
 <div class="row habits-row">
     <div class="col-md-7 habits-today-wrapper">
         <div class="today-habits">
-            <h3>Today</h3>
+            <h3>Dzisiaj</h3>
             <div id="today-habits" class="habits">
                 {% if todayHabits is defined and todayHabits|length %}
                     {% for habit in todayHabits %}
@@ -80,7 +82,7 @@
 
                     <div class="empty-today-habits">
                         <img src="/images/today_habits.svg" alt="My Image">
-                        <h3>It seems today there is nothing here</h3>
+                        <h3>Wygląda na to że dzisiaj nic tu nie ma!</h3>
                     </div>
                 {% endif %}
             </div>
@@ -89,7 +91,7 @@
     <div class="col-md-5 habits-stats-wrapper d-flex flex-md-column gap-3">
         <div class="habits-stats habits-percentage">
             <p class="percentage">
-                Completion<br>rate:
+                Ukończone<br>zadania:
             </p>
             <h3 id="percentage">{{percentage}}%</h3>
             <div class="progress-wrapper">
@@ -100,7 +102,7 @@
 
         </div>
         <div class="habits-stats habits-number">
-            <p>Your<br>habits:</p>
+            <p>Twoje<br>nawyki:</p>
             <h3 id="number">
                 {{ number }}
             </h3>

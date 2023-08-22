@@ -54,7 +54,7 @@
                         <ul id="my-ul" class="ms-auto navbar-nav">
 
                             <li class="nav-item">
-                                <a   class="nav-link" id="about" href="{{ url('app_about' )}}">About us</a>
+                                <a   class="nav-link" id="about" href="{{ url('app_about' )}}">O nas</a>
                             </li>
                             <li class="nav-item">
                                 <a  class="nav-link" id="how"  href="{{ url('app_blog' )}}">Blog</a>
@@ -79,18 +79,18 @@
                                     </div>
                                     <div class="username">
                                         <p class="p1">{{ user.username }}</p>
-                                        <p class="p2">User</p>
+                                        <p class="p2">Użytkownik</p>
                                     </div>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton">
                                             <button type="button" class=" image-button dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-image">
-                                                <i class="fa-solid fa-pen-to-square"></i><p> edit profile picture</p>
+                                                <i class="fa-solid fa-pen-to-square"></i><p> Edytuj zdjecie profilowe</p>
                                             </button>
                                             <div class="dropdown-divider"></div>
                                             <button type="button" {% if user.image == 'user_default.png' %}class="disabled image-button dropdown-item" {% else%} class="image-button dropdown-item" {% endif %}data-bs-toggle="modal" data-bs-target="#modal-delete">
-                                                <i class="fa-solid fa-trash"></i><p> delete profile picture</p>
+                                                <i class="fa-solid fa-trash"></i><p>Usuń zdjęcie profilowe</p>
                                             </button>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
 
                                                 <div class="modal-body modal-image-body">
                                                     <div class="form-header d-flex justify-content-between">
-                                                        <h2>Profile</h2>
+                                                        <h2>Profil</h2>
                                                         <button type="button" class="close button-close" data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -119,14 +119,14 @@
 
                                                             <div class="d-none"> <input type="file" id="profile_picture_form_image" name="profile_picture_form[image]"  accept="image/*" required></div>
                                                             <div id="dropArea" class="">
-                                                                <div id="dropArea-message">Select image from the device<br> or drop it here</div>
-                                                                <label class="upload-button" for="profile_picture_form_image"><span>Upload</span><i class="fa-solid fa-cloud-arrow-up"></i></label>
+                                                                <div id="dropArea-message">Wybierz plik z urządzenia <br> lub upuśc go tutaj</div>
+                                                                <label class="upload-button" for="profile_picture_form_image"><span>Prześlij</span><i class="fa-solid fa-cloud-arrow-up"></i></label>
                                                             </div>
                                                         </div>
 
 
                                                         {{ form_row(imageForm._token) }}
-                                                        <button class="button-save" type="submit">save</button>
+                                                        <button class="button-save" type="submit">Zapisz</button>
 
                                                     </form>
 
@@ -141,14 +141,14 @@
                                             <div class="modal-content">
                                                 <div class="modal-body d-flex flex-column gap-1">
                                                     <div class="form-header d-flex justify-content-between">
-                                                        <h2>Delete</h2>
+                                                        <h2>Usuń</h2>
                                                         <button type="button" class="close button-close" data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
 
-                                                    Are you sure you want to delete profile picture?
-                                                    <button type="button" id="delete-image" class="button-save">Delete</button>
+                                                    Czy napewno chcesz usunąć zdjęcie profilowe?
+                                                    <button type="button" id="delete-image" class="button-save">Usuń</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -295,7 +295,7 @@
             <div class="content-col-second col-lg-4">
                 <div class="all-habits-wrapper">
                     <div class="all-habits" id="all-habits">
-                        <h3>Your Habits</h3>
+                        <h3>Twoje nawyki</h3>
                         <div id="habit-list" class="habit-list">
                             {% if habits is defined and habits|length %}
                                 {% for habit in habits %}
@@ -379,7 +379,7 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton-habit">
                                                 <button type="button" class=" dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-habit-{{ habit.id }}">
-                                                    <i class="fa-solid fa-trash"></i><p> delete habit</p>
+                                                    <i class="fa-solid fa-trash"></i><p>Usuń nawyk</p>
                                                 </button>
 
 
@@ -397,7 +397,7 @@
                                                     </button>
                                                     <form id="form-delete-habit" class="form-delete-habit" action="{{ path('habit_delete', {id: habit.id})}}" method="post">
                                                         {{ form_row(deleteForms[habit.id]._token) }}
-                                                        <button type="submit">Create</button>
+                                                        <button type="submit">Usuń</button>
                                                     </form>
                                                 </div>
                                             </div>

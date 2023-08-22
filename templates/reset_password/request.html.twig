@@ -25,13 +25,13 @@
                 <ul id="my-ul" class="ms-auto navbar-nav">
 
                     <li class="nav-item">
-                        <a   class="nav-link" id="about" href="{{ url('app_about' )}}">About us</a>
+                        <a   class="nav-link" id="about" href="{{ url('app_about' )}}">O nas</a>
                     </li>
                     <li class="nav-item">
                         <a  class="nav-link" id="how" href="{{ url('app_blog' )}}">Blog</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a  class="nav-link button button-register" id="button-register"  href="{{ url('app_login') }}">Log in</a>
+                        <a  class="nav-link button button-register" id="button-register"  href="{{ url('app_login') }}">Zaloguj się</a>
                     </li>
 
 
@@ -44,11 +44,10 @@
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
         {% endfor %}
         <div class="header">
-            <h1>Reset your password</h1>
+            <h1>Znajdź swoje konto</h1>
             <div>
                 <small>
-                    Enter your email address and we will send you a
-                    link to reset your password.
+                   Wprowadź swój email, a my wyślemy do Ciebie wiadomośc z linkiem do zmiany hasła.
                 </small>
             </div>
         </div>
@@ -58,7 +57,7 @@
             <label for="reset_password_request_form_email">Email</label>
             {{ form_widget(requestForm.email) }}
 
-            <button class="btn btn-primary button-reset">Send password reset email</button>
+            <button class="btn btn-primary button-reset">Wyślij email</button>
 
             {{ form_end(requestForm) }}
         </div>

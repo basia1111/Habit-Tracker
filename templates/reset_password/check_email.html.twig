@@ -25,13 +25,13 @@
                     <ul id="my-ul" class="ms-auto navbar-nav">
 
                         <li class="nav-item">
-                            <a   class="nav-link" id="about" href="{{ url('app_about' )}}">About us</a>
+                            <a   class="nav-link" id="about" href="{{ url('app_about' )}}">O nas</a>
                         </li>
                         <li class="nav-item">
                             <a  class="nav-link" id="how" href="{{ url('app_blog' )}}">Blog</a>
                         </li>
                         <li class="nav-item d-none d-sm-block">
-                            <a  class="nav-link button button-register" id="button-register"  href="{{ url('app_login') }}">Log in</a>
+                            <a  class="nav-link button button-register" id="button-register"  href="{{ url('app_login') }}">Zaloguj się</a>
                         </li>
 
 
@@ -45,10 +45,11 @@
             {% endfor %}
             <div class="header">
                 <p>
-                    If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
-                    This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+                    Jeśli istnieje konto powiązane z podanym adresem email,
+                    właśnie została wysłana na niego wiadomośc zawierająca link do strony na której możesz ustawić nowe hasło.
+                    Link straci ważnośc za {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
                 </p>
-                <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+                <p> Jeśli nie otrzymasz wiadomości, sprawdź folder spam lub <a href="{{ path('app_forgot_password_request') }}">sprubuj ponownie</a>.</p>
                 </div>
             </div>
 

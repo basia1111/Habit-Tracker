@@ -25,13 +25,13 @@
                         <ul id="my-ul" class="ms-auto navbar-nav">
 
                             <li class="nav-item">
-                                <a   class="nav-link" id="about" href="{{ url('app_about' )}}">About us</a>
+                                <a   class="nav-link" id="about" href="{{ url('app_about' )}}">O nas</a>
                             </li>
                             <li class="nav-item">
                                 <a  class="nav-link" id="how" href="{{ url('app_blog' )}}">Blog</a>
                             </li>
                             <li class="nav-item d-none d-sm-block">
-                                <a  class="nav-link button button-register" id="button-register" href="#">Register</a>
+                                <a  class="nav-link button button-register" id="button-register" href="#">Zarejestruj się</a>
                             </li>
                         </ul>
                     </div>
@@ -40,7 +40,7 @@
             <div id="row-content" class="row row-content">
                 <div class="col-md-5 col-lg-6 first-col">
                     <div class="title">
-                        <h2>Start better habits with Habito!</h2>
+                        <h2>Zacznij rozwijać dobre nawyki z Habito!</h2>
                     </div>
                     <img src="{{ asset('images/hero.png') }}" alt="Image">
 
@@ -51,9 +51,9 @@
                             <div class="inner-box">
 
                                 {% if is_granted('ROLE_USER') %}
-                                    <h6>You are already logged in</h6>
+                                    <h6>Jesteś już zalogowany/a!</h6>
                                     <div class="logout">
-                                        <a onclick="logout()" href="{{ url('app_logout') }}"> <i class="bi bi-door-open-fill"></i><span class="d-md-block d-none">Logout</span></a>
+                                        <a onclick="logout()" href="{{ url('app_logout') }}"> <i class="bi bi-door-open-fill"></i><span class="d-md-block d-none">Wyloguj się</span></a>
                                     </div>
                                 {% else%}
                                 <div id="my-element" data-my-variable="{{registrationError }}"></div>
@@ -65,10 +65,10 @@
 
                                         <!-- header -->
                                         <div>
-                                            <h5 class="form-title">Register</h5>
+                                            <h5 class="form-title">Zarejestruj się</h5>
                                             <div class="signUp-link">
-                                                <p class="small-text">Already have an account?
-                                                    <a href="#" class="signInBtn-link link">Sign In</a>
+                                                <p class="small-text">Masz już konto?
+                                                    <a href="#" class="signInBtn-link link">Zaloguj się</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                             <!-- inputs -->
                                             <div class="input-wrap">
                                                 {{ form_widget(registrationForm.username) }}
-                                                <label>Username</label>
+                                                <label>Nazwa użytkownika</label>
                                             </div>
                                             <div class="input-wrap">
                                                 {{ form_widget(registrationForm.email) }}
@@ -93,15 +93,15 @@
                                             </div>
                                             <div id="password-s" class="input-wrap ">
                                                 {{ form_widget(registrationForm.plainPassword) }}
-                                                <label>Password</label>
+                                                <label>Hasło</label>
                                             </div>
                                             <div id="agree" class=" input-wrap">
                                                 {{ form_widget(registrationForm.agreeTerms) }}
-                                                <p class="small-text"> Agree to terms</p>
+                                                <p class="small-text">Akceptuję warunki</p>
                                             </div>
 
                                             <!-- submit -->
-                                            <button  type="submit" class="button">Register</button>
+                                            <button  type="submit" class="button">Utwórz konto</button>
 
                                             {{ form_end(registrationForm) }}
 
@@ -112,10 +112,10 @@
 
                                         <!-- header -->
                                         <div>
-                                            <h5 class="form-title">Please sign in</h5>
+                                            <h5 class="form-title">Zaloguj się</h5>
                                             <div class="signUp-link">
-                                                <p class="small-text"> Don't have account yet?
-                                                    <a href="#" class="signUpBtn-link link ">Sign Up</a>
+                                                <p class="small-text"> Nie masz jeszcze konta?
+                                                    <a href="#" class="signUpBtn-link link ">Zarejestruj się</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -126,7 +126,7 @@
                                             <!-- errors -->
                                             {% if error %}
                                                 <div class="errors">
-                                                    Invalid login or password!
+                                                   Nieprawidłowe hasło lub login!
                                                 </div>
                                             {% endif %}
 
@@ -139,12 +139,12 @@
                                             </div>
                                             <div id="password-r" class="input-wrap ">
                                                 <input type="password" name="password"  autocomplete="new-password" required>
-                                                <label>Passowrd</label>
+                                                <label>Hasło</label>
                                             </div>
 
                                             <!-- Forgot password -->
                                             <div>
-                                                <a class="small-text forgot link" href="{{ path('app_forgot_password_request')}}">Forgot password?</a>
+                                                <a class="small-text forgot link" href="{{ path('app_forgot_password_request')}}">Nie pamiętasz hasła?</a>
                                             </div>
 
                                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -152,7 +152,7 @@
                                             <!-- submit -->
                                             <div>
                                                 <button class="button"  type="submit">
-                                                    Sign in
+                                                    Zaloguj się
                                                 </button>
                                             </div>
                                         </form>

@@ -148,6 +148,8 @@
 }
 .active{
     color:black;
+    background-color: transparent;
+    border-radius: 0px;
 }
 
 .form-wrapper {

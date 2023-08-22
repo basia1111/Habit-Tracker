@@ -81,20 +81,21 @@ html {
     gap:1rem;
     align-items: center;
     justify-content: start;
-    padding-bottom:0.5rem;
+    padding:0.5rem;
     border:none;
     background:none;
     color: #191e5b;
     margin: 1rem;
 }
 .active{
-    border-bottom:2px solid #191e5b;
+   background-color:#535AFF;
+    border-radius: 5px;
 }
 .logout a:hover {
     color:#535AFF;
 }
 .menu-option-wrapper:hover{
-    color:#535AFF;
+    color: rgba(200, 195, 255, 0.96);
 }
 
 /************* second column *************/
@@ -238,10 +239,14 @@ html {
     background-color: black;
     color: white;
 }
-.banner-img{
-    position: absolute;
-    right: 10%;
-    max-height: 100%;
+.banner-img-wrapper{
+    width:40%;
+    height:100%;
+    overflow:hidden;
+}
+.banner-img-wrapper img{
+    height:120%;
+    width:auto;
 }
 
 .habits-row{
@@ -261,7 +266,7 @@ html {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.08) 0 4px 12px;
     padding: 1rem;
-
+    color: #0d1033;
 }
 .habits-stats p{
     font-weight: 600;
@@ -276,25 +281,30 @@ html {
     padding-right: 1rem;
     height:45%;
     font-size: calc(30px + 0.390625vw);
+    font-weight: 800;
 }
 .percentage {
-    color:white
+    color:white;
+
 }
 .habits-percentage{
     background-image: url("percentage-bg.png");
-    background-size: cover;
+    background-size: 150%;
 }
 #number{
     display: flex;
     justify-content: end;
-    align-items: center;
+    align-items: end;
     padding-right: 1rem;
-    height:75%;
-    font-size: calc(40px + 0.390625vw);
+    font-size: calc(80px + 0.390625vw);
+    font-weight: 800;
+    width:100%;
+    height:100%;
 }
 .habits-number{
     background-image: url("number-bg.png");
     background-size: cover;
+    display:flex;
 }
 .progress-wrapper{
     height:30%;
