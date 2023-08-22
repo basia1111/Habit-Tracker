@@ -32,7 +32,7 @@
                 </button>
             </div>
             <div class="logout">
-                <a onclick="logout()" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a>
+                <a onclick="logout()" href="{{ url('app_logout') }}"><i class="bi bi-door-open-fill"></i></a>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                                 <a   class="nav-link" id="about" href="{{ url('app_about' )}}">About us</a>
                             </li>
                             <li class="nav-item">
-                                <a  class="nav-link" id="how" href="">Blog</a>
+                                <a  class="nav-link" id="how"  href="{{ url('app_blog' )}}">Blog</a>
                             </li>
                             <li class="nav-item d-sm-none d-block">
                                 <button id="home" class="nav-link nav-button" onclick="changePage('home')">
@@ -70,7 +70,7 @@
                             </button>
                             </li>
                             <li class="nav-item d-sm-none d-block ">
-                                <a onclick="logout()" class="nav-link" id="logout" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                <a onclick="logout()" class="nav-link" id="logout" href="{{ url('app_logout') }}"><i class="bi bi-door-open-fill"></i> Logout</a>
                             </li>
                             <li class="nav-item  d-none d-sm-block ">
                                 <div class=" nav-col-2">
@@ -197,7 +197,7 @@
                                     <div class="number-p"><div class="skeleton-loading"></div></div>
                                     <div class="skeleton-stat-h skeleton-loading"></div>
                                 </div>
-                                <div class="habits-stats habits-number">
+                                <div class="habits-stats ">
                                     <div class="skeleton-stat-h skeleton-loading"></div>
                                     <div class="skeleton-stat-h skeleton-loading"></div>
                                     <div class="number-n"><div class="skeleton-loading"></div></div>

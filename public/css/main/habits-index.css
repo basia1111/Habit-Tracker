@@ -72,7 +72,7 @@ html {
 }
 .logout a{
     padding: .7rem;
-    color: #535AFF;
+    color: #191e5b;
     border-radius: 10px;
 }
 
@@ -81,19 +81,20 @@ html {
     gap:1rem;
     align-items: center;
     justify-content: start;
-    padding:1rem;
-   border:none;
+    padding-bottom:0.5rem;
+    border:none;
     background:none;
-    color: #535AFF;
+    color: #191e5b;
+    margin: 1rem;
 }
 .active{
-   color: #191e5b;
+    border-bottom:2px solid #191e5b;
 }
 .logout a:hover {
-    color:#FD8471
+    color:#535AFF;
 }
 .menu-option-wrapper:hover{
-    color:#FD8471
+    color:#535AFF;
 }
 
 /************* second column *************/
@@ -276,6 +277,13 @@ html {
     height:45%;
     font-size: calc(30px + 0.390625vw);
 }
+.percentage {
+    color:white
+}
+.habits-percentage{
+    background-image: url("percentage-bg.png");
+    background-size: cover;
+}
 #number{
     display: flex;
     justify-content: end;
@@ -284,8 +292,15 @@ html {
     height:75%;
     font-size: calc(40px + 0.390625vw);
 }
+.habits-number{
+    background-image: url("number-bg.png");
+    background-size: cover;
+}
 .progress-wrapper{
     height:30%;
+}
+.progress-bar{
+    background-color: #535AFF !important;
 }
 
 /************* CONTENT second column *************/

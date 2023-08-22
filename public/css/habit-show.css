@@ -1,4 +1,6 @@
-
+#row-nav {
+    padding: 0 2rem 0 1rem !important;
+}
 .username{
     display:flex;
     flex-direction: column;
@@ -11,10 +13,10 @@
     margin:0;
     font-size: calc(9px + 0.390625vw);
 }
-
 .username .p1 a{
     padding: 0 !important;
     color: black;
+    font-weight: 600;
 }
 
 .username .p2{
@@ -22,4 +24,338 @@
     color: #666666;
     font-weight: 400;
     font-size: calc(6px + 0.390625vw);
+}
+.box{
+    margin: 1rem;
+    border-radius: 30px;
+}
+.row{
+    width:100%;
+    margin:0 !important;
+}
+
+.row-content{
+    padding:2rem !important;
+}
+.container-one{
+    padding: 1rem;
+    border-top-left-radius: 30px;
+    background-color: #F5F3F0;
+    padding-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.container-two{
+    padding: 1rem;
+    border-top-right-radius: 30px;
+    background-color: #F5F3F0;
+    padding-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    display:flex;
+    justify-content: center;
+}
+.title-wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding:2rem;
+    background-color: #535AFF;
+    margin-bottom: 1rem ;
+    border-radius:30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.name h1{
+    font-weight: 800;
+    margin:0;
+    color: white;
+}
+
+#edit-habit{
+    background-color: whitesmoke;
+}
+.edit-button {
+    box-shadow: 0px 2px 5px 0px rgba(136, 134, 134, 0.5);
+    border: none;
+    border-radius: 10px;
+    width: 3rem;
+    height: 3rem;
+    color:black;
+}
+.stats{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:1fr 1fr ;
+    grid-gap: 2rem;
+    height: 80vh;
+
+}
+
+.stats div{
+    background-color: white;
+    border-radius: 30px;
+    height: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    text-align: center;
+}
+
+.calendar-wrapper{
+    padding:2rem;
+    border-radius:30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: white;
+
+    width: 70%;
+
+}
+
+
+
+.title{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding:1rem;
+
+}
+/***********************************************/
+.current-date{
+    font-size: 1.45rem;
+    font-weight: 800;
+}
+
+.calendar ul{
+    list-style: none;
+    display:flex;
+    flex-wrap: wrap;
+    margin:0;
+    padding: 0;
+    text-align: center;
+}
+.today{
+    border: 2px solid black;
+}
+.done{
+    background-color: coral;
+}
+.icons button{
+    background: none;
+    color: black;
+    border: none;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 30px;
+
+}
+#previous, #next{
+    outline: none;
+}
+
+.icons button:hover{
+
+    background-color: lightgray;
+}
+.icons button:active{
+
+    background-color: lightgray;
+
+}
+
+.calendar li{
+    width: calc(100%/7 - 4px);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:30%;
+    margin:2px;
+}
+.days-calendar li:hover{
+    margin:2px;
+    background-color: lightgrey;
+}
+
+.reset-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-right: 1rem;
+}
+.reset{
+    background-color: lightgrey;
+    color: black;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0.3rem;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.days{
+    display:flex;
+
+}
+.days div{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    color: white;
+}
+
+.days div p{
+    margin: 0 1rem;
+    font-size: 0.75rem;
+}
+
+.days div i{
+    margin: 0 1rem;
+}
+
+/* icons for habits*/
+.icon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.15s ease-in-out;
+}
+.chart svg{
+    width:50px;
+    height:50px;
+    display: block;
+    margin: 10px auto;
+}
+.circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.circular-chart .circle {
+    stroke: #ff9f00;
+}
+
+
+.percentage {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
+}
+.icon{
+    display: inline-block;
+    width:  calc(40px + 8 * ((100vw - 320px) / 960));
+    min-width: 30px;
+    height: calc(40px + 8 * ((100vw - 320px) / 960));
+    min-height:30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.15s ease-in-out;
+    align-self: center;
+}
+.icon-0{
+    background-image: url('icons/1.png');
+}
+.icon-1{
+    background-image: url('icons/2.png');
+}
+.icon-2{
+    background-image: url('icons/3.png');
+}
+.icon-3{
+    background-image: url('icons/4.png');
+}
+.icon-4{
+    background-image: url('icons/5.png');
+}
+.icon-5{
+    background-image: url('icons/6.png');
+}
+.icon-6{
+    background-image: url('icons/7.png');
+}
+.icon-7{
+    background-image: url('icons/8.png');
+}
+.icon-8{
+    background-image: url('icons/9.png');
+}
+.icon-9{
+    background-image: url('icons/10.png');
+}
+.icon-10{
+    background-image: url('icons/11.png');
+}
+.icon-11{
+    background-image: url('icons/12.png');
+}
+.icon-12{
+    background-image: url('icons/13.png');
+}
+.icon-13{
+    background-image: url('icons/14.png');
+}
+
+.icon-14{
+    background-image: url('icons/15.png');
+}
+.icon-15{
+    background-image: url('icons/16.png');
+}
+.icon-16{
+    background-image: url('icons/17.png');
+}
+.icon-17{
+    background-image: url('icons/18.png');
+}
+.icon-18{
+    background-image: url('icons/19.png');
+}
+.icon-19{
+    background-image: url('icons/20.png');
+}
+.icon-20{
+    background-image: url('icons/21.png');
+}
+.icon-21{
+    background-image: url('icons/22.png');
+}
+.icon-22{
+    background-image: url('icons/23.png');
+}
+
+.icon-23{
+    background-image: url('icons/24.png');
+}
+.icon-24{
+    background-image: url('icons/25.png');
+}
+.icon-25{
+    background-image: url('icons/26.png');
+}
+
+.icon-26{
+    background-image: url('icons/27.png');
 }

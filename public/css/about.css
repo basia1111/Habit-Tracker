@@ -5,7 +5,13 @@
     height:10vh;
     padding:0;
 }
-
+.row > *{
+    padding:0 ;
+    margin:0 ;
+}
+.row{
+    margin:0 !important;
+}
 .nav-col-2{
     display:flex;
     justify-content: start;
