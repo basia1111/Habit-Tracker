@@ -46,6 +46,7 @@ class HabitFormType extends AbstractType
             'time',
             TimeType::class,
             [
+                'label' => ' ',
                 'input' => 'string',
                 'widget' => 'choice',
                 'required' => true,
@@ -121,7 +122,7 @@ class HabitFormType extends AbstractType
             TextType::class,
             [
                 'label' => ' ',
-                'required' => true,
+                'required' => false,
                 'attr' => ['max_length' => 255],
             ]
         );
@@ -130,7 +131,7 @@ class HabitFormType extends AbstractType
             TextType::class,
             [
                 'label' => ' ',
-                'required' => true,
+                'required' => false,
                 'attr' => ['max_length' => 255],
             ]
         );

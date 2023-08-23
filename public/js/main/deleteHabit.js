@@ -16,7 +16,7 @@ $(document).ready(function() {
                 $('#today-habits').html(response.today);
                 $('.progress-bar').attr('style', 'width:' + response.percentage +'%');
                 $('#percentage').text(response.percentage + '%')
-                $('.number-of-habits').html(response.number);
+                $('#number').html(response.number);
             },
         });
     });

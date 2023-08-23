@@ -76,13 +76,13 @@
                         </div>
                     </div>
                 </a>
-                <div class="dropdown">
+                <div class="dropdown d-flex">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-habit" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton-habit">
-                        <button type="button" class="image-button dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-habit-{{ habit.id }}">
-                            <i class="fa-solid fa-trash"></i><p> delete habit</p>
+                        <button type="button" class="image-button dropdown-item delete" data-bs-toggle="modal" data-bs-target="#modal-delete-habit-{{ habit.id }}">
+                            <i class="fa-solid fa-trash"></i><p>Usuń nawyk</p>
                         </button>
 
 
@@ -95,12 +95,12 @@
                     <div class="modal-content">
 
                         <div class="modal-body">
-                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close button-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <form id="form-delete-habit" class="form-delete-habit" action="{{ path('habit_delete', {id: habit.id})}}" method="post">
                                 {{ form_row(deleteForms[habit.id]._token) }}
-                                <button type="submit">Create</button>
+                                <button class="button-save" type="submit">Usuń</button>
                             </form>
                         </div>
                     </div>

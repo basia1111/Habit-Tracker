@@ -64,13 +64,16 @@
                             <div class="modal fade" id="exampleModalLong-{{ habit.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-body">
+                                        <div class="modal-body congrats">
+                                            <h3>Gratulacje!</h3>
+                                            {% set image = random(['1', '2', '3', '4']) %}
                                             {% set increased = habit.streak +1 %}
+                                            <img  src="{{ asset('images/'~image~'.png') }}">
                                             <p>
-                                                {{ increased }}
+                                               <h3><i class="fa-solid fa-fire"></i> {{ increased }}</h3>
                                             </p>
-                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                Continue
+                                            <button type="button" class="close button-save" data-bs-dismiss="modal" aria-label="Close">
+                                                Kontynuuj
                                             </button>
                                         </div>
                                     </div>
@@ -81,7 +84,6 @@
                 {% else%}
 
                     <div class="empty-today-habits">
-                        <img src="/images/today_habits.svg" alt="My Image">
                         <h3>Wygląda na to że dzisiaj nic tu nie ma!</h3>
                     </div>
                 {% endif %}

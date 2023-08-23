@@ -378,7 +378,7 @@
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton-habit">
-                                                <button type="button" class=" dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-habit-{{ habit.id }}">
+                                                <button type="button" class=" dropdown-item delete" data-bs-toggle="modal" data-bs-target="#modal-delete-habit-{{ habit.id }}">
                                                     <i class="fa-solid fa-trash"></i><p>Usuń nawyk</p>
                                                 </button>
 
@@ -392,12 +392,12 @@
                                             <div class="modal-content">
 
                                                 <div class="modal-body">
-                                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close button-close" data-bs-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <form id="form-delete-habit" class="form-delete-habit" action="{{ path('habit_delete', {id: habit.id})}}" method="post">
                                                         {{ form_row(deleteForms[habit.id]._token) }}
-                                                        <button type="submit">Usuń</button>
+                                                        <button class="button-save" type="submit">Usuń</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -420,43 +420,46 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Create Habit</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">DOdaj nowy nawyk</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                     <form id="form-create" class="create-form" action="{{ path('habit_create')}}" method="post">
 
-                        <label>Habit</label>
+                        <label>Co będę robić</label>
                         {{ form_row(create.name) }}
+
+                        <label>O której godzinie?</label>
+                        <small> *Jeśli nie chcesz wybierać godziny, pozostaw to pole bez zmian (00:00).</small>
 
                         {{ form_row(create.time) }}
 
-                        <label>Place</label>
+                        <label>Gdzie?</label>
                         {{ form_row(create.place) }}
 
-                        <label>When do you want to perform habit?</label>
+                        <label>Kiedy?</label>
                         <div class="labels-days">
                             <label onclick="labelDayActive('habit_monday_label')" for="habit_monday" class="day-label" id="habit_monday_label">
-                               Monday
+                               Poniedziałek
                             </label>
                             <label onclick="labelDayActive('habit_tusday_label')" for="habit_tusday" class="day-label" id="habit_tusday_label">
-                                Tuesday
+                                Wtorek
                             </label>
                             <label onclick="labelDayActive('habit_wednesday_label')" for="habit_wednesday" class="day-label" id="habit_wednesday_label">
-                                Wednesday
+                                Środa
                             </label>
                             <label onclick="labelDayActive('habit_thursday_label')" for="habit_thursday" class="day-label" id="habit_thursday_label">
-                                Thursday
+                                Czwartek
                             </label>
                             <label onclick="labelDayActive('habit_friday_label')" for="habit_friday" class="day-label" id="habit_friday_label">
-                                Friday
+                                Piątek
                             </label>
                             <label onclick="labelDayActive('habit_sathurday_label')" for="habit_sathurday" class="day-label" id="habit_sathurday_label">
-                                Saturday
+                                Sobota
                             </label>
                             <label onclick="labelDayActive('habit_sunday_label')" for="habit_sunday" class="day-label" id="habit_sunday_label">
-                                Sunday
+                                Niedziela
                             </label>
                         </div>
                         <div style="display: none;">
@@ -469,17 +472,17 @@
                             {{ form_row(create.sunday) }}
                         </div>
 
-                        <label>What will do you need?</label>
+                        <label>Czego będę potrzebować?</label>
                         {{ form_row(create.requisites) }}
 
-                        <label>Notes</label>
+                        <label>Notatki</label>
                         {{ form_row(create.notes) }}
 
                         {{ form_row(create._token) }}
                         <div style="display: none;">
                             {{ form_row(create.image) }}
                         </div >
-                        <label>Choose an icon for your habit</label>
+                        <label>Wybierz ikonkę</label>
                         <div class="icons-container">
                             {% for child in create.image %}
                                 <div class="icon-wrapper">
@@ -490,7 +493,7 @@
                             {% endfor %}
                         </div>
 
-                        <button type="submit">Create</button>
+                        <button class="button-save" type="submit">Zapisz</button>
 
                     </form>
                 </div>

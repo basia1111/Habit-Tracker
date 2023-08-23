@@ -160,6 +160,9 @@ html {
     display: flex !important;
     align-items:center;
     gap:.3rem;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    background-color: #e1e1e1;
 }
 .image-button p{
     padding:0;
@@ -167,8 +170,40 @@ html {
 }
 .dropdown-divider{
     margin:0 !important;
+    border-top: 1px solid rgba(255, 251, 251, 0.15) !important;
+    padding: .5rem !important;
 }
 
+.dropdown-item{
+    border-top: 1px solid rgba(255, 251, 251, 0.15);
+    padding: .5rem;
+    background-color: #f7f8fd !important;
+}
+.dropdown-item:hover{
+    background-color: #8e92e7 !important;
+    color:white !important;
+}
+.dropdown-item i{
+    color: #666666;
+}
+
+
+.dropdown-menu {
+    padding: 1rem !important;
+    border-radius: 10px;
+
+}
+
+.delete{
+    display:flex !important;
+    align-items: center;
+    gap:1rem;
+    padding:1rem;
+    border-radius:10px
+}
+.delete p{
+    margin:0;
+}
 /************* CONTENT  *************/
 
 .row-content{
@@ -312,6 +347,21 @@ html {
 .progress-bar{
     background-color: #535AFF !important;
 }
+
+.congrats{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.congrats img{
+    height:20rem;
+    width:auto;
+}
+.congrats button{
+    margin:0 !important;
+}
+
 
 /************* CONTENT second column *************/
 .content-col-second{
