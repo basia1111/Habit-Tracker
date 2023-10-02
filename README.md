@@ -4,11 +4,10 @@
 
 Welcome to **Habito**, your go-to tool for building and maintaining healthy habits. With Habito, you can easily create an account, schedule your habits, track your progress, and gain valuable insights into your habit-building journey.
 
-![Screenshot](screenshot1.png)
-<img src="screenshot1.png" width="500" height="250">
+<img src="screenshot1.png" width="500" height="250"> <img src="screenshot2.png" width="500" height="250">
 
-![Screenshot](screenshot2.png)
-![Screenshot](screenshot3.png)
+<img src="screenshot3.png" width="500" height="250">
+
 
 ## Features
 
