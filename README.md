@@ -6,6 +6,7 @@ Welcome to **Habito**, your go-to tool for building and maintaining healthy habi
 
 ![Screenshot](screenshot1.png)
 ![Screenshot](screenshot2.png)
+![Screenshot](screenshot3.png)
 
 ## Features
 
