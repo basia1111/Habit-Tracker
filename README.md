@@ -4,6 +4,9 @@
 
 Welcome to **Habito**, your go-to tool for building and maintaining healthy habits. With Habito, you can easily create an account, schedule your habits, track your progress, and gain valuable insights into your habit-building journey.
 
+![Screenshot](screenshot1.png)
+![Screenshot](screenshot2.png)
+
 ## Features
 
 - **User Accounts**: Create a personal account to keep your habits and progress synced across devices.
@@ -26,6 +29,3 @@ Welcome to **Habito**, your go-to tool for building and maintaining healthy habi
 
 4. **Accessing Statistics**: Track your progress and view insightful statistics by entering habits' details.
 
-## Security
-
-We take your privacy and data security seriously. For more information on how we protect your data, please refer to our [Security Policy](SECURITY.md).
